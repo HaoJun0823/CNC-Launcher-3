@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Ra3_Mod_Manager
 {
-    static class Win32
+    public static class Win32
     {
 
 
@@ -69,10 +70,131 @@ namespace Ra3_Mod_Manager
         [DllImport("Kernel32.dll", SetLastError = true)]
         public static extern IntPtr LoadLibrary(string lpFileName);
 
+        [DllImport("User32.dll", EntryPoint = "SendMessage")]
+        public static extern bool SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern bool GetCursorPos(out POINT pt);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int X;
+            public int Y;
+
+            public POINT(int x, int y)
+            {
+                this.X = x;
+                this.Y = y;
+            }
+
+            public override string ToString()
+            {
+                return ("X:" + X + ", Y:" + Y);
+            }
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public uint Left;
+            public uint Top;
+            public uint Right;
+            public uint Bottom;
+            public override string ToString()
+            {
+                return ("Left:" + Left + ", Top:" + Top + ", Right:" + Right + ", Bottom:" + Bottom);
+            }
+        }
+
+        [DllImport("user32")]
+        public static extern bool GetClientRect(
+        IntPtr hwnd,
+        out RECT lpRect
+        );
+        /*
+        public delegate int HookProc(int nCode, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern bool UnhookWindowsHookEx(int idHook);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern int CallNextHookEx(int idHook, int nCode, IntPtr wParam, IntPtr lParam);
+
+
+        public class MouseHookStruct
+
+        {
+
+            public POINT pt;
+
+            public int hwnd;
+
+            public int wHitTestCode;
+
+            public int dwExtraInfo;
+
+        }
+
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        public static extern int SetWindowsHookEx(int idHook, HookProc lpfn, IntPtr hInstance, int threadId);
+        */
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        public static extern bool PostMessage(IntPtr hwnd, int msg, uint wParam, uint lParam);
+
+        [DllImport("user32.dll", EntryPoint = "PostMessageA", SetLastError = true)]
+        public static extern int PostMessage(IntPtr hWnd, int Msg, Keys wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        public static extern UInt32 SendInput(UInt32 nInputs, Input[] pInputs, int cbSize);
+
+        [StructLayout(LayoutKind.Explicit)]
 
 
 
+        public struct Input
+        {
+            [FieldOffset(0)] public Int32 type;
+            [FieldOffset(4)] public MouseInput mi;
+            [FieldOffset(4)] public tagKEYBDINPUT ki;
+            [FieldOffset(4)] public tagHARDWAREINPUT hi;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct MouseInput
+        {
+            public Int32 dx;
+            public Int32 dy;
+            public Int32 Mousedata;
+            public Int32 dwFlag;
+            public Int32 time;
+            public IntPtr dwExtraInfo;
+        }
 
 
-    } 
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct tagKEYBDINPUT
+        {
+            public Int16 wVk;
+            public Int16 wScan;
+            public Int32 dwFlags;
+            public Int32 time;
+            public IntPtr dwExtraInfo;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct tagHARDWAREINPUT
+        {
+            public Int32 uMsg;
+            public Int16 wParamL;
+            public Int16 wParamH;
+        }
+
+
+    }
 }

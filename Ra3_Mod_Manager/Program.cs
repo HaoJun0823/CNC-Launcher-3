@@ -15,8 +15,8 @@ namespace Ra3_Mod_Manager
 
     static class Program
     {
-      
 
+        public static Mutex mutex;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -102,12 +102,15 @@ namespace Ra3_Mod_Manager
 
             }
 
-
-            Mutex mutex = new Mutex(true, Process.GetCurrentProcess().ProcessName);
+            bool isRunning;
+            mutex = new Mutex(true, Process.GetCurrentProcess().ProcessName,out isRunning);
             Debug.WriteLine("Check Same:" + Process.GetCurrentProcess().ProcessName);
-            if (!mutex.WaitOne(0,false))
+            //if (!mutex.WaitOne(0,false))
+              if (!isRunning)
             {
+                MessageBox.Show(loc.in_running[loc.current], loc.con_title[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,MessageBoxOptions.ServiceNotification);
                 Mutex.OpenExisting(Process.GetCurrentProcess().ProcessName);
+                //Config.mainController.ShowDialog();
 
                 if (Config.customDat ==null) {
                     Config.readDAT(Application.StartupPath + "\\" + Config.configFile);
@@ -118,7 +121,7 @@ namespace Ra3_Mod_Manager
                 }
 
 
-                MessageBox.Show(loc.in_running[loc.current], loc.con_title[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                
                 Environment.Exit(0);
             }
 
@@ -689,6 +692,9 @@ namespace Ra3_Mod_Manager
         public static bool canHook = false;
         public static String md5;
 
+        public static bool dat_mouse_locked = false;
+        public static bool dat_mouse_dynamic = false;
+
         public static String getMd5(String path)
         {
             String smd5="";
@@ -729,6 +735,7 @@ namespace Ra3_Mod_Manager
 
                 Config.dat_loc = loc.current;
                 //Config.writeDAT(false,false,"800","600","","","","",false,dat_loc);
+                MessageBox.Show(loc.info_first[loc.current], loc.btn_information[loc.current], MessageBoxButtons.OK,MessageBoxIcon.Information);
 
 
             return;
@@ -769,14 +776,36 @@ namespace Ra3_Mod_Manager
             dat_media = Boolean.Parse(option[8]);
             dat_loc = int.Parse(option[9]);
             dat_bfs = bool.Parse(option[10]);
+                dat_mouse_locked = bool.Parse(option[11]);
+                dat_mouse_dynamic = bool.Parse(option[12]);
+                
+                
                 loc.current = dat_loc;
                 sr.Close();
             
             }catch(Exception e){
-                MessageBox.Show(e.ToString(), "Exception:", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //File.Delete(Application.StartupPath + "\\Ra3_Manager.dat");
+                try { 
+                File.Move(Application.StartupPath + "\\Ra3_Mod_Manager.dat", Application.StartupPath + "\\Ra3_Mod_Manager.dat.error"+DateTime.Now.ToFileTime().ToString());
+                }
+                catch (Exception e2)
+                {
+                    try { 
+                    File.Move(Application.StartupPath + "\\Ra3_Mod_Manager.dat", Application.StartupPath + "\\Ra3_Mod_Manager.dat.error" + DateTime.Now.ToFileTime().ToString());
+                    }catch(Exception e3)
+                    {
+                        try { 
+                        File.Delete(Application.StartupPath + "\\Ra3_Mod_Manager.dat");
+                        }catch(Exception e4)
+                        {
+
+                        }
+                    }
+                }
+               MessageBox.Show("Wrong or old 'Ra3_Mod_Manager.dat' file,restore!\n" + e.Message, "Exception:", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 sr.Close();
                 fs.Close();
-                File.Delete(Application.StartupPath + "\\Ra3_Manager.dat");
+                
             }
 
 
@@ -825,7 +854,7 @@ namespace Ra3_Mod_Manager
 
         }
 
-        public static String writeDAT(String filepath,bool win, bool cr, String xres, String yres, String game, String version, String language, String modPath, bool media,int loc,bool bfs)
+        public static String writeDAT(String filepath,bool win, bool cr, String xres, String yres, String game, String version, String language, String modPath, bool media,int loc,bool bfs,bool mouselock,bool mousedynamic,String dat_desc)
         {
             
              FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write);
@@ -854,6 +883,12 @@ namespace Ra3_Mod_Manager
              strBuild.Append(loc);
             strBuild.Append('|');
             strBuild.Append(bfs);
+            strBuild.Append('|');
+            strBuild.Append(mouselock);
+            strBuild.Append('|');
+            strBuild.Append(mousedynamic);
+            strBuild.Append('|');
+            strBuild.Append(dat_desc);
 
             Debug.WriteLine("Write Data:" +strBuild.ToString());
             
@@ -1005,8 +1040,16 @@ namespace Ra3_Mod_Manager
             btn_map = new String[inf.Length],
             btn_document = new String[inf.Length],
             in_notDir = new string[inf.Length],
-            btn_shortcut = new string[inf.Length]
+            btn_shortcut = new string[inf.Length],
 
+            //2019/05/11
+            cb_mouse_locked = new string[inf.Length],
+            cb_dynamic_mouse = new string[inf.Length],
+            btn_extra = new string[inf.Length],
+            dat_desc = new string[inf.Length],
+            info_first = new string[inf.Length],
+            btn_author = new string[inf.Length],
+            open_page = new string[inf.Length]
             ;
 
 
@@ -1026,7 +1069,7 @@ namespace Ra3_Mod_Manager
             cb_customresolution[i] = "Custom Resolution";
             cb_media[i] = "Media";
             cb_windowed[i] = "Windowed";
-            in_author[i] = "Red Alert 3 Mod Manager Author:HaoJun0823 from China Version:"+ Config.exeVersion;
+            in_author[i] = "Red Alert 3 Mod Manager Author:Randerion(HaoJun0823) from China Version:" + Config.exeVersion;
             in_error[i] = "Error:";
             in_execption[i] = "Execption:";
             in_game[i] = "Command & Conquer:Red Alert 3";
@@ -1045,6 +1088,13 @@ namespace Ra3_Mod_Manager
             btn_document[i] = "Replays";
             in_notDir[i] = "Directory is not exists:";
             btn_shortcut[i] = "Create Shortcut";
+            cb_mouse_locked[i] = "(Border Windowed)Mouse locked?";
+            cb_dynamic_mouse[i] = "(Border Windowed)Mouse edge movement?";
+            btn_extra[i] = "Extra";
+            btn_author[i] = "Tool Homepage";
+            info_first[i] = "Thank you for using this tool! (Or maybe it has a problem recovery)\nThis tool is made to share the \"Command and Conquer\" series of games, so that more people like this classic masterpiece.\nToday, there are still a large number of players and Modders in the world to enrich the game in their own way, maps, models, videos, music, various ideas...\nIf you have any talents or ideas, please share them with others to create more fun!Of course, I will also write the problems we are currently experiencing in this software.If you are willing to help me, please contact me via email: mod @haojun0823.xyz\nEnjoy the game!\nRanderion(HaoJun0823)\nwww.haoju0823.xyz";
+            dat_desc[i] = "This file is generated by the RA3 ModManager and is used to record the relevant configuration. If you can't open the program, you can manually delete this file.";
+            open_page[i] = "Open a webpage from a browser?";
 
             i++;
             //CS
@@ -1058,7 +1108,7 @@ namespace Ra3_Mod_Manager
             cb_customresolution[i] = "自定义分辨率";
             cb_media[i] = "多媒体";
             cb_windowed[i] = "窗口化";
-            in_author[i] = "红色警戒3模组管理器 作者：HaoJun0823 来自中国 版本：" + Config.exeVersion;
+            in_author[i] = "红色警戒3模组管理器 作者：Randerion(HaoJun0823) 来自中国 版本：" + Config.exeVersion;
             in_error[i] = "错误：";
             in_execption[i] = "异常：";
             in_game[i] = "命令与征服：红色警戒3";
@@ -1077,6 +1127,13 @@ namespace Ra3_Mod_Manager
             btn_document[i] = "录像";
             in_notDir[i] = "目录不存在：";
             btn_shortcut[i] = "创建快捷方式";
+            cb_mouse_locked[i] = "（无边框窗口模式）鼠标锁定窗口？";
+            cb_dynamic_mouse[i] = "（无边框窗口模式）鼠标边缘移动？";
+            btn_extra[i] = "额外";
+            btn_author[i] = "工具主页";
+            info_first[i] = "感谢你使用这个工具！（又或者是它发生了问题恢复了）\n这个工具是为了分享《命令与征服》系列游戏制作出来的，让更多人喜欢这款经典巨作。\n时至今日，世界上仍然有大量玩家和Modder用自己的方式丰富这个游戏，地图、模型、视频、音乐，各种创意……\n如果你有任何才华或者想法，请大胆地与其他人分享，来创作出更多的乐趣！当然，我也会把我们当前遇到的问题写在这个软件里，如果你愿意帮助我，请通过邮箱与我联系: mod @haojun0823.xyz\n享受游戏！\nRanderion(HaoJun0823)\nwww.haoju0823.xyz";
+            dat_desc[i] = "该文件由RA3 ModManager生成，用于记录相关配置。 如果无法打开该程序，则可以手动删除该文件。";
+            open_page[i] = "从浏览器打开网页？";
 
             i++;
             //TS
@@ -1091,7 +1148,7 @@ namespace Ra3_Mod_Manager
             cb_customresolution[i] = "自定義分辨率";
             cb_media[i] = "多媒體";
             cb_windowed[i] = "窗口化";
-            in_author[i] = "紅色警戒3模組管理器 作者：HaoJun0823 來自中國 版本：" + Config.exeVersion;
+            in_author[i] = "紅色警戒3模組管理器 作者：Randerion(HaoJun0823) 來自中國 版本：" + Config.exeVersion;
             in_error[i] = "錯誤：";
             in_execption[i] = "異常：";
             in_game[i] = "終極動員令：紅色警戒3";
@@ -1110,6 +1167,13 @@ namespace Ra3_Mod_Manager
             btn_document[i] = "錄像";
             in_notDir[i] = "目錄不存在：";
             btn_shortcut[i] = "創建快捷方式";
+            cb_mouse_locked[i] = "（無邊框窗口模式）鼠標鎖定窗口？";
+            cb_dynamic_mouse[i] = "（無邊框窗口模式）鼠標邊緣移動？";
+            btn_author[i] = "工具主頁";
+            btn_extra[i] = "額外";
+            info_first[i] = "感謝妳使用這個工具！（又或者是它發生了問題恢復了）\n這個工具是為了分享《命令與征服》系列遊戲制作出來的，讓更多人喜歡這款經典巨作。\n時至今日，世界上仍然有大量玩家和Modder用自己的方式豐富這個遊戲，地圖、模型、視頻、音樂，各種創意……\n如果妳有任何才華或者想法，請大膽地與其他人分享，來創作出更多的樂趣！當然，我也會把我們當前遇到的問題寫在這個軟件裏，如果妳願意幫助我，請通過郵箱與我聯系: mod @haojun0823.xyz\n享受遊戲！\nRanderion(HaoJun0823)\nwww.haoju0823.xyz";
+            dat_desc[i] = "該文件由RA3 ModManager生成，用於記錄相關配置。如果無法打開該程序，則可以手動刪除該文件。";
+            open_page[i] = "從瀏覽器打開網頁？";
         }
     }
 

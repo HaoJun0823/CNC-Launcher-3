@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_StartGame.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="tb_Xres.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tb_Xres.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="tb_Yres.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -208,10 +208,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tb_Yres.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="lc_Game.Location" type="System.Drawing.Point, System.Drawing">
-    <value>478, 641</value>
+    <value>478, 642</value>
   </data>
   <data name="lc_Game.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 20</value>
@@ -229,7 +229,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lc_Game.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="lc_Version.Location" type="System.Drawing.Point, System.Drawing">
     <value>478, 667</value>
@@ -250,7 +250,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lc_Version.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="lb_Width.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -280,7 +280,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_Width.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="lb_Height.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -310,7 +310,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_Height.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="cb_Windowed.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -340,7 +340,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_Windowed.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="cb_CustomResolution.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -370,7 +370,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_CustomResolution.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="lb_Game.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -379,7 +379,7 @@
     <value>NoControl</value>
   </data>
   <data name="lb_Game.Location" type="System.Drawing.Point, System.Drawing">
-    <value>419, 644</value>
+    <value>419, 648</value>
   </data>
   <data name="lb_Game.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 12</value>
@@ -400,7 +400,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_Game.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="lb_Version.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -430,7 +430,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_Version.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="btn_RA3UI.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -460,7 +460,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_RA3UI.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="btn_Information.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -490,7 +490,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_Information.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="btn_SaveOption.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -520,7 +520,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_SaveOption.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="lc_GameLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>605, 642</value>
@@ -541,7 +541,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lc_GameLanguage.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="btn_website.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -571,7 +571,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_website.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="cb_Media.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -601,7 +601,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_Media.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="btn_ModFolder.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -631,10 +631,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_ModFolder.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="lc_loc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 662</value>
+    <value>178, 672</value>
   </data>
   <data name="lc_loc.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -652,7 +652,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lc_loc.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <metadata name="media_video.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -693,7 +693,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;media_video.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="cb_bfs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -720,13 +720,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_bfs.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="btn_map.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
   <data name="btn_map.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 615</value>
+    <value>243, 615</value>
   </data>
   <data name="btn_map.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -747,7 +747,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_map.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="btn_document.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -777,7 +777,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_document.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="btn_short.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -807,6 +807,69 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_short.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ExtraConfig.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="ExtraConfig.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ExtraConfig.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ExtraConfig.Location" type="System.Drawing.Point, System.Drawing">
+    <value>411, 615</value>
+  </data>
+  <data name="ExtraConfig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="ExtraConfig.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="ExtraConfig.Text" xml:space="preserve">
+    <value>Extra</value>
+  </data>
+  <data name="&gt;&gt;ExtraConfig.Name" xml:space="preserve">
+    <value>ExtraConfig</value>
+  </data>
+  <data name="&gt;&gt;ExtraConfig.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExtraConfig.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ExtraConfig.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btn_author.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="btn_author.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_author.Location" type="System.Drawing.Point, System.Drawing">
+    <value>177, 652</value>
+  </data>
+  <data name="btn_author.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="btn_author.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="btn_author.Text" xml:space="preserve">
+    <value>Tool Homepage</value>
+  </data>
+  <data name="&gt;&gt;btn_author.Name" xml:space="preserve">
+    <value>btn_author</value>
+  </data>
+  <data name="&gt;&gt;btn_author.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_author.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btn_author.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

@@ -111,7 +111,7 @@ namespace Ra3_Mod_Manager
 
         private void writeDAT()
         {
-            Config.writeDAT(Application.StartupPath + "\\"+Config.configFile,cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current,cb_bfs.Checked);
+            Config.writeDAT(Application.StartupPath + "\\"+Config.configFile,cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current,cb_bfs.Checked,Config.dat_mouse_locked,Config.dat_mouse_dynamic,loc.dat_desc[loc.current]);
         }
 
         private void buildLanguage(int i)
@@ -154,6 +154,8 @@ namespace Ra3_Mod_Manager
             this.btn_document.Text = loc.btn_document[i];
             this.btn_map.Text = loc.btn_map[i];
             this.btn_short.Text = loc.btn_shortcut[i];
+            this.ExtraConfig.Text = loc.btn_extra[i];
+            this.btn_author.Text = loc.btn_author[i];
 
 
 
@@ -1111,7 +1113,7 @@ namespace Ra3_Mod_Manager
         {
 
             Config.dat_bfs = cb_bfs.Checked;
-            /*
+            
             if (cb_bfs.Checked)
             {
                 
@@ -1127,7 +1129,7 @@ namespace Ra3_Mod_Manager
                 cb_Windowed.Enabled = true;
                 cb_CustomResolution.Enabled = true;
             }
-            */
+            
         }
 
         private void cb_Windowed_CheckedChanged(object sender, EventArgs e)
@@ -1298,7 +1300,7 @@ namespace Ra3_Mod_Manager
 
 
             
-            Config.writeDAT(Application.StartupPath + "\\Custom.dat\\" + sb.ToString(), cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current, cb_bfs.Checked);
+            Config.writeDAT(Application.StartupPath + "\\Custom.dat\\" + sb.ToString(), cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current, cb_bfs.Checked,Config.dat_mouse_locked,Config.dat_mouse_dynamic,loc.dat_desc[loc.current]);
 
 
             
@@ -1378,7 +1380,37 @@ namespace Ra3_Mod_Manager
 
         }
 
+        private void ExtraConfig_Click(object sender, EventArgs e)
+        {
+            DialogResult dr;
+            dr = MessageBox.Show(loc.cb_mouse_locked[loc.current], loc.cb_dynamic_mouse[loc.current], MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dr == DialogResult.Yes)
+            {
+                Config.dat_mouse_locked = true;
+            }
+            else
+            {
+                Config.dat_mouse_locked = false;
+            }
+            dr = MessageBox.Show(loc.cb_dynamic_mouse[loc.current], loc.cb_dynamic_mouse[loc.current], MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                Config.dat_mouse_dynamic = true;
+            }
+            else
+            {
+                Config.dat_mouse_dynamic = false;
+            }
 
+        }
+
+        private void btn_author_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(loc.open_page[loc.current], "www.haojun0823.xyz/access/ra3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
+                System.Diagnostics.Process.Start("www.haojun0823.xyz/access/ra3");
+            };
+            
+        }
     }
 
 }

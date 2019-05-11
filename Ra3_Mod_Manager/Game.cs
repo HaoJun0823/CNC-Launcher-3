@@ -60,9 +60,25 @@ namespace Ra3_Mod_Manager
 
             }
 
+
+
+            if (Config.dat_bfs && (Config.dat_mouse_locked || Config.dat_mouse_dynamic))
+            {
+                Extra.doExtra();
+
+            }
+            else
+            {
+                Debug.WriteLine("Pass Extra!");
+            }
+
+
             if (Config.isDevloper) { 
             waitGameClose();
             }
+
+
+
         }
 
         private static void noBorder()
@@ -108,17 +124,28 @@ namespace Ra3_Mod_Manager
 
 
 
+            try { 
+
             Config.gameProcess.WaitForExit();
 
-            Config.timeStamp = DateTime.Now.ToString("yyyymmddhhmmss");
-            timeStamp = DateTime.Now.ToString("yyyymmddhhmmss");
-
-            Debug.WriteLine("New TimeStamp:" + timeStamp);
+           
+            
 
 
-            Config.mainController.WindowState = System.Windows.Forms.FormWindowState.Normal;
 
-            Config.mainController.refreshResource();
+
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Exception Waiting Game Process Or Extra:" + e.ToString());
+            }
+            finally
+            {
+                Extra.timer.Change(-1, 0);
+                Extra.timer = null;
+            }
+
 
             try
             {
@@ -133,6 +160,15 @@ namespace Ra3_Mod_Manager
             {
                 Debug.WriteLine("Exception Stream:" + e.ToString());
             }
+
+            Config.timeStamp = DateTime.Now.ToString("yyyymmddhhmmss");
+            timeStamp = DateTime.Now.ToString("yyyymmddhhmmss");
+
+            Debug.WriteLine("New TimeStamp:" + timeStamp);
+
+            Config.mainController.WindowState = System.Windows.Forms.FormWindowState.Normal;
+
+            Config.mainController.refreshResource();
 
         }
 

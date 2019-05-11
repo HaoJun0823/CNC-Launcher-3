@@ -56,6 +56,8 @@ namespace Ra3_Mod_Manager
             this.btn_map = new System.Windows.Forms.Button();
             this.btn_document = new System.Windows.Forms.Button();
             this.btn_short = new System.Windows.Forms.Button();
+            this.ExtraConfig = new System.Windows.Forms.Button();
+            this.btn_author = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.media_video)).BeginInit();
             this.SuspendLayout();
             // 
@@ -289,11 +291,35 @@ namespace Ra3_Mod_Manager
             this.btn_short.UseVisualStyleBackColor = false;
             this.btn_short.Click += new System.EventHandler(this.btn_short_Click);
             // 
+            // ExtraConfig
+            // 
+            this.ExtraConfig.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.ExtraConfig, "ExtraConfig");
+            this.ExtraConfig.Cursor = System.Windows.Forms.Cursors.No;
+            this.ExtraConfig.FlatAppearance.BorderSize = 0;
+            this.ExtraConfig.ForeColor = System.Drawing.Color.Black;
+            this.ExtraConfig.Name = "ExtraConfig";
+            this.ExtraConfig.UseVisualStyleBackColor = false;
+            this.ExtraConfig.Click += new System.EventHandler(this.ExtraConfig_Click);
+            // 
+            // btn_author
+            // 
+            this.btn_author.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btn_author, "btn_author");
+            this.btn_author.Cursor = System.Windows.Forms.Cursors.Help;
+            this.btn_author.FlatAppearance.BorderSize = 0;
+            this.btn_author.ForeColor = System.Drawing.Color.Black;
+            this.btn_author.Name = "btn_author";
+            this.btn_author.UseVisualStyleBackColor = false;
+            this.btn_author.Click += new System.EventHandler(this.btn_author_Click);
+            // 
             // Controller
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Controls.Add(this.btn_author);
+            this.Controls.Add(this.ExtraConfig);
             this.Controls.Add(this.btn_short);
             this.Controls.Add(this.btn_document);
             this.Controls.Add(this.btn_map);
@@ -355,5 +381,7 @@ namespace Ra3_Mod_Manager
         private System.Windows.Forms.Button btn_map;
         private System.Windows.Forms.Button btn_document;
         private System.Windows.Forms.Button btn_short;
+        private System.Windows.Forms.Button ExtraConfig;
+        private System.Windows.Forms.Button btn_author;
     }
 }
