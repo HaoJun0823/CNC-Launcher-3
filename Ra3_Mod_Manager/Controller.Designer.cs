@@ -247,6 +247,7 @@ namespace Ra3_Mod_Manager
             this.media_video.Name = "media_video";
             this.media_video.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("media_video.OcxState")));
             this.media_video.TabStop = false;
+            this.media_video.Enter += new System.EventHandler(this.media_video_Enter);
             // 
             // cb_bfs
             // 
@@ -295,7 +296,7 @@ namespace Ra3_Mod_Manager
             // 
             this.ExtraConfig.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.ExtraConfig, "ExtraConfig");
-            this.ExtraConfig.Cursor = System.Windows.Forms.Cursors.No;
+            this.ExtraConfig.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExtraConfig.FlatAppearance.BorderSize = 0;
             this.ExtraConfig.ForeColor = System.Drawing.Color.Black;
             this.ExtraConfig.Name = "ExtraConfig";

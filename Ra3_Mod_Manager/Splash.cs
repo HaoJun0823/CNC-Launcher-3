@@ -27,7 +27,7 @@ namespace Ra3_Mod_Manager
                 this.BackgroundImage = null;
             }
 
-            String iconPath = Config.modPath + "\\icon.ico";
+            String iconPath = Config.modPath + "\\launcher\\icon.ico";
 
             if (File.Exists(iconPath))
             {

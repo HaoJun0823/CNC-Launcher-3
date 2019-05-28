@@ -16,7 +16,7 @@ namespace Ra3_Mod_Manager
     {
 
 
-
+        
         public SoundPlayer player = new SoundPlayer();
 
 
@@ -109,6 +109,23 @@ namespace Ra3_Mod_Manager
 
         }
 
+
+        public void SetCursor(Bitmap cursor, Point hotPoint)
+        {
+            int PX = hotPoint.X;
+            int PY = hotPoint.Y;
+            Bitmap myNewCursor = new Bitmap(cursor.Width * 2 - PX, cursor.Height * 2 - PY);
+            Graphics g = Graphics.FromImage(myNewCursor);
+            g.Clear(Color.FromArgb(0, 0, 0, 0));
+            g.DrawImage(cursor, cursor.Width - PX, cursor.Height - PY, cursor.Width,
+            cursor.Height);
+            this.Cursor = new Cursor(myNewCursor.GetHicon());
+
+            g.Dispose();
+            myNewCursor.Dispose();
+        }
+
+
         private void writeDAT()
         {
             Config.writeDAT(Application.StartupPath + "\\"+Config.configFile,cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current,cb_bfs.Checked,Config.dat_mouse_locked,Config.dat_mouse_dynamic,loc.dat_desc[loc.current]);
@@ -160,13 +177,71 @@ namespace Ra3_Mod_Manager
 
 
 
+
+
         }
+
+
+        public static void printText()
+        {
+            String firstOpenPath = Config.modPath + "\\Support\\first.txt";
+            Debug.WriteLine("Search First Time:" + firstOpenPath);
+            if (File.Exists(firstOpenPath))
+            {
+
+                Debug.WriteLine("First Time:" + firstOpenPath);
+                Process.Start(Config.modPath + "\\Support\\");
+                //Process.Start("notepad.exe",Config.modPath + "\\Support\\readme_" +loc.inf[loc.current]);
+                //File.Delete(firstOpenPath);
+
+                Description form_desc = new Description();
+                form_desc.isText = true;
+                form_desc.needChecked = true;
+                form_desc.address = Config.modPath + "\\Support\\readme_" + loc.inf[loc.current] + ".txt";
+                form_desc.deleteFilename = firstOpenPath;
+                form_desc.ShowDialog();
+
+
+                //this.Cursor = Cursors.Default;
+                //this.Cursor = Cursors.WaitCursor;
+            }
+
+
+            String UpdateOpenPath = Config.modPath + "\\Support\\new.txt";
+            Debug.WriteLine("Search Update:" + UpdateOpenPath);
+
+            if (File.Exists(UpdateOpenPath))
+            {
+
+                Debug.WriteLine("New Update:" + UpdateOpenPath);
+                //Process.Start("notepad.exe", Config.modPath + "\\Support\\update_" + loc.inf[loc.current]);
+                // File.Delete(UpdateOpenPath);
+                Description form_desc = new Description();
+                form_desc.isText = true;
+                form_desc.needChecked = true;
+                form_desc.address = Config.modPath + "\\Support\\update_" + loc.inf[loc.current] + ".txt";
+                form_desc.deleteFilename = UpdateOpenPath;
+                form_desc.ShowDialog();
+
+
+                //this.Cursor = Cursors.Default;
+                //this.Cursor = Cursors.WaitCursor;
+            }
+        }
+
 
         public void refreshResource()
         {
             player.Stop();
             this.media_video.Ctlcontrols.stop();
             media_video.Visible = false;
+
+
+            printText();
+
+
+
+
 
 
 
@@ -194,7 +269,7 @@ namespace Ra3_Mod_Manager
             Config.currentImage[0] = Config.originalImage[0];
             Config.currentImage[1] = Config.originalImage[1];
 
-            String[] fileArray = { Config.modPath + "\\Controller", Config.modPath + "\\Splash" };
+            String[] fileArray = { Config.modPath + "\\launcher\\Controller", Config.modPath + "\\launcher\\Splash" };
             String[] fileNameExtension = { ".png", ".jpg", ".jpeg", ".bmp" };
 
             for (int i = 0; i < fileArray.Length; i++)
@@ -226,8 +301,8 @@ namespace Ra3_Mod_Manager
                 this.BackgroundImage = null;
             }
 
-            String titlePath = Config.modPath + "\\Title.txt";
-            String iconPath = Config.modPath + "\\icon.ico";
+            String titlePath = Config.modPath + "\\launcher\\Title.txt";
+            String iconPath = Config.modPath + "\\launcher\\icon.ico";
 
             if (lc_Game.Text.Equals(Config.gameName))
             {
@@ -276,8 +351,8 @@ namespace Ra3_Mod_Manager
             }
 
 
-            String btnImagePath = Config.modPath + "\\button.png";
-            String fontColorPath = Config.modPath + "\\font.color.txt";
+            String btnImagePath = Config.modPath + "\\launcher\\button.png";
+            String fontColorPath = Config.modPath + "\\launcher\\font.color.txt";
             //String componentColorPath = Config.modPath + "\\component.color.txt";
             Color fontColor = Color.White;
             Color componentColor = Color.White;
@@ -286,34 +361,34 @@ namespace Ra3_Mod_Manager
             {
                 Config.btnImage = new Bitmap(btnImagePath);
 
-                if (File.Exists(Config.modPath + "\\button.enter.png"))
+                if (File.Exists(Config.modPath + "\\launcher\\button.enter.png"))
                 {
-                    Config.btnImageMove = new Bitmap(Config.modPath + "\\button.enter.png");
+                    Config.btnImageMove = new Bitmap(Config.modPath + "\\launcher\\button.enter.png");
                 }
                 else
                 {
                     Config.btnImageMove = Config.btnImage;
                 }
-                if (File.Exists(Config.modPath + "\\button.click.png"))
+                if (File.Exists(Config.modPath + "\\launcher\\button.click.png"))
                 {
-                    Config.btnImageClick = new Bitmap(Config.modPath + "\\button.click.png");
+                    Config.btnImageClick = new Bitmap(Config.modPath + "\\launcher\\button.click.png");
                 }
                 else
                 {
                     Config.btnImageClick = Config.btnImage;
                 }
 
-                if (File.Exists(Config.modPath + "\\button.click.wav"))
+                if (File.Exists(Config.modPath + "\\launcher\\button.click.wav"))
                 {
-                    Config.btnAudioClick = Config.modPath + "\\button.click.wav";
+                    Config.btnAudioClick = Config.modPath + "\\launcher\\button.click.wav";
                     Debug.WriteLine("Get Button Click Audio:" + Config.btnAudioClick);
 
                 }
                 else { Config.btnAudioClick = ""; }
 
-                if (File.Exists(Config.modPath + "\\button.enter.wav"))
+                if (File.Exists(Config.modPath + "\\launcher\\button.enter.wav"))
                 {
-                    Config.btnAudioMove = Config.modPath + "\\button.enter.wav";
+                    Config.btnAudioMove = Config.modPath + "\\launcher\\button.enter.wav";
                     Debug.WriteLine("Get Button Enter Audio:" + Config.btnAudioMove);
                 }
                 else { Config.btnAudioMove = ""; }
@@ -341,33 +416,37 @@ namespace Ra3_Mod_Manager
                         fontColor = Color.FromArgb(a, r, g, b);
                     }
                 }
-                /*
-                if (File.Exists(componentColorPath))
-                {
-                    String get = Config.readFirstLine(componentColorPath);
-                    String[] cg = get.Split(',');
 
-                    if (cg.Length == 4)
+ 
+
+
+                    /*
+                    if (File.Exists(componentColorPath))
                     {
+                        String get = Config.readFirstLine(componentColorPath);
+                        String[] cg = get.Split(',');
 
-                        int a = 0, r = 0, g = 0, b = 0;
+                        if (cg.Length == 4)
+                        {
 
-                        a = int.Parse(cg[0]);
-                        Debug.WriteLine("Component Color Alpha:" + a);
-                        r = int.Parse(cg[1]);
-                        Debug.WriteLine("Component Color Red:" + r);
-                        g = int.Parse(cg[2]);
-                        Debug.WriteLine("Component Color Green:" + g);
-                        b = int.Parse(cg[3]);
-                        Debug.WriteLine("Component Color Blue:" + b);
+                            int a = 0, r = 0, g = 0, b = 0;
 
-                        componentColor = Color.FromArgb(a, r, g, b);
+                            a = int.Parse(cg[0]);
+                            Debug.WriteLine("Component Color Alpha:" + a);
+                            r = int.Parse(cg[1]);
+                            Debug.WriteLine("Component Color Red:" + r);
+                            g = int.Parse(cg[2]);
+                            Debug.WriteLine("Component Color Green:" + g);
+                            b = int.Parse(cg[3]);
+                            Debug.WriteLine("Component Color Blue:" + b);
+
+                            componentColor = Color.FromArgb(a, r, g, b);
+                        }
                     }
+                    */
+
+
                 }
-                */
-
-
-            }
             else
             {
                 resetCom();
@@ -435,6 +514,52 @@ namespace Ra3_Mod_Manager
                 }
 
             }
+
+
+
+
+            String cursorPathX = Config.modPath + "\\Launcher\\cursor_default.png";
+
+            if (File.Exists(cursorPathX))
+            {
+                Config.cursorPath = cursorPathX;
+                Debug.WriteLine("Custom Cursor:" + Config.cursorPath);
+                SetCursor((Bitmap)Bitmap.FromFile(Config.cursorPath), new Point(0, 0));
+                //this.Cursor = Cursors.Default;
+                //this.Cursor = Cursors.WaitCursor;
+            }
+            else
+            {
+                Config.cursorPath = "";
+                Debug.WriteLine("Normal Cursor:" + Config.cursorPath);
+                this.Cursor = Cursors.Default;
+
+            }
+
+
+
+            String webPathX = Config.modPath + "\\web";
+            if (File.Exists(webPathX + "\\index.html"))
+            {
+                Config.webPath = webPathX;
+                Debug.WriteLine("Get Website:" + Config.webPath);
+                this.ExtraConfig.Visible = true;
+                this.ExtraConfig.Enabled = true;
+                Config.extraFirst=true;
+            }
+            else
+            {
+                Config.webPath = "";
+                Debug.WriteLine("No Website:" + Config.webPath);
+                this.ExtraConfig.Visible = false;
+                this.ExtraConfig.Enabled = false;
+                //Config.extraFirst = false;
+            }
+
+
+
+
+
         }
 
 
@@ -494,9 +619,9 @@ namespace Ra3_Mod_Manager
 
 
 
-            String bgmPath = Config.modPath + "\\bgm.wav";
-            String videoPath = Config.modPath + "\\video.wmv";
-            String configPath = Config.modPath + "\\loop.txt";
+            String bgmPath = Config.modPath + "\\launcher\\bgm.wav";
+            String videoPath = Config.modPath + "\\launcher\\video.wmv";
+            String configPath = Config.modPath + "\\launcher\\loop.txt";
             String conf = "";
             if (cb_Media.Checked && File.Exists(configPath))
             {
@@ -599,7 +724,7 @@ namespace Ra3_Mod_Manager
 
         ).Start();
             }
-
+            
             startGameByProcess();
 
             writeDAT();
@@ -765,8 +890,8 @@ namespace Ra3_Mod_Manager
             Config.md5 = Config.getMd5(main.StartInfo.FileName);
             main.StartInfo.Arguments = command.ToString();
             //main.StartInfo.CreateNoWindow = true;
-
-
+            Config.mainController.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            Program.popDesc();
             main.Start();
 
             if (Config.canInj)
@@ -820,13 +945,15 @@ namespace Ra3_Mod_Manager
         {
             resetSkudefList(lc_Game.SelectedIndex);
 
+            //Debug.WriteLine("Old Mod Path:" + Config.modPath);
             if (lc_Game.Text.Equals(Config.gameName))
             {
                 Config.dat_game = lc_Game.Text;
                 Config.modPath = Application.StartupPath + "\\Launcher" + "\\Custom";
                 resetCom();
+                
             }
-
+            //Debug.WriteLine("New Mod Path:" + Config.modPath);
             refreshResource();
 
         }
@@ -959,7 +1086,7 @@ namespace Ra3_Mod_Manager
             {
                 Process informationTXT = new Process();
 
-                String txt = Config.modPath + "\\information.txt";
+                String txt = Config.modPath + "\\launcher\\information.txt";
                 if (File.Exists(txt))
                 {
 
@@ -986,7 +1113,7 @@ namespace Ra3_Mod_Manager
             }
             else
             {
-                String href = Config.modPath + "\\website.txt";
+                String href = Config.modPath + "\\launcher\\website.txt";
                 if (File.Exists(href))
                 {
                     Process.Start(Config.readFirstLine(href));
@@ -1382,6 +1509,35 @@ namespace Ra3_Mod_Manager
 
         private void ExtraConfig_Click(object sender, EventArgs e)
         {
+            Description form_desc = new Description();
+
+            form_desc.needChecked = false;
+            form_desc.address = Config.webPath + "\\index.html";
+
+            if (Config.extraFirst) { 
+            DialogResult dr = MessageBox.Show(loc.open_extra_page[loc.current]+"\n("+form_desc.address+")",loc.btn_extra[loc.current],MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.OK)
+                {
+                    Config.extraFirst = false;
+
+                    form_desc.Show();
+
+
+                }
+            }
+            else
+            {
+                form_desc.Show();
+            }
+
+
+
+
+
+
+            /*
+
             DialogResult dr;
             dr = MessageBox.Show(loc.cb_mouse_locked[loc.current], loc.cb_dynamic_mouse[loc.current], MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(dr == DialogResult.Yes)
@@ -1402,6 +1558,9 @@ namespace Ra3_Mod_Manager
                 Config.dat_mouse_dynamic = false;
             }
 
+            */
+
+
         }
 
         private void btn_author_Click(object sender, EventArgs e)
@@ -1410,6 +1569,11 @@ namespace Ra3_Mod_Manager
                 System.Diagnostics.Process.Start("www.haojun0823.xyz/access/ra3");
             };
             
+        }
+
+        private void media_video_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 

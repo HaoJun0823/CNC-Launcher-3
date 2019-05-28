@@ -25,7 +25,7 @@ namespace Ra3_Mod_Manager
 
         public static void doGameAction()
         {
-            Config.mainController.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            
             //Config.gameProcess.WaitForInputIdle();
 
             if (Config.dat_bfs) {
