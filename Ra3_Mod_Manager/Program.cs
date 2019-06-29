@@ -724,6 +724,7 @@ namespace Ra3_Mod_Manager
         public static String btnAudioClick = "";
         public static String cursorPath = "";
         public static String cursorPointerPath = "";
+        public static String cursorTextPath = "";
         public static Process gameProcess;
         public static Controller mainController;
         public static String timeStamp = DateTime.Now.ToString("yyymmddhhmmss");

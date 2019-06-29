@@ -119,7 +119,61 @@ namespace Ra3_Mod_Manager
             g.Clear(Color.FromArgb(0, 0, 0, 0));
             g.DrawImage(cursor, cursor.Width - PX, cursor.Height - PY, cursor.Width,
             cursor.Height);
-            this.Cursor = new Cursor(myNewCursor.GetHicon());
+            Cursor StyleCursor = new Cursor(myNewCursor.GetHicon());
+            this.Cursor = StyleCursor;
+
+
+            g.Dispose();
+            myNewCursor.Dispose();
+        }
+
+        public void SetCursorForButton(Bitmap cursor, Point hotPoint)
+        {
+            int PX = hotPoint.X;
+            int PY = hotPoint.Y;
+            Bitmap myNewCursor = new Bitmap(cursor.Width * 2 - PX, cursor.Height * 2 - PY);
+            Graphics g = Graphics.FromImage(myNewCursor);
+            g.Clear(Color.FromArgb(0, 0, 0, 0));
+            g.DrawImage(cursor, cursor.Width - PX, cursor.Height - PY, cursor.Width,
+            cursor.Height);
+            Cursor StyleCursor = new Cursor(myNewCursor.GetHicon());
+            
+            foreach(Control control in this.Controls)
+            {
+
+                if (control.Controls != null && (control is Button || control is CheckBox || control is ComboBox))
+                {
+                    control.Cursor = StyleCursor;
+                }
+
+            }
+
+
+            g.Dispose();
+            myNewCursor.Dispose();
+        }
+
+        public void SetCursorForText(Bitmap cursor, Point hotPoint)
+        {
+            int PX = hotPoint.X;
+            int PY = hotPoint.Y;
+            Bitmap myNewCursor = new Bitmap(cursor.Width * 2 - PX, cursor.Height * 2 - PY);
+            Graphics g = Graphics.FromImage(myNewCursor);
+            g.Clear(Color.FromArgb(0, 0, 0, 0));
+            g.DrawImage(cursor, cursor.Width - PX, cursor.Height - PY, cursor.Width,
+            cursor.Height);
+            Cursor StyleCursor = new Cursor(myNewCursor.GetHicon());
+
+            foreach (Control control in this.Controls)
+            {
+
+                if (control.Controls != null && control is TextBox)
+                {
+                    control.Cursor = StyleCursor;
+                }
+
+            }
+
 
             g.Dispose();
             myNewCursor.Dispose();
@@ -190,7 +244,7 @@ namespace Ra3_Mod_Manager
             {
 
                 Debug.WriteLine("First Time:" + firstOpenPath);
-                Process.Start(Config.modPath + "\\Support\\");
+                //Process.Start(Config.modPath + "\\Support\\");
                 //Process.Start("notepad.exe",Config.modPath + "\\Support\\readme_" +loc.inf[loc.current]);
                 //File.Delete(firstOpenPath);
 
@@ -518,11 +572,13 @@ namespace Ra3_Mod_Manager
 
 
 
-            String cursorPathX = Config.modPath + "\\Launcher\\cursor_default.png";
+            String cursorPathDefault = Config.modPath + "\\Launcher\\cursor_default.png";
+            String cursorPathPointer = Config.modPath + "\\Launcher\\cursor_pointer.png";
+            String cursorPathText = Config.modPath + "\\Launcher\\cursor_text.png";
 
-            if (File.Exists(cursorPathX))
+            if (File.Exists(cursorPathDefault))
             {
-                Config.cursorPath = cursorPathX;
+                Config.cursorPath = cursorPathDefault;
                 Debug.WriteLine("Custom Cursor:" + Config.cursorPath);
                 SetCursor((Bitmap)Bitmap.FromFile(Config.cursorPath), new Point(0, 0));
                 //this.Cursor = Cursors.Default;
@@ -536,6 +592,52 @@ namespace Ra3_Mod_Manager
 
             }
 
+            if (File.Exists(cursorPathPointer))
+            {
+                Config.cursorPointerPath = cursorPathPointer;
+                Debug.WriteLine("Custom Pointer Cursor:" + Config.cursorPointerPath);
+                SetCursorForButton((Bitmap)Bitmap.FromFile(Config.cursorPointerPath), new Point(0, 0));
+                //this.Cursor = Cursors.Default;
+                //this.Cursor = Cursors.WaitCursor;
+            }
+            else
+            {
+                Config.cursorPointerPath = "";
+                Debug.WriteLine("Normal Pointer Cursor:" + Config.cursorPointerPath);
+                
+                foreach(Control control in this.Controls)
+                {
+                    if(control.Controls != null && (control is Button || control is CheckBox || control is ComboBox))
+                    {
+                        control.Cursor = Cursors.Hand;
+                    }
+                }
+
+            }
+
+
+            if (File.Exists(cursorPathText))
+            {
+                Config.cursorTextPath = cursorPathText;
+                Debug.WriteLine("Custom Text Cursor:" + Config.cursorTextPath);
+                SetCursorForText((Bitmap)Bitmap.FromFile(Config.cursorTextPath), new Point(0, 0));
+                //this.Cursor = Cursors.Default;
+                //this.Cursor = Cursors.WaitCursor;
+            }
+            else
+            {
+                Config.cursorTextPath = "";
+                Debug.WriteLine("Normal Text Cursor:" + Config.cursorTextPath);
+
+                foreach (Control control in this.Controls)
+                {
+                    if (control.Controls != null && control is TextBox)
+                    {
+                        control.Cursor = Cursors.IBeam;
+                    }
+                }
+
+            }
 
 
             String webPathX = Config.modPath + "\\web";
