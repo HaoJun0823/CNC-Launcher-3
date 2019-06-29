@@ -30,15 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Description));
             this.panel = new System.Windows.Forms.Panel();
+            this.textarea = new System.Windows.Forms.RichTextBox();
+            this.web_browser = new System.Windows.Forms.WebBrowser();
             this.btn_ok = new System.Windows.Forms.Button();
             this.cb_dont = new System.Windows.Forms.CheckBox();
-            this.web_browser = new System.Windows.Forms.WebBrowser();
-            this.textarea = new System.Windows.Forms.RichTextBox();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel
             // 
+            this.panel.Controls.Add(this.btn_ok);
+            this.panel.Controls.Add(this.cb_dont);
             this.panel.Controls.Add(this.textarea);
             this.panel.Controls.Add(this.web_browser);
             this.panel.Location = new System.Drawing.Point(12, 12);
@@ -46,25 +48,16 @@
             this.panel.Size = new System.Drawing.Size(1240, 700);
             this.panel.TabIndex = 0;
             // 
-            // btn_ok
+            // textarea
             // 
-            this.btn_ok.Location = new System.Drawing.Point(1152, 718);
-            this.btn_ok.Name = "btn_ok";
-            this.btn_ok.Size = new System.Drawing.Size(100, 33);
-            this.btn_ok.TabIndex = 1;
-            this.btn_ok.Text = "OK";
-            this.btn_ok.UseVisualStyleBackColor = true;
-            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
-            // 
-            // cb_dont
-            // 
-            this.cb_dont.AutoSize = true;
-            this.cb_dont.Location = new System.Drawing.Point(12, 727);
-            this.cb_dont.Name = "cb_dont";
-            this.cb_dont.Size = new System.Drawing.Size(150, 16);
-            this.cb_dont.TabIndex = 2;
-            this.cb_dont.Text = "Don\'t show this panel";
-            this.cb_dont.UseVisualStyleBackColor = true;
+            this.textarea.Enabled = false;
+            this.textarea.Location = new System.Drawing.Point(0, 0);
+            this.textarea.Name = "textarea";
+            this.textarea.ReadOnly = true;
+            this.textarea.Size = new System.Drawing.Size(757, 500);
+            this.textarea.TabIndex = 1;
+            this.textarea.Text = "";
+            this.textarea.Visible = false;
             // 
             // web_browser
             // 
@@ -79,24 +72,31 @@
             this.web_browser.TabIndex = 0;
             this.web_browser.WebBrowserShortcutsEnabled = false;
             // 
-            // textarea
+            // btn_ok
             // 
-            this.textarea.Enabled = false;
-            this.textarea.Location = new System.Drawing.Point(0, 0);
-            this.textarea.Name = "textarea";
-            this.textarea.ReadOnly = true;
-            this.textarea.Size = new System.Drawing.Size(1237, 700);
-            this.textarea.TabIndex = 1;
-            this.textarea.Text = "";
-            this.textarea.Visible = false;
+            this.btn_ok.Location = new System.Drawing.Point(657, 504);
+            this.btn_ok.Name = "btn_ok";
+            this.btn_ok.Size = new System.Drawing.Size(100, 33);
+            this.btn_ok.TabIndex = 1;
+            this.btn_ok.Text = "OK";
+            this.btn_ok.UseVisualStyleBackColor = true;
+            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
+            // 
+            // cb_dont
+            // 
+            this.cb_dont.AutoSize = true;
+            this.cb_dont.Location = new System.Drawing.Point(3, 513);
+            this.cb_dont.Name = "cb_dont";
+            this.cb_dont.Size = new System.Drawing.Size(150, 16);
+            this.cb_dont.TabIndex = 2;
+            this.cb_dont.Text = "Don\'t show this panel";
+            this.cb_dont.UseVisualStyleBackColor = true;
             // 
             // Description
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 761);
-            this.Controls.Add(this.cb_dont);
-            this.Controls.Add(this.btn_ok);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.panel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
@@ -109,8 +109,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Description_FormClosed);
             this.Load += new System.EventHandler(this.Description_Load);
             this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
