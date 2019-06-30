@@ -73,8 +73,22 @@ namespace Ra3_Mod_Manager
             }
 
 
-            if (Config.isDevloper) { 
-            waitGameClose();
+            if (Config.isDevloper) {
+
+
+                try
+                {
+                    waitGameClose();
+                }
+                catch(Exception e)
+                {
+
+                    Debug.WriteLine("Excpetion Waiting game close:" + e.ToString());
+
+                }
+
+
+
             }
 
 
