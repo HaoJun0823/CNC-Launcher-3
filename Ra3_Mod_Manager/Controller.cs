@@ -1208,9 +1208,20 @@ namespace Ra3_Mod_Manager
 
         private void btn_website_Click(object sender, EventArgs e)
         {
+            
+
+
+
             if (lc_Game.Equals(Config.gameName))
             {
-                Process.Start("https://www.ea.com/zh-cn/games/command-and-conquer");
+                String address = "http://www.ea.com/games/command-and-conquer";
+
+                if (MessageBox.Show(loc.open_page[loc.current]+"\n"+address, address, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    Process.Start(address);
+                };
+
+               
 
             }
             else
@@ -1218,12 +1229,29 @@ namespace Ra3_Mod_Manager
                 String href = Config.modPath + "\\launcher\\website.txt";
                 if (File.Exists(href))
                 {
-                    Process.Start(Config.readFirstLine(href));
+                    String address = Config.readFirstLine(href);
+
+
+                    if (MessageBox.Show(loc.open_page[loc.current] + "\n" + address, address, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        Process.Start(address);
+                    };
+
+
+
 
                 }
                 else
                 {
-                    Process.Start("https://www.ea.com/zh-cn/games/command-and-conquer");
+                    String address = "http://www.ea.com/games/command-and-conquer";
+
+                    if (MessageBox.Show(loc.open_page[loc.current] + "\n" + address, address, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        Process.Start(address);
+                    };
+
+
+
                 }
             }
         }
@@ -1667,8 +1695,8 @@ namespace Ra3_Mod_Manager
 
         private void btn_author_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(loc.open_page[loc.current], "www.haojun0823.xyz/access/ra3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
-                System.Diagnostics.Process.Start("www.haojun0823.xyz/access/ra3");
+            if (MessageBox.Show(loc.open_page[loc.current], "blog.haojun0823.xyz/access/ra3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
+                System.Diagnostics.Process.Start("http://blog.haojun0823.xyz/access/ra3");
             };
             
         }
