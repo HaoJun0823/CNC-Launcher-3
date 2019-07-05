@@ -404,7 +404,7 @@ namespace Ra3_Mod_Manager
             if (File.Exists(titlePath))
             {
 
-                if (File.Exists(titlePath))
+                if (File.Exists(titleLangPath))
                 {
                     titlePath = titleLangPath;
                 }
