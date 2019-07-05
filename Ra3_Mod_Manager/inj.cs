@@ -58,11 +58,11 @@ namespace Ra3_Mod_Manager
 
 
                 String[] files = Directory.GetFiles(path, "*.e.txt",SearchOption.TopDirectoryOnly);
-                Debug.WriteLine("[Inject]Total Text Files:" + files.Length);
+                Console.WriteLine("[Inject]Total Text Files:" + files.Length);
 
                 foreach(var i in files)
                 {
-                    Debug.WriteLine("[Inject]Inject Text:" + i);
+                    Console.WriteLine("[Inject]Inject Text:" + i);
                     injectText(i);
                 }
 
@@ -74,7 +74,7 @@ namespace Ra3_Mod_Manager
         public static void injectText(String path)
         {
 
-            Debug.WriteLine("[Inject]Path:"+path);
+            Console.WriteLine("[Inject]Path:"+path);
             FileStream fs = new FileStream(path, FileMode.Open);
             StreamReader sr = new StreamReader(fs);
 
@@ -88,7 +88,7 @@ namespace Ra3_Mod_Manager
 
                 if (str[0] == ';')
                 {
-                    Debug.WriteLine("[Inject]Information:" + str.Substring(1));
+                    Console.WriteLine("[Inject]Information:" + str.Substring(1));
                     continue;
                 }
 
@@ -96,21 +96,21 @@ namespace Ra3_Mod_Manager
 
                 if (g.Length % 2 != 1)
                 {
-                    Debug.WriteLine("[Inject]Array can't be odd:" + g.Length);
+                    Console.WriteLine("[Inject]Array can't be odd:" + g.Length);
                     continue;
                 }
 
                 if(!g[0].Equals("0") && !g[0].ToUpper().Equals(Config.md5.ToUpper()))
                 {
-                    Debug.WriteLine("[Inject]Wrong MD5:" + g[0]);
+                    Console.WriteLine("[Inject]Wrong MD5:" + g[0]);
                     continue;
                 }
 
 
                 for(int i = 1; i < g.Length; i++)
                 {
-                    Debug.WriteLine("[Inject]Write Address:" + g[i]);
-                    Debug.WriteLine("[Inject]Write Data:" + g[i+1]);
+                    Console.WriteLine("[Inject]Write Address:" + g[i]);
+                    Console.WriteLine("[Inject]Write Data:" + g[i+1]);
                     injectWrite(g[i], g[++i]);
                 }
 
@@ -125,17 +125,17 @@ namespace Ra3_Mod_Manager
         {
             try
             {
-                Debug.WriteLine("[Inject]Read Memory:"+address);
+                Console.WriteLine("[Inject]Read Memory:"+address);
                 byte[] buffer = new byte[length];
                 IntPtr byteAddress = Marshal.UnsafeAddrOfPinnedArrayElement(buffer, 0); //获取缓冲区地址
                 IntPtr hProcess = Win32.OpenProcess(0x1F0FFF, false, Config.gameProcess.Id);
                 if (Win32.ReadProcessMemory(hProcess, (IntPtr)address, byteAddress, 4, IntPtr.Zero)) {
                     
-                        Debug.WriteLine("[Inject]Success!");
+                        Console.WriteLine("[Inject]Success!");
                     }
             else
             {
-                        Debug.WriteLine("[Inject]Faild!");
+                        Console.WriteLine("[Inject]Faild!");
                     }
                     Win32.CloseHandle(hProcess);
                 return Marshal.ReadInt32(byteAddress);
@@ -154,26 +154,26 @@ namespace Ra3_Mod_Manager
             int a = 0;
             if (address.IndexOf('+') != -1) {
 
-                Debug.WriteLine("[Inject]A Pointer:"+address);
+                Console.WriteLine("[Inject]A Pointer:"+address);
                 String[] pg = address.Split('+');
                 a = Convert.ToInt32(pg[0], 16);
-                Debug.WriteLine("[Inject]Pointer Base:" + a);
-                Debug.WriteLine("[Inject]Pointer Offset Count:" + (pg.Length-1));
+                Console.WriteLine("[Inject]Pointer Base:" + a);
+                Console.WriteLine("[Inject]Pointer Offset Count:" + (pg.Length-1));
                 a = readMemory(a,4);
-                Debug.WriteLine("[Inject]Pointer Offset Get:" + a);
+                Console.WriteLine("[Inject]Pointer Offset Get:" + a);
                 for (int i = 1; i < pg.Length; i++)
                 {
                     int off = Convert.ToInt32(pg[i], 16);
                     
                     a += off;
-                    Debug.WriteLine("[Inject]Base Offset:" + a + "+" + off);
+                    Console.WriteLine("[Inject]Base Offset:" + a + "+" + off);
 
 
                     int temp = readMemory(a, 4);
-                    Debug.WriteLine("[Inject]Base Offset:" + a + "-->" + temp);
+                    Console.WriteLine("[Inject]Base Offset:" + a + "-->" + temp);
                     a = temp;
                 }
-                Debug.Write("[Inject]Find Address Done.");
+                Console.Write("[Inject]Find Address Done.");
 
 
             }
@@ -192,14 +192,14 @@ namespace Ra3_Mod_Manager
 
             IntPtr hprocess = Win32.OpenProcess(0x1f0fff, false, Config.gameProcess.Id);
 
-            Debug.WriteLine("[Inject]Prepare Write:" + hprocess + "," + address + "," + data + "," + d.Length+","+IntPtr.Zero);
+            Console.WriteLine("[Inject]Prepare Write:" + hprocess + "," + address + "," + data + "," + d.Length+","+IntPtr.Zero);
             if (Win32.WriteProcessMemory(hprocess, (IntPtr)a, d, d.Length, IntPtr.Zero))
             {
-                Debug.WriteLine("[Inject]Success!");
+                Console.WriteLine("[Inject]Success!");
             }
             else
             {
-                Debug.WriteLine("[Inject]Faild!");
+                Console.WriteLine("[Inject]Faild!");
             }
 
             Win32.CloseHandle(hprocess);
@@ -218,12 +218,12 @@ namespace Ra3_Mod_Manager
 
 
                 String[] files = Directory.GetFiles(path, "*.e.dll", SearchOption.TopDirectoryOnly);
-                Debug.WriteLine("[Hook]Target:" + path);
-                Debug.WriteLine("[Hook]Total Text Files:" + files.Length);
+                Console.WriteLine("[Hook]Target:" + path);
+                Console.WriteLine("[Hook]Total Text Files:" + files.Length);
 
                 foreach (var i in files)
                 {
-                    Debug.WriteLine("[Hook]Hook Dll:" + i);
+                    Console.WriteLine("[Hook]Hook Dll:" + i);
 
 
 
@@ -235,17 +235,17 @@ namespace Ra3_Mod_Manager
                     uint id = Convert.ToUInt32(p[max - 2]);
 
 
-                    Debug.WriteLine("[Hook]Hook id:" + lp);
-                    Debug.WriteLine("[Hook]Loop back:" + id);
+                    Console.WriteLine("[Hook]Hook id:" + lp);
+                    Console.WriteLine("[Hook]Loop back:" + id);
 
 
                     var lib = Win32.LoadLibrary(i);
                     
                     
-                        Debug.WriteLine("[Hook]LoadLibrary Return:" + lib);
+                        Console.WriteLine("[Hook]LoadLibrary Return:" + lib);
 
                     if ((int)lib == 0) { 
-                    Debug.WriteLine("[Hook]Last Error:"+(Convert.ToInt32(Win32.GetLastError())));
+                    Console.WriteLine("[Hook]Last Error:"+(Convert.ToInt32(Win32.GetLastError())));
                     }
 
 
@@ -253,19 +253,19 @@ namespace Ra3_Mod_Manager
                     {
                         Config.gameProcess.Refresh();
                         Thread.Sleep(1000);
-                        Debug.WriteLine("Waiting Game Create Window:" + Config.gameProcess.MainWindowHandle);
+                        Console.WriteLine("Waiting Game Create Window:" + Config.gameProcess.MainWindowHandle);
                     }
 
                     int re = Win32.SetWindowsHookEx(lp, id, lib, (int)Config.gameProcess.MainWindowHandle);
-                     Debug.WriteLine("[Hook]SetWindowsHookEx Return:"+re);
+                     Console.WriteLine("[Hook]SetWindowsHookEx Return:"+re);
 
                     if ((int)re == 0)
                     {
-                        Debug.WriteLine("[Hook]Last Error:" + (Convert.ToInt32(Win32.GetLastError())));
+                        Console.WriteLine("[Hook]Last Error:" + (Convert.ToInt32(Win32.GetLastError())));
                     }
 
 
-                    Debug.WriteLine("[Hook]Hook:" +lp+","+id+","+lib+","+Config.gameProcess.MainWindowHandle );
+                    Console.WriteLine("[Hook]Hook:" +lp+","+id+","+lib+","+Config.gameProcess.MainWindowHandle );
 
 
                 }

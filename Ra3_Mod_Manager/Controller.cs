@@ -238,12 +238,17 @@ namespace Ra3_Mod_Manager
 
         public static void printText()
         {
+
+
+
+
+
             String firstOpenPath = Config.modPath + "\\Support\\first.txt";
-            Debug.WriteLine("Search First Time:" + firstOpenPath);
+            Console.WriteLine("Search First Time:" + firstOpenPath);
             if (File.Exists(firstOpenPath))
             {
 
-                Debug.WriteLine("First Time:" + firstOpenPath);
+                Console.WriteLine("First Time:" + firstOpenPath);
                 //Process.Start(Config.modPath + "\\Support\\");
                 //Process.Start("notepad.exe",Config.modPath + "\\Support\\readme_" +loc.inf[loc.current]);
                 //File.Delete(firstOpenPath);
@@ -262,12 +267,12 @@ namespace Ra3_Mod_Manager
 
 
             String UpdateOpenPath = Config.modPath + "\\Support\\new.txt";
-            Debug.WriteLine("Search Update:" + UpdateOpenPath);
+            Console.WriteLine("Search Update:" + UpdateOpenPath);
 
             if (File.Exists(UpdateOpenPath))
             {
 
-                Debug.WriteLine("New Update:" + UpdateOpenPath);
+                Console.WriteLine("New Update:" + UpdateOpenPath);
                 //Process.Start("notepad.exe", Config.modPath + "\\Support\\update_" + loc.inf[loc.current]);
                 // File.Delete(UpdateOpenPath);
                 Description form_desc = new Description();
@@ -360,7 +365,7 @@ namespace Ra3_Mod_Manager
 
             if (lc_Game.Text.Equals(Config.gameName))
             {
-                Debug.Write("Get Game Icon!");
+                Console.Write("Get Game Icon!");
 
                 if (Config.isDLC)
                 {
@@ -435,7 +440,7 @@ namespace Ra3_Mod_Manager
                 if (File.Exists(Config.modPath + "\\launcher\\button.click.wav"))
                 {
                     Config.btnAudioClick = Config.modPath + "\\launcher\\button.click.wav";
-                    Debug.WriteLine("Get Button Click Audio:" + Config.btnAudioClick);
+                    Console.WriteLine("Get Button Click Audio:" + Config.btnAudioClick);
 
                 }
                 else { Config.btnAudioClick = ""; }
@@ -443,7 +448,7 @@ namespace Ra3_Mod_Manager
                 if (File.Exists(Config.modPath + "\\launcher\\button.enter.wav"))
                 {
                     Config.btnAudioMove = Config.modPath + "\\launcher\\button.enter.wav";
-                    Debug.WriteLine("Get Button Enter Audio:" + Config.btnAudioMove);
+                    Console.WriteLine("Get Button Enter Audio:" + Config.btnAudioMove);
                 }
                 else { Config.btnAudioMove = ""; }
 
@@ -459,13 +464,13 @@ namespace Ra3_Mod_Manager
                         int a = 0, r = 0, g = 0, b = 0;
 
                         a = int.Parse(cg[0]);
-                        Debug.WriteLine("Font Color Alpha:" + a);
+                        Console.WriteLine("Font Color Alpha:" + a);
                         r = int.Parse(cg[1]);
-                        Debug.WriteLine("Font Color Red:" + r);
+                        Console.WriteLine("Font Color Red:" + r);
                         g = int.Parse(cg[2]);
-                        Debug.WriteLine("Font Color Green:" + g);
+                        Console.WriteLine("Font Color Green:" + g);
                         b = int.Parse(cg[3]);
-                        Debug.WriteLine("Font Color Blue:" + b);
+                        Console.WriteLine("Font Color Blue:" + b);
 
                         fontColor = Color.FromArgb(a, r, g, b);
                     }
@@ -486,13 +491,13 @@ namespace Ra3_Mod_Manager
                             int a = 0, r = 0, g = 0, b = 0;
 
                             a = int.Parse(cg[0]);
-                            Debug.WriteLine("Component Color Alpha:" + a);
+                            Console.WriteLine("Component Color Alpha:" + a);
                             r = int.Parse(cg[1]);
-                            Debug.WriteLine("Component Color Red:" + r);
+                            Console.WriteLine("Component Color Red:" + r);
                             g = int.Parse(cg[2]);
-                            Debug.WriteLine("Component Color Green:" + g);
+                            Console.WriteLine("Component Color Green:" + g);
                             b = int.Parse(cg[3]);
-                            Debug.WriteLine("Component Color Blue:" + b);
+                            Console.WriteLine("Component Color Blue:" + b);
 
                             componentColor = Color.FromArgb(a, r, g, b);
                         }
@@ -579,7 +584,7 @@ namespace Ra3_Mod_Manager
             if (File.Exists(cursorPathDefault))
             {
                 Config.cursorPath = cursorPathDefault;
-                Debug.WriteLine("Custom Cursor:" + Config.cursorPath);
+                Console.WriteLine("Custom Cursor:" + Config.cursorPath);
                 SetCursor((Bitmap)Bitmap.FromFile(Config.cursorPath), new Point(0, 0));
                 //this.Cursor = Cursors.Default;
                 //this.Cursor = Cursors.WaitCursor;
@@ -587,7 +592,7 @@ namespace Ra3_Mod_Manager
             else
             {
                 Config.cursorPath = "";
-                Debug.WriteLine("Normal Cursor:" + Config.cursorPath);
+                Console.WriteLine("Normal Cursor:" + Config.cursorPath);
                 this.Cursor = Cursors.Default;
 
             }
@@ -595,7 +600,7 @@ namespace Ra3_Mod_Manager
             if (File.Exists(cursorPathPointer))
             {
                 Config.cursorPointerPath = cursorPathPointer;
-                Debug.WriteLine("Custom Pointer Cursor:" + Config.cursorPointerPath);
+                Console.WriteLine("Custom Pointer Cursor:" + Config.cursorPointerPath);
                 SetCursorForButton((Bitmap)Bitmap.FromFile(Config.cursorPointerPath), new Point(0, 0));
                 //this.Cursor = Cursors.Default;
                 //this.Cursor = Cursors.WaitCursor;
@@ -603,7 +608,7 @@ namespace Ra3_Mod_Manager
             else
             {
                 Config.cursorPointerPath = "";
-                Debug.WriteLine("Normal Pointer Cursor:" + Config.cursorPointerPath);
+                Console.WriteLine("Normal Pointer Cursor:" + Config.cursorPointerPath);
                 
                 foreach(Control control in this.Controls)
                 {
@@ -619,7 +624,7 @@ namespace Ra3_Mod_Manager
             if (File.Exists(cursorPathText))
             {
                 Config.cursorTextPath = cursorPathText;
-                Debug.WriteLine("Custom Text Cursor:" + Config.cursorTextPath);
+                Console.WriteLine("Custom Text Cursor:" + Config.cursorTextPath);
                 SetCursorForText((Bitmap)Bitmap.FromFile(Config.cursorTextPath), new Point(0, 0));
                 //this.Cursor = Cursors.Default;
                 //this.Cursor = Cursors.WaitCursor;
@@ -627,7 +632,7 @@ namespace Ra3_Mod_Manager
             else
             {
                 Config.cursorTextPath = "";
-                Debug.WriteLine("Normal Text Cursor:" + Config.cursorTextPath);
+                Console.WriteLine("Normal Text Cursor:" + Config.cursorTextPath);
 
                 foreach (Control control in this.Controls)
                 {
@@ -644,7 +649,7 @@ namespace Ra3_Mod_Manager
             if (File.Exists(webPathX + "\\index.html"))
             {
                 Config.webPath = webPathX;
-                Debug.WriteLine("Get Website:" + Config.webPath);
+                Console.WriteLine("Get Website:" + Config.webPath);
                 this.ExtraConfig.Visible = true;
                 this.ExtraConfig.Enabled = true;
                 Config.extraFirst=true;
@@ -652,7 +657,7 @@ namespace Ra3_Mod_Manager
             else
             {
                 Config.webPath = "";
-                Debug.WriteLine("No Website:" + Config.webPath);
+                Console.WriteLine("No Website:" + Config.webPath);
                 this.ExtraConfig.Visible = false;
                 this.ExtraConfig.Enabled = false;
                 //Config.extraFirst = false;
@@ -745,7 +750,7 @@ namespace Ra3_Mod_Manager
                     if (conf.IndexOf("video") != -1)
                     {
 
-                        Debug.WriteLine("Loop Video!");
+                        Console.WriteLine("Loop Video!");
 
                         media_video.settings.setMode("loop", true);
                     }
@@ -781,7 +786,7 @@ namespace Ra3_Mod_Manager
 
                     if (conf.IndexOf("audio") != -1)
                     {
-                        Debug.WriteLine("Loop Audio!");
+                        Console.WriteLine("Loop Audio!");
                         player.PlayLooping();
                     }
                     else
@@ -827,6 +832,7 @@ namespace Ra3_Mod_Manager
         ).Start();
             }
             
+
             startGameByProcess();
 
             writeDAT();
@@ -849,8 +855,8 @@ namespace Ra3_Mod_Manager
             String targetVersion = lc_Version.Text;
             StringBuilder command = new StringBuilder("");
 
-            Debug.WriteLine("Confirm Game:" + targetMod);
-            Debug.WriteLine("Confirm Version:" + targetVersion);
+            Console.WriteLine("Confirm Game:" + targetMod);
+            Console.WriteLine("Confirm Version:" + targetVersion);
 
             if (cb_Windowed.Checked || cb_bfs.Checked)
             {
@@ -869,7 +875,7 @@ namespace Ra3_Mod_Manager
                     xres = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width.ToString();
                     yres = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height.ToString();
 
-                    Debug.WriteLine("Need Use Desktop Resolution");
+                    Console.WriteLine("Need Use Desktop Resolution");
 
                 }
 
@@ -910,20 +916,21 @@ namespace Ra3_Mod_Manager
 
                 String modGame = Config.readFirstLine(Config.modPath + "\\" + targetSkudef);
 
-                /*
-                String customGamePath = Config.modPath + "\\game.txt";
 
+                String customGamePath = Config.modPath + "\\launcher\\game.txt";
+
+                Console.WriteLine("Read Main Game File Information:"+customGamePath);
                 if (File.Exists(customGamePath))
                 {
                     customGame = Config.readFirstLine(customGamePath);
 
                 }
-                */
+                
 
                 if (modGame.Length <= 0 || modGame.IndexOf("mod-game") == -1)
                 {
                     modGame = "1.12";
-                    Debug.WriteLine("Unknown Mod Game Start Version:Set to" + modGame);
+                    Console.WriteLine("Unknown Mod Game Start Version:Set to" + modGame);
                     targetSkudef = "ra3_" + lc_GameLanguage.Text + "_" + modGame + ".skudef";
                     game = "ra3_" + modGame + ".game";
                     command.Append(" -config \"" + Application.StartupPath + "\\" + targetSkudef + "\"");
@@ -933,7 +940,7 @@ namespace Ra3_Mod_Manager
                 {
                     modGame = modGame.Substring(modGame.LastIndexOf("mod-game") + 8).Trim();
                     customGame = modGame;
-                    Debug.WriteLine("Mod Game Start Version:" + modGame);
+                    Console.WriteLine("Mod Game Start Version:" + modGame);
                     String targetModSkudef = "ra3_" + lc_GameLanguage.Text + "_" + modGame + ".skudef";
                     game = "ra3_" + modGame + ".game";
                     command.Append(" -config \"" + Application.StartupPath + "\\" + targetModSkudef + "\"");
@@ -944,7 +951,7 @@ namespace Ra3_Mod_Manager
 
             }
 
-            Debug.WriteLine("Start Game:" + Application.StartupPath + "\\data\\" + game + command);
+            Console.WriteLine("Start Game:" + Application.StartupPath + "\\data\\" + game + command);
 
             Process main = new Process();
             Config.gameProcess = main;
@@ -959,12 +966,12 @@ namespace Ra3_Mod_Manager
             }
 
 
-
-            if (File.Exists(Config.modPath + "\\" + "ra3_" + customGame + ".game"))
+            Console.WriteLine("Try to find:"+ Config.modPath + "\\" + customGame);
+            if (File.Exists(Config.modPath + "\\" + customGame))
             {
 
-                main.StartInfo.FileName = Config.modPath + "\\" + "ra3_" + customGame + ".game";
-                Debug.WriteLine("Custom Game File: " + main.StartInfo.FileName);
+                main.StartInfo.FileName = Config.modPath + "\\" + customGame ;
+                Console.WriteLine("Custom Game File: " + main.StartInfo.FileName);
 
                 if (!Directory.Exists(Config.modPath + "\\Data\\Cursors"))
                 {
@@ -987,7 +994,7 @@ namespace Ra3_Mod_Manager
             {
 
                 main.StartInfo.FileName = "data\\" + game;
-                Debug.WriteLine("Orignial Game File: " + main.StartInfo.FileName);
+                Console.WriteLine("Orignial Game File: " + main.StartInfo.FileName);
             }
             Config.md5 = Config.getMd5(main.StartInfo.FileName);
             main.StartInfo.Arguments = command.ToString();
@@ -1047,7 +1054,7 @@ namespace Ra3_Mod_Manager
         {
             resetSkudefList(lc_Game.SelectedIndex);
 
-            //Debug.WriteLine("Old Mod Path:" + Config.modPath);
+            //Console.WriteLine("Old Mod Path:" + Config.modPath);
             if (lc_Game.Text.Equals(Config.gameName))
             {
                 Config.dat_game = lc_Game.Text;
@@ -1055,7 +1062,7 @@ namespace Ra3_Mod_Manager
                 resetCom();
                 
             }
-            //Debug.WriteLine("New Mod Path:" + Config.modPath);
+            //Console.WriteLine("New Mod Path:" + Config.modPath);
             refreshResource();
 
         }
@@ -1166,7 +1173,7 @@ namespace Ra3_Mod_Manager
             {
                 Config.dat_version = lc_Version.Text;
                 Config.modPath = Config.modPathList[lc_Game.SelectedIndex];
-                Debug.WriteLine("Choose New Mod:" + Config.modPath);
+                Console.WriteLine("Choose New Mod:" + Config.modPath);
             }
         }
 
@@ -1475,10 +1482,23 @@ namespace Ra3_Mod_Manager
 
             sum += i + (cb_Windowed.Checked?1:0);
 
+            for (int x = 0; x < lc_GameLanguage.Text.Length; x++)
+            {
+                sum += ++i + lc_GameLanguage.Text[x];
+            }
+            desc.Append(' ');
+            desc.Append(lc_GameLanguage.Text);
+
+            name.Append(' ');
+            name.Append(lc_GameLanguage.Text);
+
             if (cb_Windowed.Checked && !cb_bfs.Checked)
             {
                 desc.Append(cb_Windowed.Text);
                 desc.Append(' ');
+
+                name.Append(cb_Windowed.Text);
+                name.Append(' ');
             }
 
             sum += ++i + (cb_CustomResolution.Checked ? 1 : 0);
@@ -1492,6 +1512,14 @@ namespace Ra3_Mod_Manager
                 desc.Append(' ');
                 desc.Append(lb_Height.Text);
                 desc.Append(tb_Yres.Text);
+
+
+
+                name.Append(tb_Xres.Text);
+                name.Append('x');
+                name.Append(tb_Yres.Text);
+
+
 
             }
 
@@ -1512,12 +1540,8 @@ namespace Ra3_Mod_Manager
             desc.Append(lb_Version.Text);
 
             desc.Append(lc_Version.Text);
-            for (int x = 0; x < lc_GameLanguage.Text.Length; x++)
-            {
-                sum += ++i + lc_GameLanguage.Text[x];
-            }
-            desc.Append(' ');
-            desc.Append(lc_GameLanguage.Text);
+
+
             for (int x = 0; x < Config.modPath.Length; x++)
             {
                 sum += ++i + Config.modPath[x];
@@ -1538,6 +1562,10 @@ namespace Ra3_Mod_Manager
             {
                 desc.Append(' ');
                 desc.Append(cb_bfs.Text);
+
+                name.Append(' ');
+                name.Append(cb_bfs.Text);
+
             }
 
 
@@ -1575,7 +1603,7 @@ namespace Ra3_Mod_Manager
             desc.Append(command.ToString());
             IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();
             IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\"+name+".lnk");
-            Debug.WriteLine("Create Lnk:" + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +"\\"+ name + ".lnk");
+            Console.WriteLine("Create Lnk:" + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +"\\"+ name + ".lnk");
             shortcut.Arguments = command.ToString();
             shortcut.TargetPath = Application.ExecutablePath;
             shortcut.WorkingDirectory = Application.StartupPath;
@@ -1584,11 +1612,13 @@ namespace Ra3_Mod_Manager
 
 
 
-            String iconPath = Config.modPath + "\\icon.ico";
+            String iconPath = Config.modPath + "\\launcher\\icon.ico";
+
+            Console.WriteLine("Create a shortcut,check mod icon:" + iconPath);
 
             if (lc_Game.Text.Equals(Config.gameName))
             {
-                Debug.Write("Get Game Icon!");
+                Console.Write("Get Game Icon!");
 
                 if (Config.isDLC)
                 {

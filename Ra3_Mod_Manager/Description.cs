@@ -21,6 +21,15 @@ namespace Ra3_Mod_Manager
         public Description()
         {
             InitializeComponent();
+
+            String iconPath = Config.modPath + "\\launcher\\icon.ico";
+
+            if (File.Exists(iconPath))
+            {
+                this.Icon = new Icon(iconPath);
+            }
+
+
         }
 
         private void Description_Load(object sender, EventArgs e)
@@ -48,7 +57,7 @@ namespace Ra3_Mod_Manager
                 this.Text =address;
                 }catch(Exception ex)
                 {
-                    Debug.WriteLine(ex);
+                    Console.WriteLine(ex);
                     this.Close();
                 }
             } else { 
@@ -86,19 +95,19 @@ namespace Ra3_Mod_Manager
 
                 if (isText)
                 {
-                    Debug.WriteLine("Need Delete text files:" + deleteFilename);
+                    Console.WriteLine("Need Delete text files:" + deleteFilename);
                     if (File.Exists(deleteFilename))
                     {
                         File.Delete(deleteFilename);
-                        Debug.WriteLine("Delete text files success:" + deleteFilename);
+                        Console.WriteLine("Delete text files success:" + deleteFilename);
                     }
                 }
 
-                Debug.WriteLine("Need Delete always files:" + cbFile);
+                Console.WriteLine("Need Delete always files:" + cbFile);
                 if (File.Exists(cbFile))
                 {
                     File.Delete(cbFile);
-                    Debug.WriteLine("Delete always files success:" + cbFile);
+                    Console.WriteLine("Delete always files success:" + cbFile);
                 }
             }
 

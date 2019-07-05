@@ -29,7 +29,7 @@
     <PublisherName>HaoJun0823</PublisherName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -114,6 +114,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="Controller.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,7 +128,14 @@
       <DependentUpon>Description.cs</DependentUpon>
     </Compile>
     <Compile Include="Extra.cs" />
+    <Compile Include="language.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="language.Designer.cs">
+      <DependentUpon>language.cs</DependentUpon>
+    </Compile>
     <Compile Include="inj.cs" />
+    <Compile Include="loc.cs" />
     <Compile Include="Win32.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -149,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Description.resx">
       <DependentUpon>Description.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="language.resx">
+      <DependentUpon>language.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>

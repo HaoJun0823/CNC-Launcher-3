@@ -42,11 +42,11 @@ namespace Ra3_Mod_Manager
                 writeMemoryInformation();
                 /*
                 StringDictionary sd = Config.gameProcess.StartInfo.EnvironmentVariables;
-                Debug.WriteLine("Environment Data:"+sd.Count);
+                Console.WriteLine("Environment Data:"+sd.Count);
                 
                 foreach(DictionaryEntry i in sd)
                 {
-                    Debug.WriteLine("Key:" + i.Key+" Value:"+i.Value);
+                    Console.WriteLine("Key:" + i.Key+" Value:"+i.Value);
 
                 }
 
@@ -69,7 +69,7 @@ namespace Ra3_Mod_Manager
             }
             else
             {
-                Debug.WriteLine("Pass Extra!");
+                Console.WriteLine("Pass Extra!");
             }
 
 
@@ -83,7 +83,7 @@ namespace Ra3_Mod_Manager
                 catch(Exception e)
                 {
 
-                    Debug.WriteLine("Excpetion Waiting game close:" + e.ToString());
+                    Console.WriteLine("Excpetion Waiting game close:" + e.ToString());
 
                 }
 
@@ -98,12 +98,12 @@ namespace Ra3_Mod_Manager
         private static void noBorder()
         {
 
-            Debug.WriteLine("Get Game Process:" + Config.gameProcess.ProcessName);
+            Console.WriteLine("Get Game Process:" + Config.gameProcess.ProcessName);
             while (Config.gameProcess.MainWindowHandle == IntPtr.Zero)
             {
                 Config.gameProcess.Refresh();
                 Thread.Sleep(1000);
-                Debug.WriteLine("Waiting Game Create Window:" + Config.gameProcess.MainWindowHandle);
+                Console.WriteLine("Waiting Game Create Window:" + Config.gameProcess.MainWindowHandle);
             }
             IntPtr win = Config.gameProcess.MainWindowHandle;
             var style = Win32.GetWindowLong(win, -16);
@@ -117,8 +117,8 @@ namespace Ra3_Mod_Manager
 
 
 
-            Debug.WriteLine("Desktop Width:" + System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width);
-            Debug.WriteLine("Desktop Height:" + System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
+            Console.WriteLine("Desktop Width:" + System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width);
+            Console.WriteLine("Desktop Height:" + System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
 
 
 
@@ -152,7 +152,7 @@ namespace Ra3_Mod_Manager
             }
             catch (Exception e)
             {
-                Debug.WriteLine("Exception Waiting Game Process Or Extra:" + e.ToString());
+                Console.WriteLine("Exception Waiting Game Process Or Extra:" + e.ToString());
             }
             finally
             {
@@ -172,13 +172,13 @@ namespace Ra3_Mod_Manager
             }
             catch(Exception e)
             {
-                Debug.WriteLine("Exception Stream:" + e.ToString());
+                Console.WriteLine("Exception Stream:" + e.ToString());
             }
 
             Config.timeStamp = DateTime.Now.ToString("yyyymmddhhmmss");
             timeStamp = DateTime.Now.ToString("yyyymmddhhmmss");
 
-            Debug.WriteLine("New TimeStamp:" + timeStamp);
+            Console.WriteLine("New TimeStamp:" + timeStamp);
 
             Config.mainController.WindowState = System.Windows.Forms.FormWindowState.Normal;
 
@@ -202,7 +202,7 @@ namespace Ra3_Mod_Manager
             Directory.CreateDirectory(Application.StartupPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp+ "\\Snapshot");
             memFS = new FileStream(Application.StartupPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp + "\\Memory.csv", FileMode.Create);
             memSW = new StreamWriter(memFS);
-            Debug.WriteLine("Create New Memory CSV:" + Application.StartupPath + "\\Ra3_Mod_Manager." + timeStamp + ".csv");
+            Console.WriteLine("Create New Memory CSV:" + Application.StartupPath + "\\Ra3_Mod_Manager." + timeStamp + ".csv");
             /*
             StringBuilder sb = new StringBuilder();
             
@@ -211,7 +211,7 @@ namespace Ra3_Mod_Manager
             */
 
             String str = "Id,TotalProcessorTime,PrivateMemorySize64,PagedSystemMemorySize64,NonpagedSystemMemorySize64,PagedMemorySize64,PeakPagedMemorySize64,VirtualMemorySize64,PeakVirtualMemorySize64,WorkingSet64,PeakWorkingSet64";
-            Debug.WriteLine("[CSV]" + str);
+            Console.WriteLine("[CSV]" + str);
             memSW.BaseStream.Seek(0, SeekOrigin.End);
             memSW.WriteLine(str);
             memSW.Flush();
@@ -241,7 +241,7 @@ namespace Ra3_Mod_Manager
             sb.Append(',');
             sb.Append(p.PeakWorkingSet64);
             sb.Append(',');
-            Debug.WriteLine("[CSV]" + sb.ToString());
+            Console.WriteLine("[CSV]" + sb.ToString());
             memSW.WriteLine(sb.ToString());
             memSW.Flush();
             */
@@ -261,11 +261,11 @@ namespace Ra3_Mod_Manager
 
         private static void writeMemoryInformationData(object source,ElapsedEventArgs e)
         {
-            //Debug.WriteLine("Writing Debug Information...");
+            //Console.WriteLine("Writing Debug Information...");
 
            new Thread(delegate(){
             
-                //Debug.WriteLine("Start New Debug Information Thread.");
+                //Console.WriteLine("Start New Debug Information Thread.");
 
 
                 try
@@ -314,7 +314,7 @@ namespace Ra3_Mod_Manager
 
 
                     
-                    Debug.WriteLine("[CSV]" + sb.ToString());
+                    Console.WriteLine("[CSV]" + sb.ToString());
                     memSW.WriteLine(sb.ToString());
                     memSW.Flush();
                     image.Save(Application.StartupPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp + "\\Snapshot\\" + memN + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -323,7 +323,7 @@ namespace Ra3_Mod_Manager
 
 
                 }
-                catch (Exception exc) { Debug.WriteLine("Exception CSV Thread Loop:"+exc); /*MessageBox.Show(exc.ToString(), loc.in_execption[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)*/; }
+                catch (Exception exc) { Console.WriteLine("Exception CSV Thread Loop:"+exc); /*MessageBox.Show(exc.ToString(), loc.in_execption[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)*/; }
                 finally
                 {
 
@@ -377,7 +377,7 @@ namespace Ra3_Mod_Manager
 
                 }catch(Exception exc)
                 {
-                    { Debug.WriteLine("Exception Exe Log Thread Loop:" + exc); MessageBox.Show(exc.ToString(), loc.in_execption[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1); }
+                    { Console.WriteLine("Exception Exe Log Thread Loop:" + exc); MessageBox.Show(exc.ToString(), loc.in_execption[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1); }
 
                 }
 

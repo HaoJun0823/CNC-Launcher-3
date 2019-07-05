@@ -26,7 +26,7 @@ namespace Ra3_Mod_Manager
 
             int y = e.Location.Y;
 
-            Debug.WriteLine(string.Format("当前鼠标位置为：（{0}，{1}）", x, y));
+            Console.WriteLine(string.Format("当前鼠标位置为：（{0}，{1}）", x, y));
            
 
         }
@@ -37,7 +37,7 @@ namespace Ra3_Mod_Manager
         {
             
 
-            Debug.WriteLine("Do Extra!");
+            Console.WriteLine("Do Extra!");
 
             /*
 
@@ -73,27 +73,27 @@ namespace Ra3_Mod_Manager
         */
 
             
-            Debug.WriteLine("Starting Game Timer!");
+            Console.WriteLine("Starting Game Timer!");
 
             
             timer = new System.Threading.Timer(delegate
             {
                 IntPtr currentPtr = Win32.GetForegroundWindow();
-               // Debug.WriteLine("currentPtr:" + currentPtr);
+               // Console.WriteLine("currentPtr:" + currentPtr);
                 if (currentPtr == Config.gameProcess.MainWindowHandle)
                 {
                   Win32.POINT p = new Win32.POINT();
                   Win32.RECT rect = new Win32.RECT();
         
-                  //Debug.WriteLine("Get Point:");
+                  //Console.WriteLine("Get Point:");
                   Win32.GetCursorPos(out p);
                   Win32.GetClientRect(currentPtr,out rect);
-                  Debug.WriteLine("Mouse Point:"+p.ToString());
-                  Debug.WriteLine("Game Rect:" + rect.ToString());
+                  Console.WriteLine("Mouse Point:"+p.ToString());
+                  Console.WriteLine("Game Rect:" + rect.ToString());
 
                     if (p.X < rect.Left || p.Y < rect.Top || p.X>rect.Right || p.Y > rect.Bottom)
                     {
-                    Debug.WriteLine("Mouse out window!" + p.ToString() + "|"+rect.ToString());
+                    Console.WriteLine("Mouse out window!" + p.ToString() + "|"+rect.ToString());
                     }
                     else
                     {
@@ -106,19 +106,19 @@ namespace Ra3_Mod_Manager
                         */
 
 
-                        Debug.Write("Press VK_KEY:");
-                        if (p.X - padding <= rect.Left) { ; Debug.Write("LEFT:"+ Win32.PostMessage(currentPtr, 256, Keys.Left, 10)+" "); /*Win32.SendInput(1, input, Marshal.SizeOf(input));*/ SendKeys.SendWait("{LEFT}"); }
-                        if (p.X + padding >= rect.Right) { ; Debug.Write("RIGHT:" + Win32.PostMessage(currentPtr, 256, Keys.Right, 10) + " "); SendKeys.SendWait("{RIGHT}"); }
-                        if (p.Y - padding <= rect.Top) { ; Debug.Write("UP:" + Win32.PostMessage(currentPtr, 256, Keys.Up, 10) + " "); SendKeys.SendWait("{UP}"); }
-                        if (p.Y + padding >= rect.Bottom) { ; Debug.Write("DOWN:" + Win32.PostMessage(currentPtr, 256, Keys.Down, 10) + " "); SendKeys.SendWait("{DOWN}"); }
-                        Debug.Write("\n");
+                        Console.Write("Press VK_KEY:");
+                        if (p.X - padding <= rect.Left) { ; Console.Write("LEFT:"+ Win32.PostMessage(currentPtr, 256, Keys.Left, 10)+" "); /*Win32.SendInput(1, input, Marshal.SizeOf(input));*/ SendKeys.SendWait("{LEFT}"); }
+                        if (p.X + padding >= rect.Right) { ; Console.Write("RIGHT:" + Win32.PostMessage(currentPtr, 256, Keys.Right, 10) + " "); SendKeys.SendWait("{RIGHT}"); }
+                        if (p.Y - padding <= rect.Top) { ; Console.Write("UP:" + Win32.PostMessage(currentPtr, 256, Keys.Up, 10) + " "); SendKeys.SendWait("{UP}"); }
+                        if (p.Y + padding >= rect.Bottom) { ; Console.Write("DOWN:" + Win32.PostMessage(currentPtr, 256, Keys.Down, 10) + " "); SendKeys.SendWait("{DOWN}"); }
+                        Console.Write("\n");
                     }
 
 
                 }
                 else
                 {
-                    Debug.WriteLine("Not In Game!");
+                    Console.WriteLine("Not In Game!");
                 }
 
 
@@ -138,7 +138,7 @@ namespace Ra3_Mod_Manager
 
         int y = e.Location.Y;
 
-       Debug.WriteLine(string.Format("当前鼠标位置为：（{0}，{1}）", x, y));
+       Console.WriteLine(string.Format("当前鼠标位置为：（{0}，{1}）", x, y));
 
     }
 
