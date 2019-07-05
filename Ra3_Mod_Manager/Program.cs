@@ -158,6 +158,15 @@ namespace Ra3_Mod_Manager
         public static bool checkGameVaild()
         {
 
+            if(Config.dat_game == "Uprising")
+            {
+                return true;
+            }
+
+            if (Config.dat_game == "Red Alert 3")
+            {
+                return true;
+            }
 
             if (!Directory.Exists(Config.dat_modpath))
             {
@@ -175,11 +184,25 @@ namespace Ra3_Mod_Manager
 
         public static void  popDesc()
         {
-            if (File.Exists(Config.modPath+"\\launcher\\web\\index.html") && File.Exists(Config.modPath+ "\\launcher\\web\\always.txt")) {
+
+            if (Config.dat_game== "Uprising" || Config.dat_game == "Red Alert 3")
+            {
+
+                return ;
+            }
+
+            
+            if (File.Exists(Config.modPath+"\\launcher\\web\\introduce.html") && File.Exists(Config.modPath+ "\\launcher\\web\\always.txt")) {
                 Console.WriteLine("Always Extra Panel!");
                 Description form_desc = new Description();
                 form_desc.needChecked = true;
-                form_desc.address = Config.modPath + "\\launcher\\web\\index.html";
+
+                if (File.Exists(Config.modPath + "\\launcher\\web\\"+loc.infcode[loc.current]+ "\\introduce.html"))
+                {
+                    form_desc.address = Config.modPath + "\\launcher\\web\\" + loc.infcode[loc.current] + "\\introduce.html";
+                }
+
+                form_desc.address = Config.modPath + "\\launcher\\web\\introduce.html";
                 DialogResult dr = MessageBox.Show(loc.open_extra_page_always[loc.current] + "\n(" + form_desc.address + ")", loc.btn_extra[loc.current], MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (dr == DialogResult.OK)
                 {
@@ -189,6 +212,9 @@ namespace Ra3_Mod_Manager
 
             
             }
+
+
+            
         }
 
 
@@ -223,10 +249,11 @@ namespace Ra3_Mod_Manager
                         if (File.Exists(Application.StartupPath + "\\RA3EP1.exe"))
                         {
 
+                            
                             Config.isDLC = true;
                             Config.gameName = "Uprising";
-
-                            for(int b = 0; b < loc.inf.Length; b++)
+                            Console.WriteLine("That is DLC:"+Config.gameName);
+                            for (int b = 0; b < loc.inf.Length; b++)
                             {
                                 loc.in_game[b] = loc.in_game[b] + " " + loc.in_game_dlc[b];
                             }
@@ -458,7 +485,7 @@ namespace Ra3_Mod_Manager
         */
         static void checkGameImageExists()
         {
-            String[] fileArray = { "\\Controller", "\\Splash" };
+            String[] fileArray = { "\\Controller", "\\Splash", loc.infcode[loc.current] + "_Controller", loc.infcode[loc.current] + "_Splash" };
             String[] fileNameExtension = { ".png", ".jpg", ".jpeg", ".bmp" ,".gif" };
 
             for (int i = 0; i < fileArray.Length; i++)
@@ -475,7 +502,7 @@ namespace Ra3_Mod_Manager
                     {
 
 
-                        Config.currentImage[i] = new Bitmap(path);
+                        Config.currentImage[i % 2] = new Bitmap(path);
                         break;
                     }
                 }
@@ -491,7 +518,7 @@ namespace Ra3_Mod_Manager
 
         static void checkModImageExists()
         {
-            String[] fileArray = { "\\Controller", "\\Splash", };
+            String[] fileArray = { "\\Controller", "\\Splash", loc.infcode[loc.current] + "_Controller", loc.infcode[loc.current] + "_Splash" };
             String[] fileNameExtension = { ".png", ".jpg", ".jpeg", ".bmp", ".gif" };
 
             for (int i = 0; i < fileArray.Length; i++)
@@ -508,7 +535,7 @@ namespace Ra3_Mod_Manager
                     {
 
 
-                        Config.currentImage[i] = new Bitmap(path);
+                        Config.currentImage[i % 2] = new Bitmap(path);
                         break;
                     }
                 }
@@ -537,7 +564,7 @@ namespace Ra3_Mod_Manager
                 Console.WriteLine("Main Mod Path:" + dir.ToString());
                 Config.gameList.Add(Path.GetFileNameWithoutExtension(dir));
                 Config.skudefList.Insert(0, Config.searchSkudef(dir));
-                String[] fileArray = { "\\Controller", "\\Splash" };
+                String[] fileArray = { "\\Controller", "\\Splash", loc.infcode[loc.current] + "_Controller", loc.infcode[loc.current] + "_Splash" };
                 String[] fileNameExtension = { ".png", ".jpg", ".jpeg", ".bmp" ,".gif" };
 
                 for (int i = 0; i < fileArray.Length; i++)
@@ -549,8 +576,8 @@ namespace Ra3_Mod_Manager
                         if (File.Exists(path))
                         {
 
-                            Config.modImage[i] = new Bitmap(path);
-                            Config.currentImage[i] = Config.modImage[i];
+                            Config.modImage[i % 2] = new Bitmap(path);
+                            Config.currentImage[i % 2] = Config.modImage[i];
                             break;
                         }
                     }
@@ -572,7 +599,7 @@ namespace Ra3_Mod_Manager
         }
 
 
-        static void checkImageExists()
+        public static void checkImageExists()
         {
             Bitmap t, s;
             String tp = Application.StartupPath + "\\Launcher\\cnc.bmp", sp = Application.StartupPath + "\\Launcher\\splash.bmp";
@@ -600,15 +627,60 @@ namespace Ra3_Mod_Manager
             }
 
 
+
             Config.originalImage[0] = t;
+            
+ 
             Config.originalImage[1] = s;
+
+
+            checkLanguageImageExists();
+
+
+        }
+
+        static void checkLanguageImageExists()
+        {
+            Bitmap t, s;
+            String tp = Application.StartupPath + "\\Launcher\\"+loc.infcode[loc.current]+"_cnc.bmp", sp = Application.StartupPath + "\\Launcher\\" + loc.infcode[loc.current] + "_splash.bmp";
+
+
+
+            if (File.Exists(tp))
+            {
+                t = new Bitmap(tp);
+                Console.WriteLine("Original Language Image Found:" + tp);
+            }
+            else
+            {
+                t = null;
+            }
+
+            if (File.Exists(tp))
+            {
+                s = new Bitmap(sp);
+                Console.WriteLine("Original Language Image Found:" + sp);
+            }
+            else
+            {
+                s = null;
+            }
+
+
+            if (t != null)
+            {
+                Config.originalImage[0] = t;
+            }
+            if (s != null)
+            {
+                Config.originalImage[1] = s;
+            }
 
 
 
 
 
         }
-
 
 
         private static void startGameByProcessQuickly()
@@ -648,13 +720,16 @@ namespace Ra3_Mod_Manager
                     command.Append(" -xres " + xres + " -yres " + yres);
                 }
             }
-
+            /*
             String game = "ra3_1.0.game";
             if (Config.isDLC)
             {
                 game = "ra3ep1_1.0.game";
             }
             String customGame = "";
+
+            
+
             if (targetMod.Equals(Config.gameName))
             {
                 checkGameImageExists();
@@ -705,6 +780,74 @@ namespace Ra3_Mod_Manager
 
 
             }
+
+    */
+            String game = "ra3_1.0.game";
+            if (Config.isDLC)
+            {
+                game = "ra3ep1_1.0.game";
+            }
+            String customGame = "";
+            if (targetMod.Equals(Config.gameName))
+            {
+                checkGameImageExists();
+                if (!Config.isDLC)
+                {
+                    targetSkudef = "ra3_" + Config.dat_language + "_" + targetVersion + ".skudef";
+                    game = "ra3_" + targetVersion + ".game";
+                }
+                else
+                {
+                    targetSkudef = "ra3ep1_" + Config.dat_language + "_" + targetVersion + ".skudef";
+                    game = "ra3ep1_" + targetVersion + ".game";
+                }
+
+
+
+
+                command.Append(" -config \"" + Application.StartupPath + "\\" + targetSkudef + "\"");
+            }
+            else
+            {
+                checkModImageExists();
+                String modGame = Config.readFirstLine(Config.modPath + "\\" + targetSkudef);
+
+
+                String customGamePath = Config.modPath + "\\launcher\\game.txt";
+
+                Console.WriteLine("Read Main Game File Information:" + customGamePath);
+                if (File.Exists(customGamePath))
+                {
+                    customGame = Config.readFirstLine(customGamePath);
+
+                }
+
+
+                if (modGame.Length <= 0 || modGame.IndexOf("mod-game") == -1)
+                {
+                    modGame = "1.12";
+                    Console.WriteLine("Unknown Mod Game Start Version:Set to" + modGame);
+                    targetSkudef = "ra3_" + Config.dat_language + "_" + modGame + ".skudef";
+                    game = "ra3_" + modGame + ".game";
+                    command.Append(" -config \"" + Application.StartupPath + "\\" + targetSkudef + "\"");
+
+                }
+                else
+                {
+                    modGame = modGame.Substring(modGame.LastIndexOf("mod-game") + 8).Trim();
+                    customGame = modGame;
+                    Console.WriteLine("Mod Game Start Version:" + modGame);
+                    String targetModSkudef = "ra3_" + Config.dat_language + "_" + modGame + ".skudef";
+                    game = "ra3_" + modGame + ".game";
+                    command.Append(" -config \"" + Application.StartupPath + "\\" + targetModSkudef + "\"");
+                    command.Append(" -modConfig \"" + Config.modPath + "\\" + targetSkudef + "\"");
+                }
+
+
+
+            }
+
+
 
             Console.WriteLine("Start Game:" + Application.StartupPath + "\\data\\" + game + command);
 

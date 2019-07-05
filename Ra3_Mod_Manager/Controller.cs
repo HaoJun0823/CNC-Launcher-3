@@ -291,6 +291,8 @@ namespace Ra3_Mod_Manager
 
         public void refreshResource()
         {
+            Program.checkImageExists();
+
             player.Stop();
             this.media_video.Ctlcontrols.stop();
             media_video.Visible = false;
@@ -313,6 +315,8 @@ namespace Ra3_Mod_Manager
                 Config.currentImage[1] = Config.originalImage[1];
                 //}
 
+                
+
                 this.BackgroundImage = Config.currentImage[0];
                 this.Text = Config.extraTitle + loc.in_game[loc.current];
 
@@ -328,8 +332,8 @@ namespace Ra3_Mod_Manager
             Config.currentImage[0] = Config.originalImage[0];
             Config.currentImage[1] = Config.originalImage[1];
 
-            String[] fileArray = { Config.modPath + "\\launcher\\Controller", Config.modPath + "\\launcher\\Splash" };
-            String[] fileNameExtension = { ".png", ".jpg", ".jpeg", ".bmp" };
+            String[] fileArray = { Config.modPath + "\\launcher\\Controller", Config.modPath + "\\launcher\\Splash", Config.modPath + "\\launcher\\"+loc.infcode[loc.current]+"_Controller", Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_Splash" };
+            String[] fileNameExtension = { ".png", ".jpg", ".jpeg", ".bmp" , ".gif" };
 
             for (int i = 0; i < fileArray.Length; i++)
             {
@@ -339,7 +343,7 @@ namespace Ra3_Mod_Manager
 
                     if (File.Exists(path))
                     {
-                        Config.currentImage[i] = new Bitmap(path);
+                        Config.currentImage[i %2] = new Bitmap(path);
                         break;
                     }
                 }
@@ -361,7 +365,9 @@ namespace Ra3_Mod_Manager
             }
 
             String titlePath = Config.modPath + "\\launcher\\Title.txt";
+            String titleLangPath = Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_Title.txt";
             String iconPath = Config.modPath + "\\launcher\\icon.ico";
+            String iconLangPath = Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_icon.ico";
 
             if (lc_Game.Text.Equals(Config.gameName))
             {
@@ -381,6 +387,11 @@ namespace Ra3_Mod_Manager
 
             if (File.Exists(iconPath))
             {
+                if (File.Exists(iconLangPath))
+                {
+                    iconPath = iconLangPath;
+                }
+
                 this.Icon = new Icon(iconPath);
             }
             else
@@ -392,6 +403,13 @@ namespace Ra3_Mod_Manager
 
             if (File.Exists(titlePath))
             {
+
+                if (File.Exists(titlePath))
+                {
+                    titlePath = titleLangPath;
+                }
+
+
                 String titleStr = Config.readFirstLine(titlePath);
                 this.Text = Config.extraTitle + titleStr;
 
@@ -412,17 +430,40 @@ namespace Ra3_Mod_Manager
 
             String btnImagePath = Config.modPath + "\\launcher\\button.png";
             String fontColorPath = Config.modPath + "\\launcher\\font.color.txt";
+
+            String btnLangImagePath = Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_button.png";
+            String fontLangColorPath = Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_font.color.txt";
+
             //String componentColorPath = Config.modPath + "\\component.color.txt";
             Color fontColor = Color.White;
             Color componentColor = Color.White;
             Config.btnImage = null;
             if (File.Exists(btnImagePath))
             {
+
+                if (File.Exists(btnLangImagePath))
+                {
+                    btnImagePath = btnLangImagePath;
+                }
+
                 Config.btnImage = new Bitmap(btnImagePath);
 
                 if (File.Exists(Config.modPath + "\\launcher\\button.enter.png"))
                 {
+                    if(File.Exists(Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_button.enter.png"))
+                    {
+                        Config.btnImageMove = new Bitmap(Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_button.enter.png");
+                    }
+                    else
+                    {
+
+                    
+                    
+
                     Config.btnImageMove = new Bitmap(Config.modPath + "\\launcher\\button.enter.png");
+
+                    }
+
                 }
                 else
                 {
@@ -430,7 +471,21 @@ namespace Ra3_Mod_Manager
                 }
                 if (File.Exists(Config.modPath + "\\launcher\\button.click.png"))
                 {
+
+                    if (File.Exists(Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_button.click.png"))
+                    {
+                        Config.btnImageClick = new Bitmap(Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_button.click.png");
+                    }
+                    else
+                    {
+
+                    
+
+
+
                     Config.btnImageClick = new Bitmap(Config.modPath + "\\launcher\\button.click.png");
+
+                    }
                 }
                 else
                 {
@@ -439,7 +494,19 @@ namespace Ra3_Mod_Manager
 
                 if (File.Exists(Config.modPath + "\\launcher\\button.click.wav"))
                 {
+
+
+                    if (File.Exists(Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_button.click.wav"))
+                    {
+                        Config.btnAudioClick = Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_button.click.wav";
+                    }
+                    else
+                    {
+
+                    
+
                     Config.btnAudioClick = Config.modPath + "\\launcher\\button.click.wav";
+                    }
                     Console.WriteLine("Get Button Click Audio:" + Config.btnAudioClick);
 
                 }
@@ -447,7 +514,22 @@ namespace Ra3_Mod_Manager
 
                 if (File.Exists(Config.modPath + "\\launcher\\button.enter.wav"))
                 {
+
+
+
+                    if (File.Exists(Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_button.enter.wav"))
+                    {
+                        Config.btnAudioMove = Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_button.enter.wav";
+                    }
+                    else
+                    {
+
+                    
+
+
+
                     Config.btnAudioMove = Config.modPath + "\\launcher\\button.enter.wav";
+                    }
                     Console.WriteLine("Get Button Enter Audio:" + Config.btnAudioMove);
                 }
                 else { Config.btnAudioMove = ""; }
@@ -455,6 +537,13 @@ namespace Ra3_Mod_Manager
 
                 if (File.Exists(fontColorPath))
                 {
+
+                    if (File.Exists(fontLangColorPath))
+                    {
+                        fontColorPath = fontLangColorPath;
+                    }
+                        
+
                     String get = Config.readFirstLine(fontColorPath);
                     String[] cg = get.Split(',');
 
@@ -581,8 +670,18 @@ namespace Ra3_Mod_Manager
             String cursorPathPointer = Config.modPath + "\\Launcher\\cursor_pointer.png";
             String cursorPathText = Config.modPath + "\\Launcher\\cursor_text.png";
 
+            String cursorLangPathDefault = Config.modPath + "\\Launcher\\"+loc.infcode[loc.current]+"_cursor_default.png";
+            String cursorLangPathPointer = Config.modPath + "\\Launcher\\" + loc.infcode[loc.current] + "_cursor_pointer.png";
+            String cursorLangPathText = Config.modPath + "\\Launcher\\" + loc.infcode[loc.current] + "_cursor_text.png";
+
             if (File.Exists(cursorPathDefault))
             {
+                if (File.Exists(cursorLangPathDefault))
+                {
+                    cursorPathDefault = cursorLangPathDefault;
+                }
+
+
                 Config.cursorPath = cursorPathDefault;
                 Console.WriteLine("Custom Cursor:" + Config.cursorPath);
                 SetCursor((Bitmap)Bitmap.FromFile(Config.cursorPath), new Point(0, 0));
@@ -599,6 +698,12 @@ namespace Ra3_Mod_Manager
 
             if (File.Exists(cursorPathPointer))
             {
+
+                if (File.Exists(cursorLangPathPointer))
+                {
+                    cursorPathPointer = cursorLangPathPointer;
+                }
+
                 Config.cursorPointerPath = cursorPathPointer;
                 Console.WriteLine("Custom Pointer Cursor:" + Config.cursorPointerPath);
                 SetCursorForButton((Bitmap)Bitmap.FromFile(Config.cursorPointerPath), new Point(0, 0));
@@ -623,6 +728,11 @@ namespace Ra3_Mod_Manager
 
             if (File.Exists(cursorPathText))
             {
+                if (File.Exists(cursorLangPathText))
+                {
+                    cursorPathText = cursorLangPathText;
+                }
+
                 Config.cursorTextPath = cursorPathText;
                 Console.WriteLine("Custom Text Cursor:" + Config.cursorTextPath);
                 SetCursorForText((Bitmap)Bitmap.FromFile(Config.cursorTextPath), new Point(0, 0));
@@ -646,8 +756,15 @@ namespace Ra3_Mod_Manager
 
 
             String webPathX = Config.modPath + "\\web";
+            String webLangPathX = Config.modPath + "\\web\\"+loc.infcode[loc.current];
             if (File.Exists(webPathX + "\\index.html"))
             {
+
+                if (File.Exists(webLangPathX + "\\index.html"))
+                {
+
+                }
+
                 Config.webPath = webPathX;
                 Console.WriteLine("Get Website:" + Config.webPath);
                 this.ExtraConfig.Visible = true;
@@ -727,7 +844,11 @@ namespace Ra3_Mod_Manager
 
 
             String bgmPath = Config.modPath + "\\launcher\\bgm.wav";
+            String bgmLangPath = Config.modPath + "\\launcher\\" + loc.infcode[loc.current] + "_bgm.wav";
             String videoPath = Config.modPath + "\\launcher\\video.wmv";
+            String videoLangPath = Config.modPath + "\\launcher\\"+loc.infcode[loc.current]+"_video.wmv";
+
+
             String configPath = Config.modPath + "\\launcher\\loop.txt";
             String conf = "";
             if (cb_Media.Checked && File.Exists(configPath))
@@ -740,6 +861,12 @@ namespace Ra3_Mod_Manager
 
             if (File.Exists(videoPath))
             {
+
+                if (File.Exists(videoLangPath))
+                {
+                    videoPath = videoLangPath;
+                }
+
                 media_video.URL = videoPath;
                 media_video.Ctlcontrols.stop();
 
@@ -777,6 +904,12 @@ namespace Ra3_Mod_Manager
 
             if (File.Exists(bgmPath))
             {
+
+                if (File.Exists(bgmLangPath))
+                {
+                    bgmPath = bgmLangPath;
+                }
+
                 player.SoundLocation = bgmPath;
 
                 if (cb_Media.Checked)
@@ -973,8 +1106,12 @@ namespace Ra3_Mod_Manager
                 main.StartInfo.FileName = Config.modPath + "\\" + customGame ;
                 Console.WriteLine("Custom Game File: " + main.StartInfo.FileName);
 
+
                 if (!Directory.Exists(Config.modPath + "\\Data\\Cursors"))
                 {
+
+
+
                     Directory.CreateDirectory(Config.modPath + "\\Data\\Cursors");
 
                     String[] fg = Directory.GetFiles(Application.StartupPath + "\\Data\\Data\\Cursors", "*.ani", SearchOption.TopDirectoryOnly);
@@ -1000,6 +1137,7 @@ namespace Ra3_Mod_Manager
             main.StartInfo.Arguments = command.ToString();
             //main.StartInfo.CreateNoWindow = true;
             Config.mainController.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            
             Program.popDesc();
             main.Start();
 
@@ -1058,7 +1196,7 @@ namespace Ra3_Mod_Manager
             if (lc_Game.Text.Equals(Config.gameName))
             {
                 Config.dat_game = lc_Game.Text;
-                Config.modPath = Application.StartupPath + "\\Launcher" + "\\Custom";
+                Config.modPath = Application.StartupPath + "\\Theme";
                 resetCom();
                 
             }
@@ -1196,8 +1334,15 @@ namespace Ra3_Mod_Manager
                 Process informationTXT = new Process();
 
                 String txt = Config.modPath + "\\launcher\\information.txt";
+                String txtLang = Config.modPath + "\\launcher\\information.txt";
                 if (File.Exists(txt))
                 {
+
+
+                    if (File.Exists(txtLang))
+                    {
+                        txt = txtLang;
+                    }
 
                     informationTXT.StartInfo.FileName = txt;
                     informationTXT.Start();
@@ -1234,8 +1379,14 @@ namespace Ra3_Mod_Manager
             else
             {
                 String href = Config.modPath + "\\launcher\\website.txt";
+                String hrefLang = Config.modPath + "\\launcher\\website.txt";
                 if (File.Exists(href))
                 {
+                    if (File.Exists(hrefLang))
+                    {
+                        href = hrefLang;
+                    }
+
                     String address = Config.readFirstLine(href);
 
 
@@ -1365,6 +1516,7 @@ namespace Ra3_Mod_Manager
                 Config.dat_loc = loc.current;
 
                 refreshLanguage(loc.current);
+                refreshResource();
             }
         }
 

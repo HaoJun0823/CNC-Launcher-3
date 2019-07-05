@@ -7,6 +7,7 @@ namespace Ra3_Mod_Manager
     public static class loc
     {
         public static String[] inf = { "English", "简体中文", "繁體中文" };
+        public static String[] infcode = { "english", "schinese", "tchinese" };
         public static int current = 2;
 
         public static String[]
