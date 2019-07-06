@@ -68,6 +68,7 @@ namespace Ra3_Mod_Manager
         public static String md5;
         public static String webPath = "";
         public static bool extraFirst = true;
+        public static List<string> versionList = new List<string>();
 
         public static bool dat_mouse_locked = false;
         public static bool dat_mouse_dynamic = false;

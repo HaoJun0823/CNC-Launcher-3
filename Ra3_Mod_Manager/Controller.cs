@@ -1275,6 +1275,8 @@ namespace Ra3_Mod_Manager
 
             }
 
+            Config.versionList = notSortedList;
+
             if (!haveDAT)
             {
 
@@ -1515,10 +1517,49 @@ namespace Ra3_Mod_Manager
                 loc.current = lc_loc.SelectedIndex;
                 Config.dat_loc = loc.current;
 
+
+                string path =  Config.modPath+"\\game\\" + loc.infcode[loc.current] + "_version.txt";
+                Console.WriteLine("Read target version:"+path);
+                if (File.Exists(path))
+                {
+
+                    string data = Config.readFirstLine(path);
+
+
+                    if(data!="" && data != null) {
+
+
+                    for(int i = 0; i < Config.versionList.Count; i++)
+                    {
+
+                        Console.WriteLine("Target version:" + Config.versionList[i]);
+                        if (Config.versionList[i] == data)
+                        {
+                            Console.WriteLine("Target version Confirm:" + Config.versionList[i]);
+                            lc_Version.SelectedIndex = i;
+                            break;
+
+                        }
+
+
+
+                    }
+
+                    }
+
+
+
+                }
+
+
                 refreshLanguage(loc.current);
                 refreshResource();
             }
         }
+
+
+        
+
 
         private void Controller_Load(object sender, EventArgs e)
         {
