@@ -27,6 +27,9 @@ namespace Ra3_Mod_Manager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Banner.Print();
+
+
             Console.WriteLine("String Args Number:" + args.Length);
             
 
