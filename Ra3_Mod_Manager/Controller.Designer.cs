@@ -51,13 +51,14 @@ namespace Ra3_Mod_Manager
             this.cb_Media = new System.Windows.Forms.CheckBox();
             this.btn_ModFolder = new System.Windows.Forms.Button();
             this.lc_loc = new System.Windows.Forms.ComboBox();
-            this.media_video = new AxWMPLib.AxWindowsMediaPlayer();
             this.cb_bfs = new System.Windows.Forms.CheckBox();
             this.btn_map = new System.Windows.Forms.Button();
             this.btn_document = new System.Windows.Forms.Button();
             this.btn_short = new System.Windows.Forms.Button();
             this.ExtraConfig = new System.Windows.Forms.Button();
             this.btn_author = new System.Windows.Forms.Button();
+            this.media_video = new AxWMPLib.AxWindowsMediaPlayer();
+            this.btn_plugin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.media_video)).BeginInit();
             this.SuspendLayout();
             // 
@@ -241,14 +242,6 @@ namespace Ra3_Mod_Manager
             this.lc_loc.Name = "lc_loc";
             this.lc_loc.SelectedIndexChanged += new System.EventHandler(this.lc_loc_SelectedIndexChanged);
             // 
-            // media_video
-            // 
-            resources.ApplyResources(this.media_video, "media_video");
-            this.media_video.Name = "media_video";
-            this.media_video.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("media_video.OcxState")));
-            this.media_video.TabStop = false;
-            this.media_video.Enter += new System.EventHandler(this.media_video_Enter);
-            // 
             // cb_bfs
             // 
             resources.ApplyResources(this.cb_bfs, "cb_bfs");
@@ -314,11 +307,31 @@ namespace Ra3_Mod_Manager
             this.btn_author.UseVisualStyleBackColor = false;
             this.btn_author.Click += new System.EventHandler(this.btn_author_Click);
             // 
+            // media_video
+            // 
+            resources.ApplyResources(this.media_video, "media_video");
+            this.media_video.Name = "media_video";
+            this.media_video.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("media_video.OcxState")));
+            this.media_video.TabStop = false;
+            this.media_video.Enter += new System.EventHandler(this.media_video_Enter);
+            // 
+            // btn_plugin
+            // 
+            this.btn_plugin.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btn_plugin, "btn_plugin");
+            this.btn_plugin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_plugin.FlatAppearance.BorderSize = 0;
+            this.btn_plugin.ForeColor = System.Drawing.Color.Black;
+            this.btn_plugin.Name = "btn_plugin";
+            this.btn_plugin.UseVisualStyleBackColor = false;
+            this.btn_plugin.Click += new System.EventHandler(this.btn_plugin_Click);
+            // 
             // Controller
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Controls.Add(this.btn_plugin);
             this.Controls.Add(this.btn_author);
             this.Controls.Add(this.ExtraConfig);
             this.Controls.Add(this.btn_short);
@@ -384,5 +397,6 @@ namespace Ra3_Mod_Manager
         private System.Windows.Forms.Button btn_short;
         private System.Windows.Forms.Button ExtraConfig;
         private System.Windows.Forms.Button btn_author;
+        private System.Windows.Forms.Button btn_plugin;
     }
 }

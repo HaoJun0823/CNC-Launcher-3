@@ -38,7 +38,7 @@ namespace Ra3_Mod_Manager
         //public static bool isCustomImageMode = false;
         public static String exeVersion = Application.ProductVersion.ToString();
 
-
+        public static string commandmodname = null;
         public static bool dat_win = false;
         public static bool dat_cr = false;
         public static String dat_xres = "800";
@@ -63,8 +63,8 @@ namespace Ra3_Mod_Manager
         public static Process gameProcess;
         public static Controller mainController;
         public static String timeStamp = DateTime.Now.ToString("yyymmddhhmmss");
-        public static bool canInj = false;
-        public static bool canHook = false;
+        public static bool canInj = true;
+        public static bool canHook = true;
         public static String md5;
         public static String webPath = "";
         public static bool extraFirst = true;

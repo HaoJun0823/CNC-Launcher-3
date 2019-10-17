@@ -47,6 +47,9 @@ namespace Ra3_Mod_Manager
         IntPtr lpNumberOfBytesWritten
     );
 
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool WriteProcessMemoryBytes(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, out int lpNumberOfBytesWritten);
+
         [DllImportAttribute("kernel32.dll", EntryPoint = "OpenProcess", SetLastError = true)]
         public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
 
@@ -152,6 +155,19 @@ namespace Ra3_Mod_Manager
         [DllImport("user32.dll")]
         public static extern UInt32 SendInput(UInt32 nInputs, Input[] pInputs, int cbSize);
 
+        [DllImport("user32.dll", EntryPoint = "keybd_event")]
+        public static extern void keybd_event(
+
+         byte bVk,    
+
+         byte bScan,
+
+         int dwFlags,  
+
+         int dwExtraInfo  
+
+     );
+
         [StructLayout(LayoutKind.Explicit)]
 
 
@@ -195,6 +211,22 @@ namespace Ra3_Mod_Manager
             public Int16 wParamH;
         }
 
+        [DllImport("kernel32.dll")]
+        public static extern int VirtualAllocEx(IntPtr hwnd, Int32 lpaddress, int size, int type, Int32 tect);
+        [DllImport("kernel32.dll")]
+        public static extern Boolean WriteProcessMemory(IntPtr hwnd, int baseaddress, string buffer, int nsize, int filewriten);
+        [DllImport("kernel32.dll")]
+        public static extern int GetProcAddress(int hwnd, string lpname);
+        [DllImport("kernel32.dll")]
+        public static extern int GetProcAddress(IntPtr hwnd, string lpname);
+        [DllImport("kernel32.dll")]
+        public static extern int GetModuleHandleA(string name);
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr CreateRemoteThread(IntPtr hwnd, int attrib, int size, int address, int par, int flags, int threadid);
+        [DllImport("kernel32.dll")]
+        public static extern Int32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
+        [DllImport("kernel32.dll")]
+        public static extern Boolean VirtualFree(IntPtr lpAddress, Int32 dwSize, Int32 dwFreeType);
 
     }
 }

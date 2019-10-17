@@ -64,9 +64,25 @@ namespace Ra3_Mod_Manager
             check_vaild_description = new string[inf.Length],
             check_vaild_title = new string[inf.Length],
             first_time_run_title = new string[inf.Length],
-            first_time_run_description = new string[inf.Length]
-            ;
+            first_time_run_description = new string[inf.Length],
 
+
+            //2019/10/17
+
+            plugin_title = new string[inf.Length],
+            plugin_activate = new string[inf.Length],
+            plugin_deactivate = new string[inf.Length],
+            plugin_dll = new string[inf.Length],
+            plugin_txt = new string[inf.Length],
+            plugin_del = new string[inf.Length],
+            plugin_download = new string[inf.Length],
+            plugin_delete_confirm = new string[inf.Length],
+            plugin_choose = new string[inf.Length]
+
+
+
+
+            ;
 
 
 
@@ -125,9 +141,16 @@ namespace Ra3_Mod_Manager
             check_vaild_description[i] = "Unable to find the mod in the configuration, please reconfigure.";
             check_vaild_title[i] = "error:";
             first_time_run_title[i] = "Prompt:";
-            first_time_run_description[i] = "You can add \"-ui\" to open the control panel just like the original game. \nWhen you run successfully for the first time, if there is no \"-ui\", the next time this will automatically start the last game. \nYou can also create a shortcut for each module that opens the corresponding module and uses your configuration without having to launch through the Control Center.";
-
-
+            first_time_run_description[i] = "You can add \"-ui\" to open the control panel just like the original game. \nWhen you run successfully for the first time, if there is no \"-ui\", the next time this will automatically start the last game. \nYou can also create a shortcut for each module that opens the corresponding module and uses your configuration without having to launch through the Control Center.\n\nBecause the launcher can't judge whether the game version is Origin or Steam, for compatibility, we created Steam_appid.txt in the directory, so that the Steam version can start normally.";
+            plugin_title[i] = "Plugins";
+            plugin_activate[i] = "Enable";
+            plugin_deactivate[i] = "Disable";
+            plugin_dll[i] = "Dynamic Link Library Hook";
+            plugin_txt[i] = "Dynamic Memory Data Inject";
+            plugin_del[i] = "Delete";
+            plugin_download[i] = "Download New Plugins";
+            plugin_delete_confirm[i] = "You Really want to delete this file?";
+            plugin_choose[i] = "Please select a plugin from the left";
 
             i++;
             //CS
@@ -181,7 +204,16 @@ namespace Ra3_Mod_Manager
             check_vaild_description[i] = "无法找到配置中的Mod，请重新配置。";
             check_vaild_title[i] = "错误：";
             first_time_run_title[i] = "提示：";
-            first_time_run_description[i] = "你可以像原版游戏一样添加“-ui”来打开控制面板。\n当你首次运行成功后，若没有“-ui”，下一次这会自动启动上次的游戏。\n你也可以为每一个模组创建一个快捷方式，这些快捷方式会分别打开对应的模组并使用你的配置，而不需要通过控制中心启动。";
+            first_time_run_description[i] = "你可以像原版游戏一样添加“-ui”来打开控制面板。\n当你首次运行成功后，若没有“-ui”，下一次这会自动启动上次的游戏。\n你也可以为每一个模组创建一个快捷方式，这些快捷方式会分别打开对应的模组并使用你的配置，而不需要通过控制中心启动。\n\n因为启动器无法判断游戏版本是Origin还是Steam，为了兼容性,我们在目录下创建了Steam_appid.txt，让Steam版本可以正常启动。";
+            plugin_title[i] = "插件";
+            plugin_activate[i] = "启用";
+            plugin_deactivate[i] = "禁用";
+            plugin_dll[i] = "挂载动态链接";
+            plugin_txt[i] = "注入动态内存";
+            plugin_del[i] = "删除";
+            plugin_download[i] = "下载新插件";
+            plugin_delete_confirm[i] = "你真的要删掉这个文件？";
+            plugin_choose[i] = "请从左侧选择一个插件";
 
 
             i++;
@@ -237,8 +269,16 @@ namespace Ra3_Mod_Manager
             check_vaild_description[i] = "無法找到配置中的Mod，請重新配置。";
             check_vaild_title[i] = "錯誤：";
             first_time_run_title[i] = "提示：";
-            first_time_run_description[i] = "妳可以像原版遊戲壹樣添加“-ui”來打開控制面板。\n當妳首次運行成功後，若沒有“-ui”，下壹次這會自動啟動上次的遊戲。\n妳也可以為每壹個模組創建壹個快捷方式，這些快捷方式會分別打開對應的模組並使用妳的配置，而不需要通過控制中心啟動。";
-
+            first_time_run_description[i] = "妳可以像原版遊戲壹樣添加“-ui”來打開控制面板。\n當妳首次運行成功後，若沒有“-ui”，下壹次這會自動啟動上次的遊戲。\n妳也可以為每壹個模組創建壹個快捷方式，這些快捷方式會分別打開對應的模組並使用妳的配置，而不需要通過控制中心啟動。\n\n因為啟動器無法判斷遊戲版本是Origin還是Steam，為了兼容性,我們在目錄下創建了Steam_appid.txt，讓Steam版本可以正常啟動。";
+            plugin_title[i] = "插件";
+            plugin_activate[i] = "啟用";
+            plugin_deactivate[i] = "禁用";
+            plugin_dll[i] = "掛載動態鏈接";
+            plugin_txt[i] = "註入動態內存";
+            plugin_del[i] = "刪除";
+            plugin_download[i] = "下載新插件";
+            plugin_delete_confirm[i] = "妳真的要刪掉這個文件？";
+            plugin_choose[i] = "請從左側選擇壹個插件";
 
         }
     }

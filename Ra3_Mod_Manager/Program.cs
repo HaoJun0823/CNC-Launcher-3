@@ -42,7 +42,8 @@ namespace Ra3_Mod_Manager
                 if (args[i].Trim().ToLower().IndexOf("-help") != -1 || args[i].Trim().ToLower().IndexOf("/?") != -1)
                 {
                     Console.WriteLine(" -help or /?");
-                    String data = "-help or /?:Message This Help.\n-ui:Open This Control Panel.\n-debug:Enable Debug Mode When Game Start.\n-script:Inject Data From \\Scripts.\n-skip:Skip Splash.\n-hook:Hook Dll From \\Hooks.\n-dat:Load Dat From \\Custom.dat.";
+                    //String data = "-help or /?:Message This Help.\n-ui:Open This Control Panel.\n-debug:Enable Debug Mode When Game Start.\n-script:Inject Data From \\Scripts.\n-skip:Skip Splash.\n-hook:Hook Dll From \\Hooks.\n-dat:Load Dat From \\Custom.dat.";
+                    String data = "-help or /?:Message This Help.\n-ui:Open This Control Panel.\n-debug:Enable Debug Mode When Game Start.\n-skip:Skip Splash.\n-dat:Load Dat From \\Custom.dat.\n-mod:use -mod+{Directory Name} to load unique mod, must be in application's directory.\n-clean clean your current config(not contain custom dat).";
                     //Console.WriteLine(data);
                     MessageBox.Show(data, "Can Use:", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     System.Environment.Exit(0);
@@ -67,19 +68,30 @@ namespace Ra3_Mod_Manager
 
 
 
-                if (args[i].Trim().ToLower().IndexOf("-script") != -1)
-                {
-                    Console.WriteLine(" -script");
-                    Config.canInj = true;
-                    Config.extraTitle += "SCRIPT:";
-                    continue;
-                }
+                //if (args[i].Trim().ToLower().IndexOf("-script") != -1)
+                //{
+                //    Console.WriteLine(" -script");
+                //    Config.canInj = true;
+                //    Config.extraTitle += "SCRIPT:";
+                //    continue;
+                //}
 
                 if (args[i].Trim().ToLower().IndexOf("-skip") != -1)
                 {
                     Console.WriteLine(" -skip");
                     Config.canSkip = true;
                     Config.extraTitle += "SKIP:";
+                    continue;
+                }
+
+                if (args[i].Trim().ToLower().IndexOf("-clean") != -1)
+                {
+                    Console.WriteLine(" -clean");
+                    if (File.Exists(Application.StartupPath + "\\" + "ra3_mod_manager.dat"))
+                    {
+                        Console.WriteLine("Clean:" + Application.StartupPath + "\\" + "ra3_mod_manager.dat");
+                        File.Delete(Application.StartupPath + "\\" + "ra3_mod_manager.dat");
+                    }
                     continue;
                 }
 
@@ -92,17 +104,53 @@ namespace Ra3_Mod_Manager
                     continue;
                 }
 
-
-               
-
-                if (args[i].Trim().ToLower().IndexOf("-hook") != -1)
+                if (args[i].Trim().ToLower().IndexOf("-dat") != -1)
                 {
-                     Console.WriteLine(" -hook");
-                    Config.canHook = true;
-                    Config.extraTitle += "HOOK:";
+                    String temp = args[i].Trim().ToLower();
+                    Console.WriteLine(" -dat");
+                    Config.customDat = temp.Substring(temp.IndexOf("-dat") + 4, 10);
+                    //Config.extraTitle += "DAT:";
                     continue;
                 }
-                
+
+                if (args[i].Trim().ToLower().IndexOf("-mod") != -1)
+                {
+                    String temp = args[i].Trim().ToLower();
+                    Console.WriteLine(" -mod");
+                    String[] str = temp.Split('+');
+                    
+                    if (string.IsNullOrEmpty(str[1]))
+                    {
+                        
+                        
+                        MessageBox.Show("?:"+temp,"?",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+                    }
+                    else {
+                        String path = Application.StartupPath+"\\" + str[1];
+                        if (!Directory.Exists(path))
+                        {
+                            MessageBox.Show("?:" + path, "?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else { 
+
+                    Console.WriteLine("-mod:"+str[1]);
+                    Config.commandmodname = str[1];
+                        }
+                    }
+                    //Config.extraTitle += "DAT:";
+                    continue;
+                }
+
+
+                //if (args[i].Trim().ToLower().IndexOf("-hook") != -1)
+                //{
+                // Console.WriteLine(" -hook");
+                //     Config.canHook = true;
+                //    Config.extraTitle += "HOOK:";
+                //    continue;
+                // }
+
                 Console.WriteLine("");
 
 
@@ -143,14 +191,15 @@ namespace Ra3_Mod_Manager
 
 
             //if (Config.isDevloper) { 
-            if (Config.isFirstTime || Config.isDevloper || !File.Exists(Application.StartupPath + "\\"+Config.configFile) || !checkGameVaild()) {
+            Console.WriteLine("Quickly Check:"+Config.modPath+"\\"+Config.dat_version+".skudef");
+            if (!File.Exists(Config.modPath + "\\" + Config.dat_version + ".skudef") || Config.isFirstTime || Config.isDevloper || !File.Exists(Application.StartupPath + "\\"+Config.configFile) || !checkGameVaild()) {
                 Config.mainController = new Controller();
                 Application.Run(Config.mainController);
             }
             else
             {
                 Controller.printText();
-                
+
                 startGameByProcessQuickly();
                 if (!Config.canSkip) { 
                 Application.Run(new Splash_Form());
@@ -232,6 +281,44 @@ namespace Ra3_Mod_Manager
             }
         }
 
+        public static void writeSteamAppId(String path,int id) {
+
+            if (!File.Exists(path))
+            {
+
+                FileStream fs = new FileStream(path, FileMode.CreateNew);
+                StreamWriter sw = new StreamWriter(fs);
+                sw.Write(id);
+                sw.Flush();
+                sw.Close();
+                fs.Close();
+                Console.WriteLine("Steam appid has been created:" + path + ":" + id);
+            }
+            else
+            {
+                Console.WriteLine("Steam appid is exists:"+path+":" + id);
+            }
+
+        }
+
+        static void checkSteam()
+        {
+
+            if (File.Exists(Application.StartupPath + "\\RA3EP1.exe"))
+            {
+
+                writeSteamAppId(Application.StartupPath + "\\Steam_appid.txt", 24800);
+                writeSteamAppId(Application.StartupPath + "\\Data\\Steam_appid.txt", 24800);
+
+            }
+            else
+            {
+                writeSteamAppId(Application.StartupPath + "\\Data\\Steam_appid.txt", 17480);
+                writeSteamAppId(Application.StartupPath + "\\Steam_appid.txt", 17480);
+            }
+
+        }
+
         static void checkFileExists()
         {
 
@@ -252,7 +339,8 @@ namespace Ra3_Mod_Manager
                         if (File.Exists(Application.StartupPath + "\\RA3EP1.exe"))
                         {
 
-                            
+                            writeSteamAppId(Application.StartupPath + "\\Steam_appid.txt",24800) ;
+                            writeSteamAppId(Application.StartupPath + "\\Data\\Steam_appid.txt", 24800);
                             Config.isDLC = true;
                             Config.gameName = "Uprising";
                             Console.WriteLine("That is DLC:"+Config.gameName);
@@ -262,6 +350,11 @@ namespace Ra3_Mod_Manager
                             }
 
                             continue;
+                        }
+                        else
+                        {
+                            writeSteamAppId(Application.StartupPath + "\\Data\\Steam_appid.txt", 17480);
+                            writeSteamAppId(Application.StartupPath + "\\Steam_appid.txt", 17480);
                         }
                     }
 
@@ -301,9 +394,23 @@ namespace Ra3_Mod_Manager
         {
             firstTimeRun();
             checkFileExists();
+            checkSteam();
             checkImageExists();
             Config.searchLanguage();
             //checkCustomerImageExists();
+
+
+            if (!Directory.Exists(Application.StartupPath + "\\Plugins\\Memory"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\Plugins\\Memory");
+            }
+
+            if (!Directory.Exists(Application.StartupPath + "\\Plugins\\Library"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + "\\Plugins\\Library");
+            }
+
+
             if (Config.customDat == null)
             {
                 Config.readDAT(Application.StartupPath + "\\" + Config.configFile);
@@ -312,7 +419,7 @@ namespace Ra3_Mod_Manager
             {
                 Config.readDAT(Application.StartupPath + "\\Custom.dat\\" + Config.customDat + ".dat");
             }
-            if (!checkMainModExists())
+            if (!checkMainModExists(Config.commandmodname))
             {
                 Config.runMode = 0;
                 Config.gameList.Add(Config.gameName);
@@ -326,6 +433,53 @@ namespace Ra3_Mod_Manager
 
                     Directory.CreateDirectory(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\Red Alert 3\\Mods");
                     searchModFromDirectory(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\Red Alert 3\\Mods");
+                    /*
+                    Console.WriteLine("Search advanced mod...");
+                    Console.WriteLine("Count modPath:"+Config.modPathList.Count);
+                    foreach (string str in Config.modPathList)
+                    {
+                        if (string.IsNullOrEmpty(str))
+                        {
+                            Console.WriteLine("Pass Empty:"+str);
+                            continue;
+                        }
+
+                        Console.WriteLine("Check mod:"+str);
+                        if(str.Substring(str.Length-4,4).ToLower() == ".mod")
+                        {
+                            Config.modPath = str;
+                            Config.dat_game = str.Substring(str.Length - 4, 4);
+                            Console.WriteLine("Search first skudef:" + str);
+                            String[] skudef = Config.searchSkudef(str);
+
+                            foreach(string skudef_str in skudef)
+                            {
+
+                            
+
+                            if (String.IsNullOrEmpty(skudef_str))
+                            {
+
+                                    Console.WriteLine("Pass Empty:" + skudef_str);
+                                    continue;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Get:" + skudef_str);
+                                    Config.dat_version = skudef_str;
+                                    break;
+                                }
+
+                            }
+                            
+                            Console.WriteLine("Select advanced mod:"+str);
+                            Console.WriteLine("Select advanced mod's skudef:" + Config.dat_version);
+
+
+                            break;
+                        }
+                    }
+                    */
                 }
             }
 
@@ -451,8 +605,11 @@ namespace Ra3_Mod_Manager
 
                }
                */
+                Console.WriteLine("Add Game to List:" + Path.GetFileNameWithoutExtension(dirs[i]));
                 Config.gameList.Add(Path.GetFileNameWithoutExtension(dirs[i]));
+                Console.WriteLine("Search Skudef to List:" + dirs[i]);
                 Config.skudefList.Add(Config.searchSkudef(dirs[i]));
+                Console.WriteLine("Add modPath to List:"+dirs[i]);
                 Config.modPathList.Add(dirs[i]);
 
             }
@@ -554,9 +711,15 @@ namespace Ra3_Mod_Manager
 
 
 
-        static bool checkMainModExists()
+        static bool checkMainModExists(string name)
         {
-            String[] dirs = Directory.GetDirectories(Application.StartupPath, "*.Mod", SearchOption.TopDirectoryOnly);
+            if (name == null)
+            {
+
+                return false;
+            }
+            Console.WriteLine("Load Main Mod...");
+            String[] dirs = Directory.GetDirectories(Application.StartupPath, name, SearchOption.TopDirectoryOnly);
             if (dirs.Length != 0)
             {
                 String dir = dirs[0];

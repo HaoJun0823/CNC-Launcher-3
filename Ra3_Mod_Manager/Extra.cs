@@ -37,7 +37,7 @@ namespace Ra3_Mod_Manager
         {
             
 
-            Console.WriteLine("Do Extra!");
+            Console.WriteLine("Do Extra Methods!");
 
             /*
 
@@ -107,10 +107,17 @@ namespace Ra3_Mod_Manager
 
 
                         Console.Write("Press VK_KEY:");
-                        if (p.X - padding <= rect.Left) { ; Console.Write("LEFT:"+ Win32.PostMessage(currentPtr, 256, Keys.Left, 10)+" "); /*Win32.SendInput(1, input, Marshal.SizeOf(input));*/ SendKeys.SendWait("{LEFT}"); }
-                        if (p.X + padding >= rect.Right) { ; Console.Write("RIGHT:" + Win32.PostMessage(currentPtr, 256, Keys.Right, 10) + " "); SendKeys.SendWait("{RIGHT}"); }
-                        if (p.Y - padding <= rect.Top) { ; Console.Write("UP:" + Win32.PostMessage(currentPtr, 256, Keys.Up, 10) + " "); SendKeys.SendWait("{UP}"); }
-                        if (p.Y + padding >= rect.Bottom) { ; Console.Write("DOWN:" + Win32.PostMessage(currentPtr, 256, Keys.Down, 10) + " "); SendKeys.SendWait("{DOWN}"); }
+                        //if (p.X - padding <= rect.Left) { ; Console.Write("LEFT:"+ Win32.PostMessage(currentPtr, 256, Keys.Left, 10)+" "); /*Win32.SendInput(1, input, Marshal.SizeOf(input));*/ SendKeys.SendWait("{LEFT}"); }
+                        //if (p.X + padding >= rect.Right) { ; Console.Write("RIGHT:" + Win32.PostMessage(currentPtr, 256, Keys.Right, 10) + " "); SendKeys.SendWait("{RIGHT}"); }
+                        //if (p.Y - padding <= rect.Top) { ; Console.Write("UP:" + Win32.PostMessage(currentPtr, 256, Keys.Up, 10) + " "); SendKeys.SendWait("{UP}"); }
+                        //if (p.Y + padding >= rect.Bottom) { ; Console.Write("DOWN:" + Win32.PostMessage(currentPtr, 256, Keys.Down, 10) + " "); SendKeys.SendWait("{DOWN}"); }
+
+                        if (p.X - padding <= rect.Left) {; Console.Write("LEFT:"); Win32.keybd_event((byte)Keys.Left, 0, 0, 0); };
+                        if (p.X + padding >= rect.Right) {; Console.Write("RIGHT:"); Win32.keybd_event((byte)Keys.Right, 0, 0, 0); };
+                        if (p.Y - padding <= rect.Top) {; Console.Write("UP:"); Win32.keybd_event((byte)Keys.Up, 0, 0, 0); };
+                        if (p.Y + padding >= rect.Bottom) {; Console.Write("DOWN:"); Win32.keybd_event((byte)Keys.Down, 0, 0, 0); };
+
+
                         Console.Write("\n");
                     }
 

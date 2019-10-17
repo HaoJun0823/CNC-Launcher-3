@@ -24,8 +24,29 @@ namespace Ra3_Mod_Manager
         public Controller()
         {
 
+            int no = -1;
+            for(int i = 0; i < Config.gameList.Count; i++)
+            {
+                Console.WriteLine("No." + i);
+                Console.WriteLine("Game:" +Config.gameList[i]);
+                Console.WriteLine("Path:" + Config.modPathList[i]);
+                if (String.IsNullOrEmpty(Config.modPathList[i]))
+                {
+                    
+                    Console.WriteLine("Pass Empty Path.");
+                    continue;
+                }
+               
 
+                string name = Config.modPathList[i].Substring(Config.modPathList[i].LastIndexOf('\\'));
+                Console.WriteLine("Check primary mod:" + name);
+                if (name.Substring(name.Length - 4).ToLower()==".mod")
+                {
+                    Console.WriteLine("No." + i+" can to be useful!");
+                    no = i;
+                }
 
+            }
             InitializeComponent();
             Config.btn_mb = btn_StartGame.FlatAppearance.MouseOverBackColor;
             Config.btn_db = btn_StartGame.FlatAppearance.MouseDownBackColor;
@@ -72,8 +93,16 @@ namespace Ra3_Mod_Manager
             }
             if (!haveData)
             {
+
+                if (no != -1) {
+                    this.lc_Game.SelectedIndex = no;
+                    this.lc_Game.SelectedText = Config.gameList[no];
+
+                }
+                else { 
                 this.lc_Game.SelectedIndex = 0;
                 this.lc_Game.SelectedText = Config.gameList[0];
+                }
             }
             haveData = false;
 
@@ -227,6 +256,7 @@ namespace Ra3_Mod_Manager
             this.btn_short.Text = loc.btn_shortcut[i];
             this.ExtraConfig.Text = loc.btn_extra[i];
             this.btn_author.Text = loc.btn_author[i];
+            this.btn_plugin.Text = loc.plugin_title[i];
 
 
 
@@ -1781,14 +1811,16 @@ namespace Ra3_Mod_Manager
             Config.writeDAT(Application.StartupPath + "\\Custom.dat\\" + sb.ToString(), cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current, cb_bfs.Checked,Config.dat_mouse_locked,Config.dat_mouse_dynamic,loc.dat_desc[loc.current]);
 
 
-            
+            /*
             if (Config.canInj) {
                 command.Append(" -script");
             }
+
             if (Config.canHook)
             {
                 command.Append(" -hook");
             }
+            */
             if (Config.canSkip)
             {
                 command.Append(" -skip");
@@ -1927,6 +1959,12 @@ namespace Ra3_Mod_Manager
         private void media_video_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_plugin_Click(object sender, EventArgs e)
+        {
+            Plugin form_plugin = new Plugin();
+            form_plugin.ShowDialog();
         }
     }
 

@@ -129,6 +129,12 @@
       <DependentUpon>Description.cs</DependentUpon>
     </Compile>
     <Compile Include="Extra.cs" />
+    <Compile Include="Plugin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugin.Designer.cs">
+      <DependentUpon>Plugin.cs</DependentUpon>
+    </Compile>
     <Compile Include="language.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="language.resx">
       <DependentUpon>language.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugin.resx">
+      <DependentUpon>Plugin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>

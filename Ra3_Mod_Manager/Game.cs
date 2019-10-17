@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
@@ -61,7 +62,7 @@ namespace Ra3_Mod_Manager
             }
 
 
-
+            //Extra.doExtra(); 
             if (Config.dat_bfs && (Config.dat_mouse_locked || Config.dat_mouse_dynamic))
             {
                 Extra.doExtra();
@@ -79,6 +80,16 @@ namespace Ra3_Mod_Manager
                 try
                 {
                     waitGameClose();
+                    
+                    foreach(System.Timers.Timer t in inj.TimerGroup)
+                    {
+                        t.Stop();
+                    }
+
+                    inj.TimerGroup = new List<System.Timers.Timer>();
+                    Console.WriteLine("[Inject]:Clean Timer Group");
+                    GC.Collect();
+
                 }
                 catch(Exception e)
                 {
