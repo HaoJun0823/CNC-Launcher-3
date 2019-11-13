@@ -40,7 +40,7 @@ namespace Ra3_Mod_Manager
 
                 string name = Config.modPathList[i].Substring(Config.modPathList[i].LastIndexOf('\\'));
                 Console.WriteLine("Check primary mod:" + name);
-                if (name.Substring(name.Length - 4).ToLower()==".mod")
+                if (name.length >=0 && name.Substring(name.Length - 4).ToLower()==".mod")
                 {
                     Console.WriteLine("No." + i+" can to be useful!");
                     no = i;
