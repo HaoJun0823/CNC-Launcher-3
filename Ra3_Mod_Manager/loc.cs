@@ -8,6 +8,8 @@ namespace Ra3_Mod_Manager
     {
         public static String[] inf = { "English", "简体中文", "繁體中文" };
         public static String[] infcode = { "english", "schinese", "tchinese" };
+        public static String[] locale = { "en_US", "zh_TW", "zh_TW" };
+        public static String[] readme = { "readme.txt", "readme.zh-cn.txt", "readme.zh-tw.txt" };
         public static int current = 2;
 
         public static String[]
@@ -77,8 +79,17 @@ namespace Ra3_Mod_Manager
             plugin_del = new string[inf.Length],
             plugin_download = new string[inf.Length],
             plugin_delete_confirm = new string[inf.Length],
-            plugin_choose = new string[inf.Length]
-
+            plugin_choose = new string[inf.Length],
+            plugin_choose_game=new string[inf.Length],
+            plugin_reg_desc = new string[inf.Length],
+            plugin_reg_title = new string[inf.Length],
+            plugin_reg_desc_admin = new string[inf.Length],
+            plugin_reg_desc_result = new string[inf.Length],
+            plugin_reg_button = new string[inf.Length],
+            plugin_reg_cdkey_title = new string[inf.Length],
+            plugin_reg_cdkey_desc = new string[inf.Length],
+            plugin_reg_cdkey_desc_pass = new string[inf.Length],
+            plugin_reg_cdkey_desc_faild = new string[inf.Length]
 
 
 
@@ -151,6 +162,16 @@ namespace Ra3_Mod_Manager
             plugin_download[i] = "Download New Plugins";
             plugin_delete_confirm[i] = "You Really want to delete this file?";
             plugin_choose[i] = "Please select a plugin from the left";
+            plugin_choose_game[i] = "Choose game:";
+            plugin_reg_desc[i] = "This action requires administrator privileges and will modify your system registry to make sure you want to continue?";
+            plugin_reg_desc_admin[i] = "You are not running the program with administrator privileges!\nPlease right click on the program and click on \"Run in administrator mode\".";
+            plugin_reg_title[i] = "Success:";
+            plugin_reg_button[i] = "Registry";
+            plugin_reg_desc_result[i] = "The registry is written!\n Want to enter a new serial number?";
+            plugin_reg_cdkey_title[i] = "Type your CDKEY:(Do not enter = do not change)";
+            plugin_reg_cdkey_desc[i] = "Current CDKEY is:";
+            plugin_reg_cdkey_desc_pass[i] = "Successfully modified!";
+            plugin_reg_cdkey_desc_faild[i] = "is wrong CDKEY,Try again?";
 
             i++;
             //CS
@@ -187,24 +208,24 @@ namespace Ra3_Mod_Manager
             cb_dynamic_mouse[i] = "（无边框窗口模式）鼠标边缘移动？";
             btn_extra[i] = "额外";
             btn_author[i] = "工具主页";
-            info_first[i] = "感谢你使用这个工具！（又或者是它发生了问题恢复了）\n这个工具是为了分享《命令与征服》系列游戏制作出来的，让更多人喜欢这款经典巨作。\n时至今日，世界上仍然有大量玩家和Modder用自己的方式丰富这个游戏，地图、模型、视频、音乐，各种创意……\n如果你有任何才华或者想法，请大胆地与其他人分享，来创作出更多的乐趣！当然，我也会把我们当前遇到的问题写在这个软件里，如果你愿意帮助我，请通过邮箱与我联系: modder@haojun0823.xyz\n享受游戏！\nRanderion(HaoJun0823)\nblog.haojun0823.xyz";
+            info_first[i] = "感谢您使用这个工具！（又或者是它发生了问题恢复了）\n这个工具是为了分享《命令与征服》系列游戏制作出来的，让更多人喜欢这款经典巨作。\n时至今日，世界上仍然有大量玩家和Modder用自己的方式丰富这个游戏，地图、模型、视频、音乐，各种创意……\n如果您有任何才华或者想法，请大胆地与其他人分享，来创作出更多的乐趣！当然，我也会把我们当前遇到的问题写在这个软件里，如果您愿意帮助我，请通过邮箱与我联系: modder@haojun0823.xyz\n享受游戏！\nRanderion(HaoJun0823)\nblog.haojun0823.xyz";
             dat_desc[i] = "该文件由RA3 ModManager生成，用于记录相关配置。 如果无法打开该程序，则可以手动删除该文件。";
             open_page[i] = "从浏览器打开网页？";
             open_extra_page[i] = "打开Mod的内置网页吗？\n警告！请保证该Mod是可信的！因为网页可能包含危险内容！\n（该功能纪念原版游戏的“指挥官新闻”）";
             open_extra_page_title[i] = "指挥官新闻";
             open_extra_page_cb[i] = "好的";
             open_extra_page_btn[i] = "不要再显示这个面板";
-            open_extra_page_always[i] = "注意！这位作者想弹出一个类似原版游戏的新闻板。\n因为这是用网页制作的，所以可能会植入恶意内容，你可以查看，或者取消并永远不看（但你仍然可以通过“额外”按钮查看）。";
-            lang_label_title[i] = "选择你的语言：";
+            open_extra_page_always[i] = "注意！这位作者想弹出一个类似原版游戏的新闻板。\n因为这是用网页制作的，所以可能会植入恶意内容，您可以查看，或者取消并永远不看（但您仍然可以通过“额外”按钮查看）。";
+            lang_label_title[i] = "选择您的语言：";
             lang_label_button[i] = "是它！";
             lang_label_text[i] = "This is Simplified Chinese,Example:\n和平来自力量！";
             lang_label_text_author[i] = "\n\n简体中文,来自 Randerion(HaoJun0823)";
             lang_label_message_title[i] = "啊咧咧？";
-            lang_label_message_description[i] = "你需要选择一个语言才能继续！\n程序将会关闭，请重新打开……";
+            lang_label_message_description[i] = "您需要选择一个语言才能继续！\n程序将会关闭，请重新打开……";
             check_vaild_description[i] = "无法找到配置中的Mod，请重新配置。";
             check_vaild_title[i] = "错误：";
             first_time_run_title[i] = "提示：";
-            first_time_run_description[i] = "你可以像原版游戏一样添加“-ui”来打开控制面板。\n当你首次运行成功后，若没有“-ui”，下一次这会自动启动上次的游戏。\n你也可以为每一个模组创建一个快捷方式，这些快捷方式会分别打开对应的模组并使用你的配置，而不需要通过控制中心启动。\n\n因为启动器无法判断游戏版本是Origin还是Steam，为了兼容性,我们在目录下创建了Steam_appid.txt，让Steam版本可以正常启动。";
+            first_time_run_description[i] = "您可以像原版游戏一样添加“-ui”来打开控制面板。\n当您首次运行成功后，若没有“-ui”，下一次这会自动启动上次的游戏。\n您也可以为每一个模组创建一个快捷方式，这些快捷方式会分别打开对应的模组并使用您的配置，而不需要通过控制中心启动。\n\n因为启动器无法判断游戏版本是Origin还是Steam，为了兼容性,我们在目录下创建了Steam_appid.txt，让Steam版本可以正常启动。";
             plugin_title[i] = "插件";
             plugin_activate[i] = "启用";
             plugin_deactivate[i] = "禁用";
@@ -212,10 +233,18 @@ namespace Ra3_Mod_Manager
             plugin_txt[i] = "注入动态内存";
             plugin_del[i] = "删除";
             plugin_download[i] = "下载新插件";
-            plugin_delete_confirm[i] = "你真的要删掉这个文件？";
+            plugin_delete_confirm[i] = "您真的要删掉这个文件？";
             plugin_choose[i] = "请从左侧选择一个插件";
-
-
+            plugin_choose_game[i] = "选择游戏：";
+            plugin_reg_desc[i] = "该行动需要管理员权限并且会修改您的系统注册表，确定要继续吗？";
+            plugin_reg_title[i] = "成功：";
+            plugin_reg_desc_admin[i] = "您没有通过管理员模式运行该程序！\n请右键程序并点击“以管理员模式运行”。";
+            plugin_reg_button[i] = "注册表";
+            plugin_reg_desc_result[i] = "注册表写入完毕！\n想要输入新的序列号吗？";
+            plugin_reg_cdkey_title[i] = "输入您的序列号：(不输入=不做改变)";
+            plugin_reg_cdkey_desc[i] = "当前序列号是：";
+            plugin_reg_cdkey_desc_pass[i] = "成功修改！";
+            plugin_reg_cdkey_desc_faild[i] = "是错误的序列号，重新修改？";
             i++;
             //TS
 
@@ -279,6 +308,16 @@ namespace Ra3_Mod_Manager
             plugin_download[i] = "下載新插件";
             plugin_delete_confirm[i] = "妳真的要刪掉這個文件？";
             plugin_choose[i] = "請從左側選擇壹個插件";
+            plugin_choose_game[i] = "選擇游戲：";
+            plugin_reg_desc[i] = "該行動需要管理員權限並且會修改您的系統註冊表，確定要繼續嗎？";
+            plugin_reg_title[i] = "成功：";
+            plugin_reg_desc_admin[i] = "您沒有通過管理員模式運行該程序！\n請右鍵程序並點擊“以管理員模式運行”。";
+            plugin_reg_button[i] = "註冊表";
+            plugin_reg_desc_result[i] = "註冊表寫入完畢！\n想要輸入新的序列號嗎？";
+            plugin_reg_cdkey_title[i] = "輸入您的序列號：(不輸入=不做改變)";
+            plugin_reg_cdkey_desc[i] = "當前序列號是：";
+            plugin_reg_cdkey_desc_pass[i] = "成功修改！";
+            plugin_reg_cdkey_desc_faild[i] = "是錯誤的序列號，重新修改？";
 
         }
     }

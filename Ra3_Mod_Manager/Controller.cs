@@ -40,7 +40,7 @@ namespace Ra3_Mod_Manager
 
                 string name = Config.modPathList[i].Substring(Config.modPathList[i].LastIndexOf('\\'));
                 Console.WriteLine("Check primary mod:" + name);
-                if (name.length-4 >0 && name.Substring(name.Length - 4).ToLower()==".mod")
+                if (name.Length-4 >0 && name.Substring(name.Length - 4).ToLower()==".mod")
                 {
                     Console.WriteLine("No." + i+" can to be useful!");
                     no = i;
@@ -257,6 +257,7 @@ namespace Ra3_Mod_Manager
             this.ExtraConfig.Text = loc.btn_extra[i];
             this.btn_author.Text = loc.btn_author[i];
             this.btn_plugin.Text = loc.plugin_title[i];
+            this.Regedit.Text = loc.plugin_reg_button[i];
 
 
 
@@ -1965,6 +1966,44 @@ namespace Ra3_Mod_Manager
         {
             Plugin form_plugin = new Plugin();
             form_plugin.ShowDialog();
+        }
+
+        private void Regedit_Click(object sender, EventArgs e)
+        {
+
+            if(MessageBox.Show(loc.plugin_reg_desc[loc.current], loc.first_time_run_title[loc.current],MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (reg.IsAdministrator())
+                {
+
+                    if (Config.isDLC)
+                    {
+
+                        reg.createRa3Key(Application.StartupPath, "Red Alert 3 Uprising", "Command & Conquer Red Alert 3 Uprising", "{DDE59617-F59A-473B-BC4E-C2B81F6CD38D}");
+                        reg.changeLanguage("Red Alert 3 Uprising", loc.infcode[loc.current], loc.locale[loc.current], "", 0);
+
+                    }
+                    else
+                    {
+                        reg.createRa3Key(Application.StartupPath, "Red Alert 3", "Command & Conquer Red Alert 3", "{296D8550-CB06-48E4-9A8B-E5034FB64715}");
+                        reg.changeLanguage("Red Alert 3",loc.infcode[loc.current],loc.locale[loc.current],Application.StartupPath+"\\Support\\"+loc.readme[loc.current],0);
+                    }
+
+                    if(MessageBox.Show(loc.plugin_reg_desc_result[loc.current], loc.plugin_reg_title[loc.current], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+
+                        reg.changeCDKEY();
+
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show(loc.plugin_reg_desc_admin[loc.current], loc.check_vaild_title[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
         }
     }
 

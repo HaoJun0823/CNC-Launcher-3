@@ -283,9 +283,11 @@ namespace Ra3_Mod_Manager
 
         public static void writeSteamAppId(String path,int id) {
 
+            try { 
+
             if (!File.Exists(path))
             {
-
+                //Directory.CreateDirectory(path);
                 FileStream fs = new FileStream(path, FileMode.CreateNew);
                 StreamWriter sw = new StreamWriter(fs);
                 sw.Write(id);
@@ -297,6 +299,11 @@ namespace Ra3_Mod_Manager
             else
             {
                 Console.WriteLine("Steam appid is exists:"+path+":" + id);
+            }
+            }
+            catch (Exception e)
+            {
+                
             }
 
         }
@@ -353,8 +360,11 @@ namespace Ra3_Mod_Manager
                         }
                         else
                         {
-                            writeSteamAppId(Application.StartupPath + "\\Data\\Steam_appid.txt", 17480);
-                            writeSteamAppId(Application.StartupPath + "\\Steam_appid.txt", 17480);
+                            if (File.Exists(Application.StartupPath + "\\RA3.exe"))
+                            {
+                                writeSteamAppId(Application.StartupPath + "\\Data\\Steam_appid.txt", 17480);
+                                writeSteamAppId(Application.StartupPath + "\\Steam_appid.txt", 17480);
+                            }
                         }
                     }
 
@@ -394,11 +404,11 @@ namespace Ra3_Mod_Manager
         {
             firstTimeRun();
             checkFileExists();
-            checkSteam();
+
             checkImageExists();
             Config.searchLanguage();
             //checkCustomerImageExists();
-
+            checkSteam();
 
             if (!Directory.Exists(Application.StartupPath + "\\Plugins\\Memory"))
             {
@@ -605,13 +615,23 @@ namespace Ra3_Mod_Manager
 
                }
                */
+
+                Console.WriteLine("Search Skudef to List:" + dirs[i]);
+                string[] skudefList = Config.searchSkudef(dirs[i]);
+
+                if (skudefList.Length > 0) { 
+
                 Console.WriteLine("Add Game to List:" + Path.GetFileNameWithoutExtension(dirs[i]));
                 Config.gameList.Add(Path.GetFileNameWithoutExtension(dirs[i]));
-                Console.WriteLine("Search Skudef to List:" + dirs[i]);
-                Config.skudefList.Add(Config.searchSkudef(dirs[i]));
+                Console.WriteLine("Add Skudef to List:" + dirs[i]);
+                Config.skudefList.Add(skudefList);
                 Console.WriteLine("Add modPath to List:"+dirs[i]);
                 Config.modPathList.Add(dirs[i]);
-
+                }
+                else
+                {
+                    Console.WriteLine("Faild Game:" + Path.GetFileNameWithoutExtension(dirs[i]));
+                }
             }
 
         }

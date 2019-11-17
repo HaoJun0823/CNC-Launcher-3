@@ -133,7 +133,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btn_StartGame.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btn_StartGame.Text" xml:space="preserve">
     <value>Start Game</value>
@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_StartGame.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="tb_Xres.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -163,7 +163,7 @@
     <value>74, 21</value>
   </data>
   <data name="tb_Xres.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="tb_Xres.Text" xml:space="preserve">
     <value>800</value>
@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tb_Xres.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="tb_Yres.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -193,7 +193,7 @@
     <value>74, 21</value>
   </data>
   <data name="tb_Yres.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="tb_Yres.Text" xml:space="preserve">
     <value>600</value>
@@ -208,7 +208,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tb_Yres.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="lc_Game.Location" type="System.Drawing.Point, System.Drawing">
     <value>478, 642</value>
@@ -229,7 +229,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lc_Game.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="lc_Version.Location" type="System.Drawing.Point, System.Drawing">
     <value>478, 667</value>
@@ -250,7 +250,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lc_Version.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="lb_Width.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -265,7 +265,7 @@
     <value>41, 12</value>
   </data>
   <data name="lb_Width.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>17</value>
   </data>
   <data name="lb_Width.Text" xml:space="preserve">
     <value>Width:</value>
@@ -280,7 +280,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_Width.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="lb_Height.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -295,7 +295,7 @@
     <value>47, 12</value>
   </data>
   <data name="lb_Height.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>18</value>
   </data>
   <data name="lb_Height.Text" xml:space="preserve">
     <value>Height:</value>
@@ -310,7 +310,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_Height.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="cb_Windowed.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -325,7 +325,7 @@
     <value>72, 16</value>
   </data>
   <data name="cb_Windowed.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>21</value>
   </data>
   <data name="cb_Windowed.Text" xml:space="preserve">
     <value>Windowed</value>
@@ -340,7 +340,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_Windowed.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="cb_CustomResolution.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -355,7 +355,7 @@
     <value>126, 16</value>
   </data>
   <data name="cb_CustomResolution.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>22</value>
   </data>
   <data name="cb_CustomResolution.Text" xml:space="preserve">
     <value>Custom Resolution</value>
@@ -370,7 +370,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_CustomResolution.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="lb_Game.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -385,7 +385,7 @@
     <value>35, 12</value>
   </data>
   <data name="lb_Game.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="lb_Game.Text" xml:space="preserve">
     <value>Game:</value>
@@ -400,7 +400,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_Game.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="lb_Version.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -415,7 +415,7 @@
     <value>53, 12</value>
   </data>
   <data name="lb_Version.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="lb_Version.Text" xml:space="preserve">
     <value>Version:</value>
@@ -430,7 +430,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lb_Version.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="btn_RA3UI.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -445,7 +445,7 @@
     <value>80, 20</value>
   </data>
   <data name="btn_RA3UI.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="btn_RA3UI.Text" xml:space="preserve">
     <value>Ra3 -ui</value>
@@ -460,7 +460,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_RA3UI.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="btn_Information.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -490,7 +490,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_Information.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="btn_SaveOption.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -505,7 +505,7 @@
     <value>88, 20</value>
   </data>
   <data name="btn_SaveOption.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>23</value>
   </data>
   <data name="btn_SaveOption.Text" xml:space="preserve">
     <value>Save Options</value>
@@ -520,7 +520,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_SaveOption.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="lc_GameLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>605, 642</value>
@@ -541,7 +541,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lc_GameLanguage.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="btn_website.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -571,7 +571,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_website.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="cb_Media.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -586,7 +586,7 @@
     <value>54, 16</value>
   </data>
   <data name="cb_Media.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="cb_Media.Text" xml:space="preserve">
     <value>Media</value>
@@ -601,7 +601,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_Media.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="btn_ModFolder.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -631,7 +631,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_ModFolder.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="lc_loc.Location" type="System.Drawing.Point, System.Drawing">
     <value>178, 672</value>
@@ -640,7 +640,7 @@
     <value>98, 20</value>
   </data>
   <data name="lc_loc.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>27</value>
   </data>
   <data name="&gt;&gt;lc_loc.Name" xml:space="preserve">
     <value>lc_loc</value>
@@ -652,7 +652,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lc_loc.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="cb_bfs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -667,7 +667,7 @@
     <value>222, 16</value>
   </data>
   <data name="cb_bfs.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+    <value>19</value>
   </data>
   <data name="cb_bfs.Text" xml:space="preserve">
     <value>Borderless Windowed (Full Screen)</value>
@@ -682,7 +682,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cb_bfs.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btn_map.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -697,7 +697,7 @@
     <value>75, 20</value>
   </data>
   <data name="btn_map.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+    <value>16</value>
   </data>
   <data name="btn_map.Text" xml:space="preserve">
     <value>Maps</value>
@@ -712,7 +712,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_map.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btn_document.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -727,7 +727,7 @@
     <value>75, 20</value>
   </data>
   <data name="btn_document.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+    <value>13</value>
   </data>
   <data name="btn_document.Text" xml:space="preserve">
     <value>Replays</value>
@@ -742,7 +742,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_document.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btn_short.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -757,7 +757,7 @@
     <value>160, 20</value>
   </data>
   <data name="btn_short.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+    <value>26</value>
   </data>
   <data name="btn_short.Text" xml:space="preserve">
     <value>Create Shortcut</value>
@@ -772,7 +772,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_short.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="ExtraConfig.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -784,13 +784,13 @@
     <value>NoControl</value>
   </data>
   <data name="ExtraConfig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>411, 615</value>
+    <value>411, 625</value>
   </data>
   <data name="ExtraConfig.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 20</value>
   </data>
   <data name="ExtraConfig.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+    <value>10</value>
   </data>
   <data name="ExtraConfig.Text" xml:space="preserve">
     <value>Extra</value>
@@ -808,7 +808,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ExtraConfig.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btn_author.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -838,7 +838,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_author.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="media_video.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -879,7 +879,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;media_video.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btn_plugin.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -894,7 +894,7 @@
     <value>66, 20</value>
   </data>
   <data name="btn_plugin.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
+    <value>24</value>
   </data>
   <data name="btn_plugin.Text" xml:space="preserve">
     <value>Plugins</value>
@@ -909,6 +909,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_plugin.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Regedit.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="Regedit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Regedit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>411, 603</value>
+  </data>
+  <data name="Regedit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="Regedit.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="Regedit.Text" xml:space="preserve">
+    <value>Registry</value>
+  </data>
+  <data name="&gt;&gt;Regedit.Name" xml:space="preserve">
+    <value>Regedit</value>
+  </data>
+  <data name="&gt;&gt;Regedit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Regedit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Regedit.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

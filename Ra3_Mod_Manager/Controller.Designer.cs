@@ -59,6 +59,7 @@ namespace Ra3_Mod_Manager
             this.btn_author = new System.Windows.Forms.Button();
             this.media_video = new AxWMPLib.AxWindowsMediaPlayer();
             this.btn_plugin = new System.Windows.Forms.Button();
+            this.Regedit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.media_video)).BeginInit();
             this.SuspendLayout();
             // 
@@ -326,11 +327,23 @@ namespace Ra3_Mod_Manager
             this.btn_plugin.UseVisualStyleBackColor = false;
             this.btn_plugin.Click += new System.EventHandler(this.btn_plugin_Click);
             // 
+            // Regedit
+            // 
+            this.Regedit.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.Regedit, "Regedit");
+            this.Regedit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Regedit.FlatAppearance.BorderSize = 0;
+            this.Regedit.ForeColor = System.Drawing.Color.Black;
+            this.Regedit.Name = "Regedit";
+            this.Regedit.UseVisualStyleBackColor = false;
+            this.Regedit.Click += new System.EventHandler(this.Regedit_Click);
+            // 
             // Controller
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Controls.Add(this.Regedit);
             this.Controls.Add(this.btn_plugin);
             this.Controls.Add(this.btn_author);
             this.Controls.Add(this.ExtraConfig);
@@ -362,7 +375,6 @@ namespace Ra3_Mod_Manager
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Controller";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.Controller_Load);
             ((System.ComponentModel.ISupportInitialize)(this.media_video)).EndInit();
             this.ResumeLayout(false);
@@ -398,5 +410,6 @@ namespace Ra3_Mod_Manager
         private System.Windows.Forms.Button ExtraConfig;
         private System.Windows.Forms.Button btn_author;
         private System.Windows.Forms.Button btn_plugin;
+        private System.Windows.Forms.Button Regedit;
     }
 }
