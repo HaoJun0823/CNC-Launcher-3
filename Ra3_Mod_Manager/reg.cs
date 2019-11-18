@@ -67,7 +67,7 @@ namespace Ra3_Mod_Manager
             SubMainGame.SetValue("ScreenshotsFolderName", "Screenshots", RegistryValueKind.String);
             SubMainGame.SetValue("Suppression Exe", "", RegistryValueKind.String);
             SubMainGame.SetValue("UseLocalUserMaps", 0, RegistryValueKind.DWord);
-            SubMainGame.SetValue("UserDataLeafName", gameFullName, RegistryValueKind.String);
+            SubMainGame.SetValue("UserDataLeafName", gameName, RegistryValueKind.String);
 
             RegistryKey version = SubMainGame.CreateSubKey("1.0");
             version.SetValue("DisplayName", gameName, RegistryValueKind.String);
