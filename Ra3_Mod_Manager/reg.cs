@@ -82,7 +82,7 @@ namespace Ra3_Mod_Manager
 
         public static void changeCDKEY()
         {
-            string game = Config.isDLC ? "Red Alert 3 Uprising" : "Red Alert 3";
+            string game = Config.isUprising ? "Red Alert 3 Uprising" : "Red Alert 3";
             string key = reg.readCDKEY(game);
             string result = Microsoft.VisualBasic.Interaction.InputBox(loc.plugin_reg_cdkey_desc[loc.current] + key, loc.plugin_reg_cdkey_title[loc.current], "", -1, -1);
 

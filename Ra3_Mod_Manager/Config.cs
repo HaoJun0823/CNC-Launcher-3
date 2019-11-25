@@ -20,7 +20,9 @@ namespace Ra3_Mod_Manager
         public static bool isFirstTime = false;
         public static bool isDebug = false;
         public static String gameName = "Red Alert 3";
-        public static bool isDLC = false;
+        public static String gameCNCName = "Tiberium Wars";
+        public static String gameKWName = "Kane's Wrath";
+        public static bool isUprising = false;
         public static bool isDevloper = false;
         public static Image[] originalImage = { null, null };
         //public static Image[] customerImage = new Bitmap[originalImage.Length];
@@ -34,6 +36,8 @@ namespace Ra3_Mod_Manager
         public static String modPath;
         public static Icon defaultIcon;
         public static CultureInfo systemLanguage = Thread.CurrentThread.CurrentUICulture;
+        public static bool isCNC = false;
+        public static bool isKW = false;
 
         //public static bool isCustomImageMode = false;
         public static String exeVersion = Application.ProductVersion.ToString();

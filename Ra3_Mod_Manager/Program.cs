@@ -348,7 +348,7 @@ namespace Ra3_Mod_Manager
 
                             writeSteamAppId(Application.StartupPath + "\\Steam_appid.txt",24800) ;
                             writeSteamAppId(Application.StartupPath + "\\Data\\Steam_appid.txt", 24800);
-                            Config.isDLC = true;
+                            Config.isUprising = true;
                             Config.gameName = "Uprising";
                             Console.WriteLine("That is DLC:"+Config.gameName);
                             for (int b = 0; b < loc.inf.Length; b++)
@@ -437,7 +437,7 @@ namespace Ra3_Mod_Manager
                 Config.modPathList.Insert(0, null);
                 //Config.modPath = null;
 
-                if (!Config.isDLC) {
+                if (!Config.isUprising) {
                     Directory.CreateDirectory(Application.StartupPath + "\\Mods");
                     searchModFromDirectory(Application.StartupPath + "\\Mods");
 
@@ -969,7 +969,7 @@ namespace Ra3_Mod_Manager
 
     */
             String game = "ra3_1.0.game";
-            if (Config.isDLC)
+            if (Config.isUprising)
             {
                 game = "ra3ep1_1.0.game";
             }
@@ -977,7 +977,7 @@ namespace Ra3_Mod_Manager
             if (targetMod.Equals(Config.gameName))
             {
                 checkGameImageExists();
-                if (!Config.isDLC)
+                if (!Config.isUprising)
                 {
                     targetSkudef = "ra3_" + Config.dat_language + "_" + targetVersion + ".skudef";
                     game = "ra3_" + targetVersion + ".game";

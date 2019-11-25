@@ -169,6 +169,28 @@ namespace Ra3_Mod_Manager
             {
                 Extra.timer.Change(-1, 0);
                 Extra.timer = null;
+
+                if (Config.mainController.WindowState == FormWindowState.Minimized)
+                {
+                    Config.mainController.WindowState = FormWindowState.Normal;
+                    Console.WriteLine("Make Controller Form to Normal.");
+                }
+                else
+                {
+                    Console.WriteLine("Controller Form was Normal.");
+                }
+                /*
+                if (!Config.mainController.Visible)
+                {
+                    Config.mainController.Visible = true;
+                    Console.WriteLine("Change Controller Form Visible.");
+                }
+                else
+                {
+                    Console.WriteLine("Not Change Controller Form Visible.");
+                }
+                */
+
             }
 
 

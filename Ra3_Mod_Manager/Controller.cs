@@ -24,6 +24,7 @@ namespace Ra3_Mod_Manager
         public Controller()
         {
 
+
             int no = -1;
             for(int i = 0; i < Config.gameList.Count; i++)
             {
@@ -404,7 +405,7 @@ namespace Ra3_Mod_Manager
             {
                 Console.Write("Get Game Icon!");
 
-                if (Config.isDLC)
+                if (Config.isUprising)
                 {
                     iconPath = Application.StartupPath + "\\ra3ep1.ico";
                 }
@@ -1051,7 +1052,7 @@ namespace Ra3_Mod_Manager
 
 
             String game = "ra3_1.0.game";
-            if (Config.isDLC)
+            if (Config.isUprising)
             {
                 game = "ra3ep1_1.0.game";
             }
@@ -1059,7 +1060,7 @@ namespace Ra3_Mod_Manager
             if (targetMod.Equals(Config.gameName))
             {
 
-                if (!Config.isDLC)
+                if (!Config.isUprising)
                 {
                     targetSkudef = "ra3_" + lc_GameLanguage.Text + "_" + targetVersion + ".skudef";
                     game = "ra3_" + targetVersion + ".game";
@@ -1168,6 +1169,7 @@ namespace Ra3_Mod_Manager
             main.StartInfo.Arguments = command.ToString();
             //main.StartInfo.CreateNoWindow = true;
             Config.mainController.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            //Config.mainController.Visible = false;
             
             Program.popDesc();
             main.Start();
@@ -1239,7 +1241,7 @@ namespace Ra3_Mod_Manager
         private void btn_RA3UI_Click(object sender, EventArgs e)
         {
             Process p = new Process();
-            if (!Config.isDLC)
+            if (!Config.isUprising)
             {
                 p.StartInfo.FileName = "Ra3.exe";
             }
@@ -1846,7 +1848,7 @@ namespace Ra3_Mod_Manager
             {
                 Console.Write("Get Game Icon!");
 
-                if (Config.isDLC)
+                if (Config.isUprising)
                 {
                     iconPath = Application.StartupPath + "\\ra3ep1.ico";
                 }
@@ -1976,7 +1978,7 @@ namespace Ra3_Mod_Manager
                 if (reg.IsAdministrator())
                 {
 
-                    if (Config.isDLC)
+                    if (Config.isUprising)
                     {
 
                         reg.createRa3Key(Application.StartupPath, "Red Alert 3 Uprising", "Command & Conquer Red Alert 3 Uprising", "{DDE59617-F59A-473B-BC4E-C2B81F6CD38D}");
