@@ -95,6 +95,7 @@ namespace CNCLauncher
                     continue;
                 }
 
+                /*
                 if (args[i].Trim().ToLower().IndexOf("-dat") != -1)
                 {
                     String temp = args[i].Trim().ToLower();
@@ -103,6 +104,7 @@ namespace CNCLauncher
                     //Config.extraTitle += "DAT:";
                     continue;
                 }
+                */
 
                 if (args[i].Trim().ToLower().IndexOf("-dat") != -1)
                 {
@@ -661,6 +663,7 @@ namespace CNCLauncher
             if (!File.Exists(Config.workPath + "\\" + Config.configFile))
             {
                 Config.isFirstTime = true;
+                Config.isDevloper = true;
                 Console.WriteLine("First Time Run!");
             }
             else
@@ -693,6 +696,7 @@ namespace CNCLauncher
 
             if (Config.isDevloper)
             {
+                Console.WriteLine("Show Language Dialog!");
                 new form_lang(i).ShowDialog();
             }
             else
