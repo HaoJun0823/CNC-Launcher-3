@@ -154,7 +154,7 @@ namespace CNCLauncher
                 Ra3_Mod_Manager.Properties.Settings.Default.dat_loc = loc.current;
                 Ra3_Mod_Manager.Properties.Settings.Default.Save();
                 */
-
+                Config.isDevloper = true;
                 Config.dat_loc = loc.current;
                 //Config.writeDAT(false,false,"800","600","","","","",false,dat_loc);
                 if (Config.isDevloper)
