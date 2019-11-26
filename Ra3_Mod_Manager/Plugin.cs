@@ -8,7 +8,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Ra3_Mod_Manager
+namespace CNCLauncher
 {
     public partial class Plugin : Form
     {
@@ -49,8 +49,8 @@ namespace Ra3_Mod_Manager
         private void doGetList()
         {
 
-            ListTxt = new List<string>(getAllFile(Application.StartupPath+"\\Plugins\\Memory","*.txt"));
-            ListDll = new List<string>(getAllFile(Application.StartupPath + "\\Plugins\\Library", "*.dll"));
+            ListTxt = new List<string>(getAllFile(Config.workPath+"\\Plugins\\Memory","*.txt"));
+            ListDll = new List<string>(getAllFile(Config.workPath + "\\Plugins\\Library", "*.dll"));
 
 
             this.listbox_dll.Items.Clear();
@@ -279,7 +279,7 @@ namespace Ra3_Mod_Manager
 
         private void btn_txt_download_Click(object sender, EventArgs e)
         {
-            String address = "https://github.com/HaoJun0823/Ra3-Mod-Manager-Plugins/tree/master/Memory";
+            String address = "https://github.com/HaoJun0823/CNC-Launcher-3-Plugins/tree/master/Memory";
 
             if (MessageBox.Show(loc.open_page[loc.current] + "\n" + address, address, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
@@ -289,7 +289,7 @@ namespace Ra3_Mod_Manager
 
         private void btn_dll_download_Click(object sender, EventArgs e)
         {
-            String address = "https://github.com/HaoJun0823/Ra3-Mod-Manager-Plugins/tree/master/Library";
+            String address = "https://github.com/HaoJun0823/CNC-Launcher-3-Plugins/tree/master/Library";
 
             if (MessageBox.Show(loc.open_page[loc.current] + "\n" + address, address, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
@@ -299,7 +299,7 @@ namespace Ra3_Mod_Manager
 
         private void btn_folder_Click(object sender, EventArgs e)
         {
-            Process.Start(Application.StartupPath+"\\Plugins");
+            Process.Start(Config.workPath+"\\Plugins");
         }
     }
 }

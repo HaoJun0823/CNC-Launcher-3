@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C3DCB543-2D75-41C2-833B-ECCDD3A3B0C7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Ra3_Mod_Manager</RootNamespace>
-    <AssemblyName>Ra3_Mod_Manager</AssemblyName>
+    <RootNamespace>CNCLauncher</RootNamespace>
+    <AssemblyName>CNC Launcher 3</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -29,7 +29,7 @@
     <PublisherName>HaoJun0823</PublisherName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>22</ApplicationRevision>
+    <ApplicationRevision>23</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -61,7 +61,7 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ra3.ico</ApplicationIcon>
+    <ApplicationIcon>CNCLauncherX.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
@@ -82,7 +82,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <StartupObject>Ra3_Mod_Manager.Program</StartupObject>
+    <StartupObject>CNCLauncher.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
@@ -96,7 +96,8 @@
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>E:\Origin\games\Command and Conquer Red Alert 3\Red Alert 3\</OutputPath>
+    <OutputPath>E:\Origin\games\Command and Conquer 3 TW and KW\Command Conquer 3 Kanes Wrath\</OutputPath>
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -105,6 +106,7 @@
   <PropertyGroup>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -159,6 +161,7 @@
     <Compile Include="inj.cs" />
     <Compile Include="loc.cs" />
     <Compile Include="reg.cs" />
+    <Compile Include="run.cs" />
     <Compile Include="Win32.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -220,19 +223,10 @@
     <EmbeddedResource Include="AxInterop.WMPLib.dll" />
     <EmbeddedResource Include="Interop.WMPLib.dll" />
     <EmbeddedResource Include="Interop.IWshRuntimeLibrary.dll" />
-    <Content Include="ra3.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <PublishFile Include="ra3.ico">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
+    <Content Include="CNCLauncherX.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

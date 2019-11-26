@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ra3_Mod_Manager
+namespace CNCLauncher
 {
     class Banner
     {

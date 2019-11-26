@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Ra3_Mod_Manager
+namespace CNCLauncher
 {
     public class Extra
     {
@@ -112,10 +112,10 @@ namespace Ra3_Mod_Manager
                         //if (p.Y - padding <= rect.Top) { ; Console.Write("UP:" + Win32.PostMessage(currentPtr, 256, Keys.Up, 10) + " "); SendKeys.SendWait("{UP}"); }
                         //if (p.Y + padding >= rect.Bottom) { ; Console.Write("DOWN:" + Win32.PostMessage(currentPtr, 256, Keys.Down, 10) + " "); SendKeys.SendWait("{DOWN}"); }
 
-                        if (p.X - padding <= rect.Left) {; Console.Write("LEFT:"); Win32.keybd_event((byte)Keys.Left, 0, 0, 0); };
-                        if (p.X + padding >= rect.Right) {; Console.Write("RIGHT:"); Win32.keybd_event((byte)Keys.Right, 0, 0, 0); };
-                        if (p.Y - padding <= rect.Top) {; Console.Write("UP:"); Win32.keybd_event((byte)Keys.Up, 0, 0, 0); };
-                        if (p.Y + padding >= rect.Bottom) {; Console.Write("DOWN:"); Win32.keybd_event((byte)Keys.Down, 0, 0, 0); };
+                        if (p.X - padding <= rect.Left) {; Console.Write("LEFT:"); Win32.keybd_event((byte)Keys.Left, 0, 0, 0); Win32.keybd_event((byte)Keys.Left, 0, 2, 0); };
+                        if (p.X + padding >= rect.Right) {; Console.Write("RIGHT:"); Win32.keybd_event((byte)Keys.Right, 0, 0, 0); Win32.keybd_event((byte)Keys.Right, 0, 2, 0); };
+                        if (p.Y - padding <= rect.Top) {; Console.Write("UP:"); Win32.keybd_event((byte)Keys.Up, 0, 0, 0); Win32.keybd_event((byte)Keys.Up, 0, 2, 0); };
+                        if (p.Y + padding >= rect.Bottom) {; Console.Write("DOWN:"); Win32.keybd_event((byte)Keys.Down, 0, 0, 0); Win32.keybd_event((byte)Keys.Down, 0, 2, 0); };
 
 
                         Console.Write("\n");

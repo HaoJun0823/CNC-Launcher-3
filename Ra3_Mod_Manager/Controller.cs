@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Ra3_Mod_Manager
+namespace CNCLauncher
 {
     public partial class Controller : Form
     {
@@ -212,7 +212,7 @@ namespace Ra3_Mod_Manager
 
         private void writeDAT()
         {
-            Config.writeDAT(Application.StartupPath + "\\"+Config.configFile,cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current,cb_bfs.Checked,Config.dat_mouse_locked,Config.dat_mouse_dynamic,loc.dat_desc[loc.current]);
+            Config.writeDAT(Config.workPath + "\\"+Config.configFile,cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current,cb_bfs.Checked,Config.dat_mouse_locked,Config.dat_mouse_dynamic,loc.dat_desc[loc.current]);
         }
 
         private void buildLanguage(int i)
@@ -405,13 +405,26 @@ namespace Ra3_Mod_Manager
             {
                 Console.Write("Get Game Icon!");
 
-                if (Config.isUprising)
+                if (Config.isKW)
                 {
-                    iconPath = Application.StartupPath + "\\ra3ep1.ico";
+                    iconPath = "";
+                }
+                else if (Config.isCNC)
+                {
+                    iconPath = "";
                 }
                 else
+
+                if (Config.isUprising)
                 {
-                    iconPath = Application.StartupPath + "\\ra3.ico";
+                    iconPath = Config.workPath + "\\ra3ep1.ico";
+                }
+                else if(Config.isRA)
+                {
+                    iconPath = Config.workPath + "\\ra3.ico";
+                }else
+                {
+                    iconPath = "";
                 }
             }
 
@@ -996,11 +1009,11 @@ namespace Ra3_Mod_Manager
 
         ).Start();
             }
-            
-
-            startGameByProcess();
-
             writeDAT();
+            run.startGameByProcessQuickly();
+            //startGameByProcess();
+
+
 
 
 
@@ -1010,7 +1023,7 @@ namespace Ra3_Mod_Manager
 
 
 
-
+        /*
         private void startGameByProcess()
         {
             //Process p = new Process();
@@ -1074,7 +1087,7 @@ namespace Ra3_Mod_Manager
 
 
 
-                command.Append(" -config \"" + Application.StartupPath + "\\" + targetSkudef + "\"");
+                command.Append(" -config \"" + Config.workPath + "\\" + targetSkudef + "\"");
             }
             else
             {
@@ -1098,7 +1111,7 @@ namespace Ra3_Mod_Manager
                     Console.WriteLine("Unknown Mod Game Start Version:Set to" + modGame);
                     targetSkudef = "ra3_" + lc_GameLanguage.Text + "_" + modGame + ".skudef";
                     game = "ra3_" + modGame + ".game";
-                    command.Append(" -config \"" + Application.StartupPath + "\\" + targetSkudef + "\"");
+                    command.Append(" -config \"" + Config.workPath + "\\" + targetSkudef + "\"");
 
                 }
                 else
@@ -1108,7 +1121,7 @@ namespace Ra3_Mod_Manager
                     Console.WriteLine("Mod Game Start Version:" + modGame);
                     String targetModSkudef = "ra3_" + lc_GameLanguage.Text + "_" + modGame + ".skudef";
                     game = "ra3_" + modGame + ".game";
-                    command.Append(" -config \"" + Application.StartupPath + "\\" + targetModSkudef + "\"");
+                    command.Append(" -config \"" + Config.workPath + "\\" + targetModSkudef + "\"");
                     command.Append(" -modConfig \"" + Config.modPath + "\\" + targetSkudef + "\"");
                 }
 
@@ -1116,12 +1129,12 @@ namespace Ra3_Mod_Manager
 
             }
 
-            Console.WriteLine("Start Game:" + Application.StartupPath + "\\data\\" + game + command);
+            Console.WriteLine("Start Game:" + Config.workPath + "\\data\\" + game + command);
 
             Process main = new Process();
             Config.gameProcess = main;
             main.StartInfo.UseShellExecute = false;
-            main.StartInfo.WorkingDirectory = Application.StartupPath + "\\data\\";
+            main.StartInfo.WorkingDirectory = Config.workPath + "\\data\\";
 
             if (Config.isDebug)
             {
@@ -1146,7 +1159,7 @@ namespace Ra3_Mod_Manager
 
                     Directory.CreateDirectory(Config.modPath + "\\Data\\Cursors");
 
-                    String[] fg = Directory.GetFiles(Application.StartupPath + "\\Data\\Data\\Cursors", "*.ani", SearchOption.TopDirectoryOnly);
+                    String[] fg = Directory.GetFiles(Config.workPath + "\\Data\\Data\\Cursors", "*.ani", SearchOption.TopDirectoryOnly);
 
                     foreach (var i in fg)
                     {
@@ -1188,7 +1201,7 @@ namespace Ra3_Mod_Manager
 
             Game.doGameAction();
         }
-
+        */
 
         private void numberOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1229,7 +1242,7 @@ namespace Ra3_Mod_Manager
             if (lc_Game.Text.Equals(Config.gameName))
             {
                 Config.dat_game = lc_Game.Text;
-                Config.modPath = Application.StartupPath + "\\Theme";
+                Config.modPath = Config.workPath + "\\Theme";
                 resetCom();
                 
             }
@@ -1241,14 +1254,21 @@ namespace Ra3_Mod_Manager
         private void btn_RA3UI_Click(object sender, EventArgs e)
         {
             Process p = new Process();
-            if (!Config.isUprising)
+
+            if (Config.isCNC)
             {
-                p.StartInfo.FileName = "Ra3.exe";
+                p.StartInfo.FileName = "CNC3.exe";
+            }else if (Config.isKW)
+            {
+                p.StartInfo.FileName = "CNC3EP1.exe";
+            } else  if (!Config.isUprising)
+            {
+                p.StartInfo.FileName = "RA3.exe";
             }
             else
             {
                 p.StartInfo.FileName = "RA3EP1.exe";
-            }
+            } 
             p.StartInfo.Arguments = "-ui";
             p.Start();
         }
@@ -1469,7 +1489,7 @@ namespace Ra3_Mod_Manager
 
             if (lc_Game.Text.Equals(Config.gameName))
             {
-                Process.Start("explorer.exe", Application.StartupPath);
+                Process.Start("explorer.exe", Config.workPath);
             }
             else
             {
@@ -1640,15 +1660,29 @@ namespace Ra3_Mod_Manager
         private void btn_document_Click(object sender, EventArgs e)
         {
 
-            String dir;
-            if (Config.gameName.Equals("Uprising"))
+            String dir = "";
+            if (Config.isKW)
+            {
+                dir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\Command and Conquer 3 Kanes Wrath\\";
+            }
+            else if (Config.isCNC)
+            {
+                dir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\Command and Conquer 3 Tiberium Wars\\";
+            }
+            else
+            if (Config.isUprising)
             {
                 dir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\Red Alert 3 Uprising\\";
             }
-            else
+            else if(Config.isRA)
             {
                 dir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\Red Alert 3\\";
 
+            }
+            else
+            {
+                MessageBox.Show(loc.in_notDir[loc.current] + dir, loc.in_error[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if (Directory.Exists(dir))
@@ -1664,15 +1698,31 @@ namespace Ra3_Mod_Manager
 
         private void btn_map_Click(object sender, EventArgs e)
         {
-            String dir;
-            if (Config.gameName.Equals("Uprising"))
+            String dir="";
+
+            if (Config.isKW)
+            {
+                dir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\Command and Conquer 3 Kanes Wrath\\";
+            }
+            else if(Config.isCNC)
+            {
+                dir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\Command and Conquer 3 Tiberium Wars\\";
+
+            } else
+
+            if (Config.isUprising)
             {
                 dir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\Red Alert 3 Uprising\\";
             }
-            else
+            else if(Config.isRA)
             {
                 dir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\Red Alert 3\\";
-                
+
+            }
+            else
+            {
+                MessageBox.Show(loc.in_notDir[loc.current] + dir, loc.in_error[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return ;
             }
 
             if (Directory.Exists(dir))
@@ -1692,7 +1742,7 @@ namespace Ra3_Mod_Manager
         private void btn_short_Click(object sender, EventArgs e)
         {
 
-            Directory.CreateDirectory(Application.StartupPath + "\\Custom.dat");
+            Directory.CreateDirectory(Config.workPath + "\\Custom.dat");
 
             int i = 0;
             int sum = 0;
@@ -1811,7 +1861,7 @@ namespace Ra3_Mod_Manager
 
 
             
-            Config.writeDAT(Application.StartupPath + "\\Custom.dat\\" + sb.ToString(), cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current, cb_bfs.Checked,Config.dat_mouse_locked,Config.dat_mouse_dynamic,loc.dat_desc[loc.current]);
+            Config.writeDAT(Config.workPath + "\\Custom.dat\\" + sb.ToString(), cb_Windowed.Checked, cb_CustomResolution.Checked, tb_Xres.Text, tb_Yres.Text, lc_Game.Text, lc_Version.Text, lc_GameLanguage.Text, Config.modPath, cb_Media.Checked, loc.current, cb_bfs.Checked,Config.dat_mouse_locked,Config.dat_mouse_dynamic,loc.dat_desc[loc.current]);
 
 
             /*
@@ -1834,7 +1884,7 @@ namespace Ra3_Mod_Manager
             Console.WriteLine("Create Lnk:" + Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +"\\"+ name + ".lnk");
             shortcut.Arguments = command.ToString();
             shortcut.TargetPath = Application.ExecutablePath;
-            shortcut.WorkingDirectory = Application.StartupPath;
+            shortcut.WorkingDirectory = Config.workPath;
             shortcut.WindowStyle = 1;
             shortcut.Description = desc.ToString();
 
@@ -1848,13 +1898,27 @@ namespace Ra3_Mod_Manager
             {
                 Console.Write("Get Game Icon!");
 
+                if (Config.isKW)
+                {
+                    iconPath = "";
+                }
+                else if (Config.isCNC)
+                {
+                    iconPath = "";
+                }
+                else
+
                 if (Config.isUprising)
                 {
-                    iconPath = Application.StartupPath + "\\ra3ep1.ico";
+                    iconPath = Config.workPath + "\\ra3ep1.ico";
+                }
+                else if (Config.isRA)
+                {
+                    iconPath = Config.workPath + "\\ra3.ico";
                 }
                 else
                 {
-                    iconPath = Application.StartupPath + "\\ra3.ico";
+                    iconPath = "";
                 }
             }
 
@@ -1866,14 +1930,14 @@ namespace Ra3_Mod_Manager
             }
             else
             {
-                iconPath = Application.StartupPath + "\\ra3ep1.ico";
+                iconPath = Config.workPath + "\\ra3ep1.ico";
                 if (File.Exists(iconPath))
                 {
 
                 }
                 else
                 {
-                    iconPath = Application.StartupPath + "\\ra3.ico";
+                    iconPath = Config.workPath + "\\ra3.ico";
                     if (File.Exists(iconPath))
                     {
 
@@ -1953,8 +2017,8 @@ namespace Ra3_Mod_Manager
 
         private void btn_author_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(loc.open_page[loc.current], "blog.haojun0823.xyz/access/ra3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
-                System.Diagnostics.Process.Start("http://blog.haojun0823.xyz/access/ra3");
+            if (MessageBox.Show(loc.open_page[loc.current], "blog.haojun0823.xyz/access/cnc3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
+                System.Diagnostics.Process.Start("http://blog.haojun0823.xyz/access/cnc3");
             };
             
         }
@@ -1981,14 +2045,23 @@ namespace Ra3_Mod_Manager
                     if (Config.isUprising)
                     {
 
-                        reg.createRa3Key(Application.StartupPath, "Red Alert 3 Uprising", "Command & Conquer Red Alert 3 Uprising", "{DDE59617-F59A-473B-BC4E-C2B81F6CD38D}");
+                        reg.createRa3Key(Config.workPath, "Red Alert 3 Uprising", "Command & Conquer Red Alert 3 Uprising", "{DDE59617-F59A-473B-BC4E-C2B81F6CD38D}");
                         reg.changeLanguage("Red Alert 3 Uprising", loc.infcode[loc.current], loc.locale[loc.current], "", 0);
 
                     }
-                    else
+                    else if(Config.isRA)
                     {
-                        reg.createRa3Key(Application.StartupPath, "Red Alert 3", "Command & Conquer Red Alert 3", "{296D8550-CB06-48E4-9A8B-E5034FB64715}");
-                        reg.changeLanguage("Red Alert 3",loc.infcode[loc.current],loc.locale[loc.current],Application.StartupPath+"\\Support\\"+loc.readme[loc.current],0);
+                        reg.createRa3Key(Config.workPath, "Red Alert 3", "Command & Conquer Red Alert 3", "{296D8550-CB06-48E4-9A8B-E5034FB64715}");
+                        reg.changeLanguage("Red Alert 3",loc.infcode[loc.current],loc.locale[loc.current],Config.workPath+"\\Support\\"+loc.readme[loc.current],0);
+                    }else if (Config.isKW)
+                    {
+                        reg.createRa3Key(Config.workPath, "Command and Conquer 3 Kanes Wrath", "Command and Conquer 3 Kanes Wrath", "{CC2422C9-F7B5-4175-B295-5EC2283AA674}");
+                        reg.changeLanguage("Command and Conquer 3 Kanes Wrath", loc.infcode[loc.current], loc.locale[loc.current], Config.workPath + "\\Support\\" + loc.CNCreadme[loc.current], 0);
+                    }
+                    else if (Config.isCNC)
+                    {
+                        reg.createRa3Key(Config.workPath, "Command and Conquer 3", "Command and Conquer 3 Tiberium Wars", "{DDEDAF6C-488E-4CDA-8276-1CCF5F3C5C32}");
+                        reg.changeLanguage("Command and Conquer 3", loc.infcode[loc.current], loc.locale[loc.current], Config.workPath + "\\Support\\" + loc.CNCreadme[loc.current], 0);
                     }
 
                     if(MessageBox.Show(loc.plugin_reg_desc_result[loc.current], loc.plugin_reg_title[loc.current], MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
