@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Ra3_Mod_Manager
+namespace CNCLauncher
 {
     class inj
     {
@@ -19,11 +19,11 @@ namespace Ra3_Mod_Manager
         {
 
             
-            Directory.CreateDirectory(Application.StartupPath+"\\Plugins\\Memory");
-            inject(Application.StartupPath + "\\Plugins\\Memory");
+            Directory.CreateDirectory(Config.workPath+"\\Plugins\\Memory");
+            inject(Config.workPath + "\\Plugins\\Memory");
 
             Directory.CreateDirectory(Config.dat_modpath + "\\Plugins\\Memory");
-            if (Config.dat_modpath != Application.StartupPath)
+            if (Config.dat_modpath != Config.workPath)
             {
                 inject(Config.dat_modpath + "\\Plugins\\Memory");
             }
@@ -35,11 +35,11 @@ namespace Ra3_Mod_Manager
         {
 
 
-            Directory.CreateDirectory(Application.StartupPath + "\\Plugins\\Library");
-                dllHook(Application.StartupPath + "\\Plugins\\Library");
+            Directory.CreateDirectory(Config.workPath + "\\Plugins\\Library");
+                dllHook(Config.workPath + "\\Plugins\\Library");
 
             Directory.CreateDirectory(Config.dat_modpath + "\\Plugins\\Library");
-            if (Config.dat_modpath != Application.StartupPath)
+            if (Config.dat_modpath != Config.workPath)
             {
                 dllHook(Config.dat_modpath + "\\Plugins\\Library");
             }

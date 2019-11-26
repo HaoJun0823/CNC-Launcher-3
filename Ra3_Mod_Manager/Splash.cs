@@ -5,7 +5,7 @@ using System.IO;
 using System.Resources;
 using System.Windows.Forms;
 
-namespace Ra3_Mod_Manager
+namespace CNCLauncher
 {
     public partial class Splash_Form : Form
        {

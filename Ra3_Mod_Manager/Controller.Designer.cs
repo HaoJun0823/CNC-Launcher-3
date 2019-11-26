@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
 
-namespace Ra3_Mod_Manager
+namespace CNCLauncher
 {
     partial class Controller
     {

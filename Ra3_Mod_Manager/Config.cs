@@ -8,19 +8,24 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Ra3_Mod_Manager
+namespace CNCLauncher
 {
     public static class Config
 
     {
         public static String customDat = null;
         public static bool canSkip = false;
-        public static String configFile = "Ra3_Mod_Manager.dat";
+        public static String configFile = "CNCLauncher.dat";
         public static String extraTitle = "";
         public static bool isFirstTime = false;
         public static bool isDebug = false;
-        public static String gameName = "Red Alert 3";
-        public static bool isDLC = false;
+        public static String gameName = "";
+        public static String gameRAName = "Red Alert 3";
+        public static String gameDLCName = "Uprising";
+        public static String gameCNCName = "Tiberium Wars";
+        public static String gameKWName = "Kane's Wrath";
+        public static bool isUprising = false;
+        public static bool isRA = false;
         public static bool isDevloper = false;
         public static Image[] originalImage = { null, null };
         //public static Image[] customerImage = new Bitmap[originalImage.Length];
@@ -34,6 +39,9 @@ namespace Ra3_Mod_Manager
         public static String modPath;
         public static Icon defaultIcon;
         public static CultureInfo systemLanguage = Thread.CurrentThread.CurrentUICulture;
+        public static bool isCNC = false;
+        public static bool isKW = false;
+        public static String workPath = Application.StartupPath;
 
         //public static bool isCustomImageMode = false;
         public static String exeVersion = Application.ProductVersion.ToString();
@@ -202,22 +210,22 @@ namespace Ra3_Mod_Manager
             }
             catch (Exception e)
             {
-                //File.Delete(Application.StartupPath + "\\Ra3_Manager.dat");
+                //File.Delete(Config.workPath + "\\Ra3_Manager.dat");
                 try
                 {
-                    File.Move(Application.StartupPath + "\\Ra3_Mod_Manager.dat", Application.StartupPath + "\\Ra3_Mod_Manager.dat.error" + DateTime.Now.ToFileTime().ToString());
+                    File.Move(Config.workPath + "\\CNCLauncher.dat", Config.workPath + "\\CNCLauncher.dat.error" + DateTime.Now.ToFileTime().ToString());
                 }
                 catch (Exception)
                 {
                     try
                     {
-                        File.Move(Application.StartupPath + "\\Ra3_Mod_Manager.dat", Application.StartupPath + "\\Ra3_Mod_Manager.dat.error" + DateTime.Now.ToFileTime().ToString());
+                        File.Move(Config.workPath + "\\CNCLauncher.dat", Config.workPath + "\\CNCLauncher.dat.error" + DateTime.Now.ToFileTime().ToString());
                     }
                     catch (Exception)
                     {
                         try
                         {
-                            File.Delete(Application.StartupPath + "\\Ra3_Mod_Manager.dat");
+                            File.Delete(Config.workPath + "\\CNCLauncher.dat");
                         }
                         catch (Exception)
                         {
@@ -225,7 +233,7 @@ namespace Ra3_Mod_Manager
                         }
                     }
                 }
-                MessageBox.Show("Wrong or old 'Ra3_Mod_Manager.dat' file,restore!\n" + e.Message, "Exception:", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Wrong or old 'CNCLauncher.dat' file,restore!\n" + e.Message, "Exception:", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 sr.Close();
                 fs.Close();
 
@@ -313,6 +321,20 @@ namespace Ra3_Mod_Manager
             strBuild.Append('|');
             strBuild.Append(dat_desc);
 
+            dat_win = win;
+            dat_cr = cr;
+            dat_xres = xres;
+            dat_yres = yres;
+            dat_game = game;
+            dat_version = version;
+            dat_language = language;
+            dat_modpath = modPath;
+            dat_media = media;
+            dat_loc = loc;
+            dat_bfs = bfs;
+            dat_mouse_locked = mouselock;
+            dat_mouse_dynamic = mousedynamic;
+
             Console.WriteLine("Write Data:" + strBuild.ToString());
 
             Console.WriteLine("Write Dat:" + filepath);
@@ -363,7 +385,7 @@ namespace Ra3_Mod_Manager
 
         public static void searchLanguage()
         {
-            String[] skudef = Directory.GetFiles(Application.StartupPath, "*.skudef", SearchOption.TopDirectoryOnly);
+            String[] skudef = Directory.GetFiles(Config.workPath, "*.skudef", SearchOption.TopDirectoryOnly);
             List<String> availiable = new List<String>();
             for (int i = 0; i < skudef.Length; i++)
             {

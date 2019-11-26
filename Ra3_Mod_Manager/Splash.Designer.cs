@@ -1,4 +1,4 @@
-﻿namespace Ra3_Mod_Manager
+﻿namespace CNCLauncher
 {
     partial class Splash_Form
     {

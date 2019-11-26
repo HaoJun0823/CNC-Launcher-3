@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ra3_Mod_Manager", "Ra3_Mod_Manager\Ra3_Mod_Manager.csproj", "{C3DCB543-2D75-41C2-833B-ECCDD3A3B0C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNC Launcher 3", "Ra3_Mod_Manager\CNC Launcher 3.csproj", "{C3DCB543-2D75-41C2-833B-ECCDD3A3B0C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

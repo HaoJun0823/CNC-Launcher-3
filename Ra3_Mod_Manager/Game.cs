@@ -10,7 +10,7 @@ using System.Threading;
 using System.Timers;
 using System.Windows.Forms;
 
-namespace Ra3_Mod_Manager
+namespace CNCLauncher
 {
     static class Game
     {
@@ -51,7 +51,7 @@ namespace Ra3_Mod_Manager
 
                 }
 
-                Environment.SetEnvironmentVariable("appdata",Environment.GetEnvironmentVariable("appdata")+";"+ Application.StartupPath);
+                Environment.SetEnvironmentVariable("appdata",Environment.GetEnvironmentVariable("appdata")+";"+ Config.workPath);
             }
 
             if (Config.isDevloper) { waitGameClose(); }
@@ -96,6 +96,18 @@ namespace Ra3_Mod_Manager
 
                     Console.WriteLine("Excpetion Waiting game close:" + e.ToString());
 
+                }
+                finally
+                {
+                    if (Config.mainController.WindowState == FormWindowState.Minimized)
+                    {
+                        Config.mainController.WindowState = FormWindowState.Normal;
+                        Console.WriteLine("Make Controller Form to Normal.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Controller Form was Normal.");
+                    }
                 }
 
 
@@ -169,6 +181,22 @@ namespace Ra3_Mod_Manager
             {
                 Extra.timer.Change(-1, 0);
                 Extra.timer = null;
+
+
+
+                
+                /*
+                if (!Config.mainController.Visible)
+                {
+                    Config.mainController.Visible = true;
+                    Console.WriteLine("Change Controller Form Visible.");
+                }
+                else
+                {
+                    Console.WriteLine("Not Change Controller Form Visible.");
+                }
+                */
+
             }
 
 
@@ -191,9 +219,11 @@ namespace Ra3_Mod_Manager
 
             Console.WriteLine("New TimeStamp:" + timeStamp);
 
-            Config.mainController.WindowState = System.Windows.Forms.FormWindowState.Normal;
+           // Config.mainController.WindowState = System.Windows.Forms.FormWindowState.Normal;
 
             Config.mainController.refreshResource();
+
+
 
         }
 
@@ -209,11 +239,11 @@ namespace Ra3_Mod_Manager
          posr =Config.gameProcess.StandardOutput;
 
 
-        Directory.CreateDirectory(Application.StartupPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp);
-            Directory.CreateDirectory(Application.StartupPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp+ "\\Snapshot");
-            memFS = new FileStream(Application.StartupPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp + "\\Memory.csv", FileMode.Create);
+        Directory.CreateDirectory(Config.workPath + "\\CNCLauncher.Debug\\" + timeStamp);
+            Directory.CreateDirectory(Config.workPath + "\\CNCLauncher.Debug\\" + timeStamp+ "\\Snapshot");
+            memFS = new FileStream(Config.workPath + "\\CNCLauncher.Debug\\" + timeStamp + "\\Memory.csv", FileMode.Create);
             memSW = new StreamWriter(memFS);
-            Console.WriteLine("Create New Memory CSV:" + Application.StartupPath + "\\Ra3_Mod_Manager." + timeStamp + ".csv");
+            Console.WriteLine("Create New Memory CSV:" + Config.workPath + "\\CNCLauncher." + timeStamp + ".csv");
             /*
             StringBuilder sb = new StringBuilder();
             
@@ -328,7 +358,7 @@ namespace Ra3_Mod_Manager
                     Console.WriteLine("[CSV]" + sb.ToString());
                     memSW.WriteLine(sb.ToString());
                     memSW.Flush();
-                    image.Save(Application.StartupPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp + "\\Snapshot\\" + memN + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    image.Save(Config.workPath + "\\CNCLauncher.Debug\\" + timeStamp + "\\Snapshot\\" + memN + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     image.Dispose();
 
 
@@ -354,7 +384,7 @@ namespace Ra3_Mod_Manager
             {
                 try
                 {
-                    FileStream fs = new FileStream(Application.StartupPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp + "\\output.log", FileMode.Append);
+                    FileStream fs = new FileStream(Config.workPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp + "\\output.log", FileMode.Append);
                     StreamWriter sw = new StreamWriter(fs);
 
                     String s;
@@ -371,7 +401,7 @@ namespace Ra3_Mod_Manager
 
                     s = pesr.ReadToEnd();
 
-                    fs = new FileStream(Application.StartupPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp + "\\error.log", FileMode.Append);
+                    fs = new FileStream(Config.workPath + "\\Ra3_Mod_Manager.Debug\\" + timeStamp + "\\error.log", FileMode.Append);
                     sw = new StreamWriter(fs);
 
 
