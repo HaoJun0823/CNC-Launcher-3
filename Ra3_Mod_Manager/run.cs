@@ -426,7 +426,7 @@ namespace CNCLauncher
         Config.md5 = Config.getMd5(main.StartInfo.FileName);
 
         main.StartInfo.Arguments = command.ToString();
-
+            Console.WriteLine("Process Information-Exe:" + main.StartInfo.FileName+"|Arguments:"+main.StartInfo.Arguments+"|Result:\n"+main.StartInfo.FileName+main.StartInfo.Arguments);
 
         main.Start();
         if (Config.canInj)

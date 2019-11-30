@@ -486,7 +486,7 @@ namespace CNCLauncher
                         else
                         {
                             Console.WriteLine("NOT IS ANY GAME!");
-                            MessageBox.Show(loc.error_exe[loc.current], loc.in_execption[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                            MessageBox.Show(loc.in_notfound+loc.error_exe[loc.current], loc.in_execption[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                             System.Environment.Exit(0);
                         }
 
