@@ -123,7 +123,7 @@ namespace CNCLauncher
             in_game_dlc[i] = "Uprising";
             in_information[i] = "Information:";
             in_noinf[i] = "This mod doesn't have any introduce";
-            in_notfound[i] = "Please move this application into the Game Directory.Error:Cannot find game file:";
+            in_notfound[i] = "Please move this application into the Game Directory.\nError:Cannot find game file:";
             lb_game[i] = "Game:";
             lb_version[i] = "Version:";
             lb_height[i] = "Height:";
@@ -178,7 +178,7 @@ namespace CNCLauncher
             plugin_reg_cdkey_desc_faild[i] = "is wrong CDKEY,Try again?";
             in_cnc_game[i] = "Command & Conquer 3: Tiberium Wars";
             in_cnc_game_dlc[i] = "Command & Conquer 3: Kane's Wrath";
-            error_exe[i] = "Not Found:RA3.EXE|RA3EP1.EXE|CNC3.EXE|CNC3EP1.EXE";
+            error_exe[i] = "RA3.EXE|RA3EP1.EXE|CNC3.EXE|CNC3EP1.EXE";
 
             i++;
             //CS
@@ -199,7 +199,7 @@ namespace CNCLauncher
             in_game_dlc[i] = "起义时刻";
             in_information[i] = "信息：";
             in_noinf[i] = "这个模组没有任何介绍资料。";
-            in_notfound[i] = "请将此运行程序移动至游戏目录中。错误：没有找到游戏文件：";
+            in_notfound[i] = "请将此运行程序移动至游戏目录中。\n错误：没有找到游戏文件：";
             lb_game[i] = "游戏：";
             lb_version[i] = "版本：";
             lb_height[i] = "高度：";
@@ -254,7 +254,7 @@ namespace CNCLauncher
             plugin_reg_cdkey_desc_faild[i] = "是错误的序列号，重新修改？";
             in_cnc_game[i] = "命令与征服：泰伯利亚战争";
             in_cnc_game_dlc[i] = "命令与征服：凯恩之怒";
-            error_exe[i] = "没有找到：RA3.EXE|RA3EP1.EXE|CNC3.EXE|CNC3EP1.EXE";
+            error_exe[i] = "RA3.EXE|RA3EP1.EXE|CNC3.EXE|CNC3EP1.EXE";
 
             i++;
             //TS
@@ -276,7 +276,7 @@ namespace CNCLauncher
             in_game_dlc[i] = "起義時刻";
             in_information[i] = "信息：";
             in_noinf[i] = "這個模組沒有任何介紹資料。";
-            in_notfound[i] = "請將此運行程序移動至遊戲目錄中。錯誤：沒有找到遊戲文件：";
+            in_notfound[i] = "請將此運行程序移動至遊戲目錄中。\n錯誤：沒有找到遊戲文件：";
             lb_game[i] = "遊戲：";
             lb_version[i] = "版本：";
             lb_height[i] = "高度：";
@@ -331,7 +331,7 @@ namespace CNCLauncher
             plugin_reg_cdkey_desc_faild[i] = "是錯誤的序列號，重新修改？";
             in_cnc_game[i] = "終極動員令：泰伯利亞戰爭";
             in_cnc_game_dlc[i] = "終極動員令：凱恩之怒";
-            error_exe[i] = "沒有找到：RA3.EXE|RA3EP1.EXE|CNC3.EXE|CNC3EP1.EXE";
+            error_exe[i] = "RA3.EXE|RA3EP1.EXE|CNC3.EXE|CNC3EP1.EXE";
 
         }
     }
