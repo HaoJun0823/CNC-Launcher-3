@@ -22,8 +22,11 @@ namespace CNCLauncher
             Directory.CreateDirectory(Config.workPath+"\\Plugins\\Memory");
             inject(Config.workPath + "\\Plugins\\Memory");
 
+            if (!Config.dat_modpath.Equals(Config.workPath + "\\Theme")) { 
+
             Directory.CreateDirectory(Config.dat_modpath + "\\Plugins\\Memory");
-            if (Config.dat_modpath != Config.workPath)
+            }
+            if (Config.dat_modpath != Config.workPath && !Config.dat_modpath.Equals(Config.workPath + "\\Theme"))
             {
                 inject(Config.dat_modpath + "\\Plugins\\Memory");
             }
