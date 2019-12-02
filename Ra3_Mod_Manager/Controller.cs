@@ -1345,7 +1345,45 @@ namespace CNCLauncher
                 this.lc_Version.SelectedIndex = 0;
                 this.lc_Version.SelectedText = Config.gameList[0];
             }
+            checkLanguageVersion();
         }
+
+        private  void checkLanguageVersion()
+        {
+            string path = Config.modPath + "\\Language\\" + loc.infcode[loc.current] + ".txt";
+            Console.WriteLine("Check custom language:"+path);
+            if (!File.Exists(path))
+            {
+                Console.WriteLine("No language!");
+                return;
+            }
+
+            string name = Config.readFirstLine(path);
+            Console.WriteLine("Get Custom Language:"+name);
+
+
+            if (Config.versionList.Count > 0)
+            {
+                for(int i = 0; i < Config.versionList.Count; i++)
+                {
+                    Console.WriteLine("Check:"+Config.versionList[i]);
+                    if (name.Equals(Config.versionList[i])) {
+                        Console.WriteLine(Config.versionList[i]+" equals " + name +",set version to this.[index:"+i+"]");
+                        this.lc_Version.SelectedIndex = i;
+                    this.lc_Version.SelectedText = Config.versionList[i];
+                    
+                        break;
+                    }
+                }
+            }
+
+
+
+
+
+
+        }
+
 
 
         private int skudefSort(String a, String b)
