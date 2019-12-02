@@ -87,10 +87,10 @@ namespace CNCLauncher
                 if (args[i].Trim().ToLower().IndexOf("-clean") != -1)
                 {
                     Console.WriteLine(" -clean");
-                    if (File.Exists(Config.workPath + "\\" + "CNCLauncher.dat"))
+                    if (File.Exists(Config.workPath + "\\" + Config.configFile))
                     {
-                        Console.WriteLine("Clean:" + Config.workPath + "\\" + "CNCLauncher.dat");
-                        File.Delete(Config.workPath + "\\" + "CNCLauncher.dat");
+                        Console.WriteLine("Clean:" + Config.workPath + "\\" + Config.configFile);
+                        File.Delete(Config.workPath + "\\" + Config.configFile);
                     }
                     continue;
                 }
@@ -568,7 +568,7 @@ namespace CNCLauncher
             {
                 Config.runMode = 0;
                 Config.gameList.Add(Config.gameName);
-                Config.skudefList.Insert(0, Config.searchSkudef(Config.workPath));
+                Config.skudefList.Insert(0, Config.searchGameSkudef(Config.workPath));
                 Config.modPathList.Insert(0, null);
                 //Config.modPath = null;
 
@@ -1221,7 +1221,8 @@ namespace CNCLauncher
                 main.StartInfo.RedirectStandardInput = true;
                 main.StartInfo.RedirectStandardOutput = true;
             }
-            Console.WriteLine("Try to find:" + Config.modPath + "\\" + customGame);
+            Console.WriteLine("Try to 
+            :" + Config.modPath + "\\" + customGame);
             if (File.Exists(Config.modPath + "\\" + customGame))
             {
 

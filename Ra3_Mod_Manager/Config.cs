@@ -15,7 +15,7 @@ namespace CNCLauncher
     {
         public static String customDat = null;
         public static bool canSkip = false;
-        public static String configFile = "CNCLauncher.dat";
+        public static String configFile = Environment.UserName+"-CNCLauncher.dat";
         public static String extraTitle = "";
         public static bool isFirstTime = false;
         public static bool isDebug = false;
@@ -213,19 +213,19 @@ namespace CNCLauncher
                 //File.Delete(Config.workPath + "\\Ra3_Manager.dat");
                 try
                 {
-                    File.Move(Config.workPath + "\\CNCLauncher.dat", Config.workPath + "\\CNCLauncher.dat.error" + DateTime.Now.ToFileTime().ToString());
+                    File.Move(Config.workPath + "\\"+Config.configFile, Config.workPath + "\\" + Config.configFile+".error" + DateTime.Now.ToFileTime().ToString());
                 }
                 catch (Exception)
                 {
                     try
                     {
-                        File.Move(Config.workPath + "\\CNCLauncher.dat", Config.workPath + "\\CNCLauncher.dat.error" + DateTime.Now.ToFileTime().ToString());
+                        File.Move(Config.workPath + "\\" + Config.configFile, Config.workPath + "\\" + Config.configFile + ".error" + DateTime.Now.ToFileTime().ToString());
                     }
                     catch (Exception)
                     {
                         try
                         {
-                            File.Delete(Config.workPath + "\\CNCLauncher.dat");
+                            File.Delete(Config.workPath + "\\" + Config.configFile);
                         }
                         catch (Exception)
                         {
@@ -233,7 +233,7 @@ namespace CNCLauncher
                         }
                     }
                 }
-                MessageBox.Show("Wrong or old 'CNCLauncher.dat' file,restore!\n" + e.Message, "Exception:", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Wrong or old '"+Config.configFile+"' file,restore!\n" + e.Message, "Exception:", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 sr.Close();
                 fs.Close();
 
@@ -369,11 +369,17 @@ namespace CNCLauncher
 
         public static String[] searchSkudef(String modPath)
         {
+            
             String[] skudef = Directory.GetFiles(modPath, "*.skudef", SearchOption.TopDirectoryOnly);
+            Console.WriteLine("Start search mod skudef（"+modPath+"）,length:" + skudef.Length);
             for (int i = 0; i < skudef.Length; i++)
             {
 
-                Console.WriteLine("Found SkuDef:" + skudef[i]);
+
+                Console.WriteLine(i+".Found Mod SkuDef:" + skudef[i]);
+
+
+
 
                 skudef[i] = Path.GetFileNameWithoutExtension(skudef[i]);
 
@@ -383,12 +389,75 @@ namespace CNCLauncher
 
         }
 
+        public static String[] searchGameSkudef(String modPath)
+        {
+            String[] skudef = Directory.GetFiles(modPath, "*.skudef", SearchOption.TopDirectoryOnly);
+            Console.WriteLine("Start search game skudef（" + modPath + "）,length:" + skudef.Length);
+            List<string> strList = new List<string>();
+
+
+            for (int i = 0; i < skudef.Length; i++)
+            {
+                strList.Add(skudef[i]);
+            }
+            Console.WriteLine("Finsihed convert game skudef,length:" + strList.Count);
+
+            for (int i = 0; i < strList.Count; i++)
+            {
+
+
+
+                //ra3 ra3ep1 cnc3ep1 cnc3
+                //^(ra3|ra3ep1|cnc3|cnc3ep1)+_[a-zA-z_]+_[0-9.]+.skudef$
+
+                Console.WriteLine(i+".Found Game SkuDef:" + strList[i]);
+
+                string pattern = @"^(ra3|ra3ep1|cnc3|cnc3ep1)+_[a-z_]+_[0-9.]+.skudef$";
+
+
+
+                string filename = Path.GetFileName(strList[i]).ToLower();
+                if (!System.Text.RegularExpressions.Regex.IsMatch(filename, pattern))
+                {
+                    Console.WriteLine("Not Match SkuDef:" + filename + "|Pattern:" + pattern);
+                    Console.WriteLine("Remove Index:"+i+",Reduce List!");
+                    strList.RemoveAt(i);
+                    i--;
+                    continue;
+                }
+
+
+
+                strList[i] = Path.GetFileNameWithoutExtension(strList[i]);
+
+            }
+
+            return strList.ToArray();
+
+        }
+
         public static void searchLanguage()
         {
             String[] skudef = Directory.GetFiles(Config.workPath, "*.skudef", SearchOption.TopDirectoryOnly);
             List<String> availiable = new List<String>();
             for (int i = 0; i < skudef.Length; i++)
             {
+
+
+                string pattern = @"^(ra3|ra3ep1|cnc3|cnc3ep1)+_[a-z_]+_[0-9.]+.skudef$";
+
+
+
+                string filename = Path.GetFileName(skudef[i]).ToLower();
+                if (!System.Text.RegularExpressions.Regex.IsMatch(filename, pattern))
+                {
+                    Console.WriteLine("Not Match Language SkuDef:" + filename + "|Pattern:" + pattern);
+                    Console.WriteLine("Remove Index:" + i);
+                    continue;
+                }
+
+
+
                 bool isAlive = false;
                 int start = skudef[i].IndexOf('_') + 1;
                 int end = skudef[i].LastIndexOf('_');
@@ -412,6 +481,9 @@ namespace CNCLauncher
                     languageList.Add(skudef[i]);
                     availiable.Add(skudef[i]);
                 }
+
+
+
             }
 
 
@@ -419,17 +491,18 @@ namespace CNCLauncher
 
 
 
+
         public static String readFirstLine(String path)
         {
 
             Console.WriteLine("Read First Line From Path:" + path);
-            FileStream fs = new FileStream(path, FileMode.Open);
-            StreamReader sr = new StreamReader(fs);
-
-            String str = sr.ReadLine();
+            String str = "";
 
             try
             {
+                FileStream fs = new FileStream(path, FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                str = sr.ReadLine();
                 sr.Close();
 
             }
