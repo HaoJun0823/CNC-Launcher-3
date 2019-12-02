@@ -550,6 +550,11 @@ namespace CNCLauncher
                 Directory.CreateDirectory(Config.workPath + "\\Plugins\\Library");
             }
 
+            if (!Directory.Exists(Config.workPath + "\\Theme"))
+            {
+                Directory.CreateDirectory(Config.workPath + "\\Theme");
+            }
+
 
             if (Config.customDat == null)
             {

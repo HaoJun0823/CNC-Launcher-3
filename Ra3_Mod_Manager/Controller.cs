@@ -837,6 +837,7 @@ namespace CNCLauncher
 
         private void resetCom()
         {
+            this.BackColor = Color.Black;
 
             foreach (var control in this.Controls)
             {
@@ -869,6 +870,10 @@ namespace CNCLauncher
                     CheckBox i = control as CheckBox;
 
                     i.ForeColor = Color.White;
+                    /*if (Environment.OSVersion.Version.Major < 6)
+                    {
+                        i.ForeColor = Color.Black;
+                    }*/
                 }
                 else if (control.GetType().Name.Equals("TextBox"))
                 {
@@ -879,6 +884,10 @@ namespace CNCLauncher
                     Label i = control as Label;
 
                     i.ForeColor = Color.White;
+                    /*if (Environment.OSVersion.Version.Minor < 6)
+                    {
+                        i.ForeColor = Color.Black;
+                    }*/
                 }
 
             }
