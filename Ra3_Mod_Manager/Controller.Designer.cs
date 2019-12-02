@@ -60,6 +60,7 @@ namespace CNCLauncher
             this.media_video = new AxWMPLib.AxWindowsMediaPlayer();
             this.btn_plugin = new System.Windows.Forms.Button();
             this.Regedit = new System.Windows.Forms.Button();
+            this.btn_tools = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.media_video)).BeginInit();
             this.SuspendLayout();
             // 
@@ -338,11 +339,23 @@ namespace CNCLauncher
             this.Regedit.UseVisualStyleBackColor = false;
             this.Regedit.Click += new System.EventHandler(this.Regedit_Click);
             // 
+            // btn_tools
+            // 
+            this.btn_tools.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btn_tools, "btn_tools");
+            this.btn_tools.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_tools.FlatAppearance.BorderSize = 0;
+            this.btn_tools.ForeColor = System.Drawing.Color.Black;
+            this.btn_tools.Name = "btn_tools";
+            this.btn_tools.UseVisualStyleBackColor = false;
+            this.btn_tools.Click += new System.EventHandler(this.btn_tools_Click);
+            // 
             // Controller
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Controls.Add(this.btn_tools);
             this.Controls.Add(this.Regedit);
             this.Controls.Add(this.btn_plugin);
             this.Controls.Add(this.btn_author);
@@ -411,5 +424,6 @@ namespace CNCLauncher
         private System.Windows.Forms.Button btn_author;
         private System.Windows.Forms.Button btn_plugin;
         private System.Windows.Forms.Button Regedit;
+        private System.Windows.Forms.Button btn_tools;
     }
 }

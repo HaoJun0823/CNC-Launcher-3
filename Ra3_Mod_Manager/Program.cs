@@ -535,6 +535,10 @@ namespace CNCLauncher
             firstTimeRun();
             checkFileExists();
 
+
+
+
+
             checkImageExists();
             Config.searchLanguage();
             //checkCustomerImageExists();
@@ -564,6 +568,18 @@ namespace CNCLauncher
             {
                 Config.readDAT(Config.workPath + "\\Custom.dat\\" + Config.customDat + ".dat");
             }
+
+            if (!Directory.Exists(Config.workPath + "\\Tools"))
+            {
+                Directory.CreateDirectory(Config.workPath + "\\Tools");
+            }
+
+            if (!File.Exists(Config.workPath + "\\Tools\\" + loc.btn_tools_readme[loc.current]))
+            {
+                File.Create(Config.workPath + "\\Tools\\" + loc.btn_tools_readme[loc.current]);
+            }
+
+
             if (!checkMainModExists(Config.commandmodname))
             {
                 Config.runMode = 0;

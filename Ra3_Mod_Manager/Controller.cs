@@ -259,7 +259,7 @@ namespace CNCLauncher
             this.btn_author.Text = loc.btn_author[i];
             this.btn_plugin.Text = loc.plugin_title[i];
             this.Regedit.Text = loc.plugin_reg_button[i];
-
+            this.btn_tools.Text = loc.btn_tools[i];
 
 
 
@@ -2125,6 +2125,31 @@ namespace CNCLauncher
                 }
             }
 
+
+        }
+
+        private void btn_tools_Click(object sender, EventArgs e)
+        {
+
+
+
+
+            String dir = Config.workPath+"\\"+"Tools";
+
+            if (Directory.Exists(Config.workPath+"\\Tools"))
+            {
+                dir = Config.workPath + "\\Tools";
+            }
+
+
+            if (Directory.Exists(dir))
+            {
+                Process.Start("explorer.exe", dir);
+            }
+            else
+            {
+                MessageBox.Show(loc.in_notDir[loc.current] + dir, loc.in_error[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }
