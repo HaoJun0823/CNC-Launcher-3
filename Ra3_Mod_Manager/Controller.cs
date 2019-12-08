@@ -2064,8 +2064,8 @@ namespace CNCLauncher
 
         private void btn_author_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(loc.open_page[loc.current], "blog.haojun0823.xyz/access/cnc3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
-                System.Diagnostics.Process.Start("http://blog.haojun0823.xyz/access/cnc3");
+            if (MessageBox.Show(loc.open_page[loc.current], "blog.haojun0823.xyz/access/cnc-launcher-3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
+                System.Diagnostics.Process.Start("http://blog.haojun0823.xyz/access/cnc-launcher-3");
             };
             
         }
