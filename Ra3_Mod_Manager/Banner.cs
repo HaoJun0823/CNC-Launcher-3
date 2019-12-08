@@ -37,7 +37,7 @@ namespace CNCLauncher
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             MiddlePrint(@"Welcome to the program!");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            MiddlePrint(@"Author: Randerion (HaoJun0823)");
+            MiddlePrint(@"Author: HaoJun0823");
             Console.ForegroundColor = ConsoleColor.Green;
             MiddlePrint(@"Today is: " + DateTime.Now.ToString());
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -45,7 +45,7 @@ namespace CNCLauncher
             Console.ForegroundColor = ConsoleColor.Blue;
             MiddlePrint(@"Please visit:http://blog.haojun0823.xyz");
             Console.ForegroundColor = ConsoleColor.Magenta;
-            MiddlePrint(@"Smile To Every  :)");
+            MiddlePrint(@"Smile To Every :)");
             Console.ForegroundColor = ConsoleColor.Red;
             MiddlePrint(@"=========END=========");
             Console.ForegroundColor = ConsoleColor.Gray;

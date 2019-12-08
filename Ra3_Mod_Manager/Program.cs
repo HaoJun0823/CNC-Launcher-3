@@ -363,7 +363,7 @@ namespace CNCLauncher
                     Console.WriteLine("Steam appid is exists:" + path + ":" + id);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
