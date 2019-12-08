@@ -7,30 +7,34 @@ namespace CNCLauncher
     class Banner
     {
         
-        public const string BLANK = @"                                                                              ";
+        public const string BLANK = @"                                                                                      ";
 
         public static void Print()
         {
-            
-            Console.WriteLine(@"                                                                              "); Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(@"  _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____     "); Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine(@" |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|    "); Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(@" |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|    "); Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(@"  _____       |  _ \ __ _ _ __   __| | ___ _ __(_) ___  _ __        _____     "); Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(@" |_____|      | |_) / _` | '_ \ / _` |/ _ \ '__| |/ _ \| '_ \      |_____|    "); Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(@" |_____|      |  _ < (_| | | | | (_| |  __/ |  | | (_) | | | |     |_____|    "); Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(@"         _   _|_| \_\__,_|_| |_|\__,_|\___|_| _|_|\___/|_|_|_|_____           "); Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(@"        | | | | __ _  ___     | |_   _ _ __  / _ \ ( _ )___ \|___ /           "); Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine(@"        | |_| |/ _` |/ _ \ _  | | | | | '_ \| | | |/ _ \ __) | |_ \           "); Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(@"        |  _  | (_| | (_) | |_| | |_| | | | | |_| | (_) / __/ ___) |          "); Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(@"        |_| |_|\__,_|\___/ \___/ \__,_|_| |_|\___/ \___/_____|____/           "); Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(@"  _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____ _____     "); Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(@" |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|    "); Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(@" |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|    "); Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(@" |_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|    ");
-            Console.WriteLine(@"                                                                              ");Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine(@"                        http://blog.haojun0823.xyz                            ");
-            Console.WriteLine(@"                                                                              ");
+
+            Console.WriteLine(@"");
+            Console.WriteLine(@"");
+            Console.WriteLine(@"                                                                                      "); Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(@"  ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ "); Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(@" |______|______|______|______|______|______|______|______|______|______|______|______|"); Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(@"  ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ "); Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(@" |______|______|______|______|______|______|______|______|______|______|______|______|"); Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(@"  ______     | |  | |                | |            / _ \ / _ \__ \|___ \      ______ "); Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(@" |______|    | |__| | __ _  ___      | |_   _ _ __ | | | | (_) | ) | __) |    |______|"); Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(@"  ______     |  __  |/ _` |/ _ \ _   | | | | | '_ \| | | |> _ < / / |__ <      ______ "); Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(@" |______|    | |  | | (_| | (_) | |__| | |_| | | | | |_| | (_) / /_ ___) |    |______|"); Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(@"             |_|  |_|\__,_|\___/ \____/ \__,_|_| |_|\___/ \___/____|____/             "); Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(@"  ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ "); Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(@" |______|______|______|______|______|______|______|______|______|______|______|______|"); Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(@" |______|______|______|______|______|______|______|______|______|______|______|______|"); Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(@"  ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ ______ "); Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(@" |______|______|______|______|______|______|______|______|______|______|______|______|"); Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(@"                                                                                      ");
+            Console.WriteLine(@"                                                                                      ");
+            Console.WriteLine(@"                                                                                      ");
+            Console.WriteLine(@"");
+            Console.WriteLine(@"");
+
 
             Console.ForegroundColor = ConsoleColor.Red;
             MiddlePrint(@"========START========");
@@ -49,7 +53,7 @@ namespace CNCLauncher
             Console.ForegroundColor = ConsoleColor.Red;
             MiddlePrint(@"=========END=========");
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine(@"                                                                              ");
+            Console.WriteLine(@"                                                                                      ");
         }
 
         private static void MiddlePrint(string str)
