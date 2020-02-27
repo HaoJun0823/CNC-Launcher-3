@@ -80,7 +80,8 @@ namespace CNCLauncher
             {
                 SubMainGame.SetValue("CD Drive", path.Substring(0, path.IndexOf(':')) + ":\\", RegistryValueKind.String);
                 SubMainGame.SetValue("DisplayName", gameFullName, RegistryValueKind.String);
-                SubMainGame.SetValue("InstallDir", path, RegistryValueKind.String);
+                SubMainGame.SetValue("Install Dir", path, RegistryValueKind.String);
+                SubMainGame.SetValue("Folder", path, RegistryValueKind.String);
                 SubMainGame.SetValue("UserDataLeafName", gameName, RegistryValueKind.String);
                 SubMainGame.SetValue("Installed From", path.Substring(0, path.IndexOf(':')) + ":\\", RegistryValueKind.String);
                 SubMainGame.SetValue("Patch URL", "http://www.ea.com/redalert", RegistryValueKind.String);
