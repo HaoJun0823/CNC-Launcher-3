@@ -42,8 +42,8 @@ namespace CNCLauncher
                 if (args[i].Trim().ToLower().IndexOf("-help") != -1 || args[i].Trim().ToLower().IndexOf("/?") != -1)
                 {
                     Console.WriteLine(" -help or /?");
-                    //String data = "-help or /?:Message This Help.\n-ui:Open This Control Panel.\n-debug:Enable Debug Mode When Game Start.\n-script:Inject Data From \\Scripts.\n-skip:Skip Splash.\n-hook:Hook Dll From \\Hooks.\n-dat:Load Dat From \\Custom.dat.";
-                    String data = "-help or /?:Message This Help.\n-ui:Open This Control Panel.\n-debug:Enable Debug Mode When Game Start.\n-skip:Skip Splash.\n-dat:Load Dat From \\Custom.dat.\n-mod:use -mod+{Directory Name} to load unique mod, must be in application's directory.\n-clean clean your current config(not contain custom dat).";
+                    //String data = "-help or /?:Message this help.\n-ui:Open this control Panel.\n-debug:Enable Debug Mode When Game Start.\n-script:Inject Data From \\Scripts.\n-skip:Skip Splash.\n-hook:Hook Dll From \\Hooks.\n-dat:Load Dat From \\Custom.dat.";
+                    String data = "-help or /?:Message this help.\n-ui:Open this control panel.\n-debug:Enable debug mode when game start.\n-skip:Skip splash.\n-dat:Load dat from \\Custom.dat.\n-mod:use -mod+{Directory Name} to load unique mod, must be in application's directory.\n-clean:Clean your current config(not contain custom dat files).";
                     //Console.WriteLine(data);
                     MessageBox.Show(data, "Can Use:", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     System.Environment.Exit(0);
