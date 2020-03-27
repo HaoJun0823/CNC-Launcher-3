@@ -6,14 +6,14 @@ namespace CNCLauncher
 {
     public static class loc
     {
-        public static String[] inf = { "English", "简体中文", "繁體中文" };
-        public static String[] infcode = { "english", "schinese", "tchinese" };
-        public static String[] locale = { "en_US", "zh_CN", "zh_TW" };
-        public static String[] readme = { "readme.txt", "readme.zh-cn.txt", "readme.zh-tw.txt" };
-        public static String[] CNCreadme = { "readme.txt", "zh-cn\\readme.txt", "zh-tw\\readme.txt" };
+        public readonly static String[] inf = { "English", "简体中文", "繁體中文" };
+        public readonly static String[] infcode = { "english", "schinese", "tchinese" };
+        public readonly static String[] locale = { "en_US", "zh_CN", "zh_TW" };
+        public readonly static String[] readme = { "readme.txt", "readme.zh-cn.txt", "readme.zh-tw.txt" };
+        public readonly static String[] CNCreadme = { "readme.txt", "zh-cn\\readme.txt", "zh-tw\\readme.txt" };
         public static int current = 2;
 
-        public static String[]
+        public readonly static String[]
 
             con_title = new String[inf.Length],
             btn_information = new String[inf.Length],
