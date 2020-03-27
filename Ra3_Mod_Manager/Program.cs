@@ -405,6 +405,26 @@ namespace CNCLauncher
 
         }
 
+        static void checkWB()
+        {
+
+            if(Config.isCNC || Config.isKW)
+            {
+                if(File.Exists(Config.workPath + "\\Worldbuilder.exe"))
+                {
+                    Config.wbPath = Config.workPath + "\\Worldbuilder.exe";
+                }
+            }
+            else
+            {
+                if (File.Exists(Config.workPath + "\\Data\\Worldbuilder.exe"))
+                {
+                    Config.wbPath = Config.workPath + "\\Data\\Worldbuilder.exe";
+                }
+            }
+
+        }
+
         static void checkFileExists()
         {
 
@@ -673,6 +693,7 @@ namespace CNCLauncher
                     }
                     */
                 }
+                checkWB();
             }
 
 

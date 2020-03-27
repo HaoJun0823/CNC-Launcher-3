@@ -95,7 +95,8 @@ namespace CNCLauncher
             error_exe = new string[inf.Length],
             plugin_reg_cdkey_desc_faild = new string[inf.Length],
             btn_tools = new string[inf.Length],
-            btn_tools_readme = new string[inf.Length]
+            btn_tools_readme = new string[inf.Length],
+            btn_worldeditor = new string[inf.Length]
 
 
 
@@ -183,6 +184,7 @@ namespace CNCLauncher
             error_exe[i] = "RA3.EXE|RA3EP1.EXE|CNC3.EXE|CNC3EP1.EXE";
             btn_tools[i] = "Tools";
             btn_tools_readme[i] = "You can put the tools here";
+            btn_worldeditor[i] = "World Builder";
 
             i++;
             //CS
@@ -261,6 +263,7 @@ namespace CNCLauncher
             error_exe[i] = "RA3.EXE|RA3EP1.EXE|CNC3.EXE|CNC3EP1.EXE";
             btn_tools[i] = "工具";
             btn_tools_readme[i] = "你可以把工具放到这里";
+            btn_worldeditor[i] = "世界编辑器";
 
             i++;
             //TS
@@ -340,6 +343,7 @@ namespace CNCLauncher
             error_exe[i] = "RA3.EXE|RA3EP1.EXE|CNC3.EXE|CNC3EP1.EXE";
             btn_tools[i] = "工具";
             btn_tools_readme[i] = "你可以把工具放到這裡";
+            btn_worldeditor[i] = "世界編輯器";
 
         }
     }

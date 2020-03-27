@@ -61,6 +61,7 @@ namespace CNCLauncher
             this.btn_plugin = new System.Windows.Forms.Button();
             this.Regedit = new System.Windows.Forms.Button();
             this.btn_tools = new System.Windows.Forms.Button();
+            this.btn_WorldEditor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.media_video)).BeginInit();
             this.SuspendLayout();
             // 
@@ -350,11 +351,23 @@ namespace CNCLauncher
             this.btn_tools.UseVisualStyleBackColor = false;
             this.btn_tools.Click += new System.EventHandler(this.btn_tools_Click);
             // 
+            // btn_WorldEditor
+            // 
+            this.btn_WorldEditor.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btn_WorldEditor, "btn_WorldEditor");
+            this.btn_WorldEditor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_WorldEditor.FlatAppearance.BorderSize = 0;
+            this.btn_WorldEditor.ForeColor = System.Drawing.Color.Black;
+            this.btn_WorldEditor.Name = "btn_WorldEditor";
+            this.btn_WorldEditor.UseVisualStyleBackColor = false;
+            this.btn_WorldEditor.Click += new System.EventHandler(this.Btn_WB_Click);
+            // 
             // Controller
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Controls.Add(this.btn_WorldEditor);
             this.Controls.Add(this.btn_tools);
             this.Controls.Add(this.Regedit);
             this.Controls.Add(this.btn_plugin);
@@ -425,5 +438,6 @@ namespace CNCLauncher
         private System.Windows.Forms.Button btn_plugin;
         private System.Windows.Forms.Button Regedit;
         private System.Windows.Forms.Button btn_tools;
+        private System.Windows.Forms.Button btn_WorldEditor;
     }
 }

@@ -80,6 +80,7 @@ namespace CNCLauncher
 
         public static bool dat_mouse_locked = false;
         public static bool dat_mouse_dynamic = false;
+        public static string wbPath = "";
 
         public static String getMd5(String path)
         {

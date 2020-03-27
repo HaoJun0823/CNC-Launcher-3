@@ -133,8 +133,11 @@ namespace CNCLauncher
                 writeDAT();
             }
 
-           
 
+            if (String.IsNullOrEmpty(Config.wbPath))
+            {
+                this.btn_WorldEditor.Visible = false;
+            }
 
 
         }
@@ -260,6 +263,7 @@ namespace CNCLauncher
             this.btn_plugin.Text = loc.plugin_title[i];
             this.Regedit.Text = loc.plugin_reg_button[i];
             this.btn_tools.Text = loc.btn_tools[i];
+            this.btn_WorldEditor.Text = loc.btn_worldeditor[i];
 
 
 
@@ -2064,8 +2068,8 @@ namespace CNCLauncher
 
         private void btn_author_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(loc.open_page[loc.current], "blog.haojun0823.xyz/access/cnc-launcher-3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
-                System.Diagnostics.Process.Start("http://blog.haojun0823.xyz/access/cnc-launcher-3");
+            if (MessageBox.Show(loc.open_page[loc.current], "blog.haojun0823.xyz/services/api/access/cnc-launcher-3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
+                System.Diagnostics.Process.Start("http://blog.haojun0823.xyz/services/api/access/cnc-launcher-3");
             };
             
         }
@@ -2151,6 +2155,14 @@ namespace CNCLauncher
                 MessageBox.Show(loc.in_notDir[loc.current] + dir, loc.in_error[loc.current], MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+
+        private void Btn_WB_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = Config.wbPath;
+            p.Start();
         }
     }
 
