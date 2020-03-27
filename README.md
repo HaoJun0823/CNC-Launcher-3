@@ -7,3 +7,4 @@ When I started doing this, I didn't know C#...so I wrote it while looking at the
 If there are any improvements, I will try it, thank you!
 
 # moddb:https://www.moddb.com/mods/elite-x/downloads/cnc-launcher-3
+# Homepage:https://aed.icu/cnc-launcher-3
