@@ -47,7 +47,7 @@ namespace CNCLauncher
             Console.ForegroundColor = ConsoleColor.Cyan;
             MiddlePrint(@"Want to know more?");
             Console.ForegroundColor = ConsoleColor.Blue;
-            MiddlePrint(@"Please visit:http://blog.haojun0823.xyz");
+            MiddlePrint(@"Please visit:https://blog.haojun0823.xyz");
             Console.ForegroundColor = ConsoleColor.Magenta;
             MiddlePrint(@"Smile To Every :)");
             Console.ForegroundColor = ConsoleColor.Red;

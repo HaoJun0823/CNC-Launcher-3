@@ -84,7 +84,7 @@ namespace CNCLauncher
                 SubMainGame.SetValue("Folder", path, RegistryValueKind.String);
                 SubMainGame.SetValue("UserDataLeafName", gameName, RegistryValueKind.String);
                 SubMainGame.SetValue("Installed From", path.Substring(0, path.IndexOf(':')) + ":\\", RegistryValueKind.String);
-                SubMainGame.SetValue("Patch URL", "http://www.ea.com/redalert", RegistryValueKind.String);
+                SubMainGame.SetValue("Patch URL", "https://www.ea.com/redalert", RegistryValueKind.String);
 
                 SubMainGame.SetValue("ProductName", gameFullName, RegistryValueKind.String);
 
@@ -271,6 +271,19 @@ namespace CNCLauncher
 
             //Console.WriteLine("Get Main RegistryKey:"+SubMain.ToString());
             return SubMain;
+        }
+
+        public static RegistryKey createLauncherKey()
+        {
+            RegistryKey Main = Registry.LocalMachine;
+            Main = Main.OpenSubKey("SOFTWARE", true);
+            RegistryKey SubMain = Main.CreateSubKey("HaoJun0823");
+
+            RegistryKey LauncherMain = SubMain.CreateSubKey("CNCLauncher");
+
+
+            return LauncherMain;
+
         }
 
     }

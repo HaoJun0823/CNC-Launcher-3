@@ -1471,7 +1471,7 @@ namespace CNCLauncher
 
             if (lc_Game.Equals(Config.gameName))
             {
-                String address = "http://www.ea.com/games/command-and-conquer";
+                String address = "https://www.ea.com/games/command-and-conquer";
 
                 if (MessageBox.Show(loc.open_page[loc.current]+"\n"+address, address, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
@@ -1506,7 +1506,7 @@ namespace CNCLauncher
                 }
                 else
                 {
-                    String address = "http://www.ea.com/games/command-and-conquer";
+                    String address = "https://www.ea.com/games/command-and-conquer";
 
                     if (MessageBox.Show(loc.open_page[loc.current] + "\n" + address, address, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
@@ -2068,7 +2068,7 @@ namespace CNCLauncher
         private void btn_author_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(loc.open_page[loc.current], "blog.haojun0823.xyz/services/api/access/cnc-launcher-3", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)== DialogResult.OK){
-                System.Diagnostics.Process.Start("http://blog.haojun0823.xyz/services/api/access/cnc-launcher-3");
+                System.Diagnostics.Process.Start("https://blog.haojun0823.xyz/services/api/access/cnc-launcher-3");
             };
             
         }
