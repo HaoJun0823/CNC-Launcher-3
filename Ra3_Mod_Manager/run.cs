@@ -322,7 +322,7 @@ namespace CNCLauncher
             else
             {
                 modGame = modGame.Substring(modGame.LastIndexOf("mod-game") + 8).Trim();
-                customGame = modGame;
+                //customGame = modGame; // NOT THIS
                 Console.WriteLine("Mod Game Start Version:" + modGame);
                 String targetModSkudef = "";
                     if (Config.isCNC)
