@@ -111,7 +111,7 @@ namespace CNCLauncher
             SubMainGame.SetValue("ReplayFolderName", "Replays", RegistryValueKind.String);
             SubMainGame.SetValue("SaveFolderName", "SaveGames", RegistryValueKind.String);
             SubMainGame.SetValue("ScreenshotsFolderName", "Screenshots", RegistryValueKind.String);
-            SubMainGame.SetValue("UseLocalUserMaps", 0, RegistryValueKind.DWord);
+            SubMainGame.SetValue("UseLocalUserMaps", 1, RegistryValueKind.DWord); //Should be True
             SubMainGame.SetValue("Product GUID", uid, RegistryValueKind.String);
 
 
@@ -252,7 +252,7 @@ namespace CNCLauncher
         {
             RegistryKey Main = Registry.LocalMachine;
             Main = Main.OpenSubKey("SOFTWARE",true);
-            /*
+            
             string[] subSoftWareKeys = Main.GetSubKeyNames();
             foreach(string name in subSoftWareKeys)
             {
@@ -264,7 +264,7 @@ namespace CNCLauncher
                 }
                 
             }
-            */
+            
 
             RegistryKey SubMain = Main.CreateSubKey("Electronic Arts");
             //SubMain.OpenSubKey("Electronic Arts",true);

@@ -54,7 +54,6 @@ namespace CNCLauncher
             this.cb_bfs = new System.Windows.Forms.CheckBox();
             this.btn_map = new System.Windows.Forms.Button();
             this.btn_document = new System.Windows.Forms.Button();
-            this.btn_short = new System.Windows.Forms.Button();
             this.ExtraConfig = new System.Windows.Forms.Button();
             this.btn_author = new System.Windows.Forms.Button();
             this.media_video = new AxWMPLib.AxWindowsMediaPlayer();
@@ -62,6 +61,7 @@ namespace CNCLauncher
             this.Regedit = new System.Windows.Forms.Button();
             this.btn_tools = new System.Windows.Forms.Button();
             this.btn_WorldEditor = new System.Windows.Forms.Button();
+            this.btn_short = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.media_video)).BeginInit();
             this.SuspendLayout();
             // 
@@ -277,17 +277,6 @@ namespace CNCLauncher
             this.btn_document.UseVisualStyleBackColor = false;
             this.btn_document.Click += new System.EventHandler(this.btn_document_Click);
             // 
-            // btn_short
-            // 
-            this.btn_short.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btn_short, "btn_short");
-            this.btn_short.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_short.FlatAppearance.BorderSize = 0;
-            this.btn_short.ForeColor = System.Drawing.Color.Black;
-            this.btn_short.Name = "btn_short";
-            this.btn_short.UseVisualStyleBackColor = false;
-            this.btn_short.Click += new System.EventHandler(this.btn_short_Click);
-            // 
             // ExtraConfig
             // 
             this.ExtraConfig.BackColor = System.Drawing.Color.Transparent;
@@ -362,6 +351,17 @@ namespace CNCLauncher
             this.btn_WorldEditor.UseVisualStyleBackColor = false;
             this.btn_WorldEditor.Click += new System.EventHandler(this.Btn_WB_Click);
             // 
+            // btn_short
+            // 
+            this.btn_short.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btn_short, "btn_short");
+            this.btn_short.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_short.FlatAppearance.BorderSize = 0;
+            this.btn_short.ForeColor = System.Drawing.Color.Black;
+            this.btn_short.Name = "btn_short";
+            this.btn_short.UseVisualStyleBackColor = false;
+            this.btn_short.Click += new System.EventHandler(this.btn_short_Click);
+            // 
             // Controller
             // 
             resources.ApplyResources(this, "$this");
@@ -432,12 +432,12 @@ namespace CNCLauncher
         private System.Windows.Forms.CheckBox cb_bfs;
         private System.Windows.Forms.Button btn_map;
         private System.Windows.Forms.Button btn_document;
-        private System.Windows.Forms.Button btn_short;
         private System.Windows.Forms.Button ExtraConfig;
         private System.Windows.Forms.Button btn_author;
         private System.Windows.Forms.Button btn_plugin;
         private System.Windows.Forms.Button Regedit;
         private System.Windows.Forms.Button btn_tools;
         private System.Windows.Forms.Button btn_WorldEditor;
+        private System.Windows.Forms.Button btn_short;
     }
 }

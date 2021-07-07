@@ -744,36 +744,6 @@
   <data name="&gt;&gt;btn_document.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="btn_short.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="btn_short.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btn_short.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 676</value>
-  </data>
-  <data name="btn_short.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 20</value>
-  </data>
-  <data name="btn_short.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="btn_short.Text" xml:space="preserve">
-    <value>Create Shortcut</value>
-  </data>
-  <data name="&gt;&gt;btn_short.Name" xml:space="preserve">
-    <value>btn_short</value>
-  </data>
-  <data name="&gt;&gt;btn_short.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btn_short.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btn_short.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="ExtraConfig.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
@@ -1000,6 +970,36 @@
   </data>
   <data name="&gt;&gt;btn_WorldEditor.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="btn_short.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="btn_short.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_short.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 676</value>
+  </data>
+  <data name="btn_short.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 20</value>
+  </data>
+  <data name="btn_short.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="btn_short.Text" xml:space="preserve">
+    <value>Create Shortcut</value>
+  </data>
+  <data name="&gt;&gt;btn_short.Name" xml:space="preserve">
+    <value>btn_short</value>
+  </data>
+  <data name="&gt;&gt;btn_short.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_short.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btn_short.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

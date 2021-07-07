@@ -96,7 +96,9 @@ namespace CNCLauncher
             plugin_reg_cdkey_desc_faild = new string[inf.Length],
             btn_tools = new string[inf.Length],
             btn_tools_readme = new string[inf.Length],
-            btn_worldeditor = new string[inf.Length]
+            btn_worldeditor = new string[inf.Length],
+            rtb_license = new string[inf.Length],
+            title_license = new string[inf.Length]
 
 
 
@@ -186,6 +188,11 @@ namespace CNCLauncher
             btn_tools_readme[i] = "You can put the tools here";
             btn_worldeditor[i] = "World Builder";
 
+
+
+            rtb_license[i] = "";
+            title_license[i] = "";
+
             i++;
             //CS
             con_title[i] = "命令与征服系列启动器";
@@ -198,7 +205,7 @@ namespace CNCLauncher
             cb_customresolution[i] = "自定义分辨率";
             cb_media[i] = "多媒体";
             cb_windowed[i] = "窗口化";
-            in_author[i] = "命令与征服系列启动器 作者：HaoJun0823 来自中国 版本：" + Config.exeVersion+ "\n\n https://github.com/HaoJun0823/CNC-Launcher-3";
+            in_author[i] = "命令与征服系列启动器 作者：HaoJun0823 来自中国 版本：" + Config.exeVersion + "\n\n https://github.com/HaoJun0823/CNC-Launcher-3";
             in_error[i] = "错误：";
             in_execption[i] = "异常：";
             in_game[i] = "命令与征服：红色警戒3";
@@ -220,6 +227,8 @@ namespace CNCLauncher
             cb_mouse_locked[i] = "（无边框窗口模式）鼠标锁定窗口？";
             cb_dynamic_mouse[i] = "（无边框窗口模式）鼠标边缘移动？";
             btn_extra[i] = "额外";
+
+
             btn_author[i] = "关于启动器";
             info_first[i] = "感谢您使用这个工具！（又或者是它发生了问题恢复了）\n这个工具是为了分享《命令与征服》系列游戏制作出来的，让更多人喜欢这款经典巨作。\n时至今日，世界上仍然有大量玩家和Modder用自己的方式丰富这个游戏，地图、模型、视频、音乐，各种创意……\n如果您有任何才华或者想法，请大胆地与其他人分享，来创作出更多的乐趣！当然，我也会把我们当前遇到的问题写在这个软件里，如果您愿意帮助我，请通过邮箱与我联系: modder@haojun0823.xyz\n享受游戏！\nHaoJun0823\nblog.haojun0823.xyz\n\n最后，我永远喜欢我的儿子大神佑季！\n\n\n注：此产品不受 EA 官方认可及支持。";
             dat_desc[i] = "该文件由CNCLauncher生成，用于记录相关配置。 如果无法打开该程序，则可以手动删除该文件。";
@@ -264,6 +273,10 @@ namespace CNCLauncher
             btn_tools[i] = "工具";
             btn_tools_readme[i] = "你可以把工具放到这里";
             btn_worldeditor[i] = "世界编辑器";
+
+
+            rtb_license[i] = "";
+            title_license[i] = "";
 
             i++;
             //TS
@@ -344,6 +357,9 @@ namespace CNCLauncher
             btn_tools[i] = "工具";
             btn_tools_readme[i] = "你可以把工具放到這裡";
             btn_worldeditor[i] = "世界編輯器";
+
+            rtb_license[i] = "";
+            title_license[i] = "";
 
         }
     }
